@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yakir", "Yakir.csproj", "{F6336062-6B29-4936-865C-ECE467F0EFED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6336062-6B29-4936-865C-ECE467F0EFED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6336062-6B29-4936-865C-ECE467F0EFED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6336062-6B29-4936-865C-ECE467F0EFED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6336062-6B29-4936-865C-ECE467F0EFED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9551C9CC-1419-4B54-BCA7-8CA67C1F97FC}
+	EndGlobalSection
+EndGlobal
