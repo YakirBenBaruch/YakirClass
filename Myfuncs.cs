@@ -8,92 +8,89 @@ namespace Yakir
 {
     internal class Myfuncs
     {
-        public static int MyMax(int a, int b)
+        public static void UnitTests()
         {
-            if (a > b)
+            /*
+            //Targil1_a
+            Console.WriteLine(Myfuncs.Targil1_a(4, 2009));
+            Console.WriteLine(Myfuncs.Targil1_a(4, 2017));
+            */
+            //Myfuncs.Targil1_b();
+
+            /*
+            //Targil2_a
+            //Console.WriteLine(Myfuncs.Targil2_a(20, 1 , 70));
+            //Console.WriteLine(Myfuncs.Targil2_a(24, 3, 70));
+            */
+            //Myfuncs.Targil2_b();
+
+
+        }
+        public static bool Targil1_a(int Month, int year)
+        {
+            bool b = false;
+            if (Month >= 1 && Month <= 6 && year == 2009)
             {
-                return a;
+                b = true;
+            }
+            return b;
+        }
+        public static void Targil1_b()
+        {
+            int countM = 0, countF = 0, month, year;
+            char sex;// 'm'- male, 'f'- female
+            bool b;
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("Enter year: ");
+                year = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter month: ");
+                month = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter sex: ");
+                sex = char.Parse(Console.ReadLine());
+                b = Myfuncs.Targil1_a(month, year);
+                if (b)
+                {
+                    if (sex == 'm')
+                    {
+                        countM++;
+                    }
+                    else
+                        countF++;
+                }
+
+            }
+
+            Console.WriteLine("Male count " + countM);
+            Console.WriteLine("feMale count " + countF);
+        }
+
+
+        public static int Targil2_a(int age, int licens, int speed)
+        {
+            if (licens < 2 && age < 24)
+            {
+                speed = speed - 10;
+                return speed;
             }
             else
             {
-                return b;
+                return speed;
             }
+        }
+        public static void Targil2_b()
+        {
+            int age, licens, speedLimit, speed;
+            Console.WriteLine("Enter your age");
+            age = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter you licens");
+            licens = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the limit speed");
+            speedLimit = int.Parse(Console.ReadLine());
+            speed = Myfuncs.Targil2_a(age, licens, speedLimit);
+            Console.WriteLine($"Your limit speed is : {speed} ");
         }
 
-        public static double MyMinDouble(double a, double b)
-        {
-            if (a < b)
-            {
-                return a;
-            }
-            else
-            {
-                return b;
-            }
-        }
-        public static double MyAbs(double num)
-        {
-            if (num < 0)
-            {
-                return -num;
-            }
-            else
-            {
-                return num;
-            }
-        }
-        public static double MyDist(double x1, double y1, double x2, double y2)
-        {
-            double dx = x2 - x1;
-            double dy = y2 - y1;
-            double sum = dx * dx + dy * dy;
 
-            double guess = sum / 2;
-            for (int i = 0; i < 10; i++)
-            {
-                guess = (guess + sum / guess) / 2;
-            }
-
-            return guess;
-        }
-        public static double Myadd(double a, double b)
-        {
-            double sum = a + b;
-            return sum;
-        }
-        public static double MyDivDouble(double a, double b)
-        {
-            double sum = a / b;
-            return sum;
-        }
-        public static int MyDivInt(int a, int b)
-        {
-            int sum = a / b;
-            return sum;
-        }
-        public static int MyMinInt(int a, int b)
-        {
-            if (a < b)
-            {
-                return a;
-            }
-            else
-            {
-                return b;
-            }
-        }
-        public static int MyPower(int a, int b)
-        {
-            int result = 1;
-            int i = 0;
-
-            while (i < b)
-            {
-                result = result * a;
-                i++;
-            }
-
-            return result;
-        }
     }
 }
