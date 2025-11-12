@@ -24,6 +24,14 @@ namespace Yakir
             */
             //Myfuncs.Targil2_b();
 
+            /*
+            //Targil3_a
+            Console.WriteLine(Myfuncs.Targil3_a(10, 1300));
+            Console.WriteLine(Myfuncs.Targil3_a(3, 1300));
+            */
+            //Myfuncs.Targil3_b();
+
+
 
         }
         public static bool Targil1_a(int Month, int year)
@@ -89,6 +97,40 @@ namespace Yakir
             speedLimit = int.Parse(Console.ReadLine());
             speed = Myfuncs.Targil2_a(age, licens, speedLimit);
             Console.WriteLine($"Your limit speed is : {speed} ");
+        }
+
+        public static int Targil3_a(int Clubmembership, int AmountShoppingforMonth)
+        {
+            int shislup = 0;
+            if (Clubmembership > 3 && Clubmembership < 8 && AmountShoppingforMonth > 1200)
+            {
+                shislup = Clubmembership * 50;
+            }
+            else if (Clubmembership > 3 && Clubmembership > 8 && AmountShoppingforMonth > 1200)
+            {
+                shislup = Clubmembership * 100;
+            }
+
+            return shislup;
+        }
+        static void Targil3_b()
+        {
+            int Clubmembership, AmountShoppingforMonth, shislup, sum = 0;
+
+            for (int i = 1; i <= 5; i++)
+            {
+                Console.Write("Enter Club Membership (number of years): ");
+                Clubmembership = int.Parse(Console.ReadLine());
+
+                Console.Write("Enter Amount of Shopping for the Month: ");
+                AmountShoppingforMonth = int.Parse(Console.ReadLine());
+
+                shislup = Targil3_a(Clubmembership, AmountShoppingforMonth);
+                Console.WriteLine($"Your shi slip is : {shislup}");
+
+                sum += shislup;
+            }
+            Console.WriteLine($"\nTotal discount for all the clients: {sum}");
         }
 
 
