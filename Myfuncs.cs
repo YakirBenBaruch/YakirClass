@@ -31,7 +31,18 @@ namespace Yakir
             */
             //Myfuncs.Targil3_b();
 
+            /*
+            //Targil4_a
+            Console.WriteLine(Myfuncs.Targil4_a(15));
+            Console.WriteLine(Myfuncs.Targil4_a(20));
+            */
+            //Myfuncs.Targil4_b();
 
+            /*
+            Console.WriteLine(Myfuncs.Targil5_a(91, 93, 99));
+            Console.WriteLine(Myfuncs.Targil5_a(88, 93, 99));
+            */
+            //Myfuncs.Targil5_b();
 
         }
         public static bool Targil1_a(int Month, int year)
@@ -125,12 +136,92 @@ namespace Yakir
                 Console.Write("Enter Amount of Shopping for the Month: ");
                 AmountShoppingforMonth = int.Parse(Console.ReadLine());
 
-                shislup = Targil3_a(Clubmembership, AmountShoppingforMonth);
+                shislup = Myfuncs.Targil3_a(Clubmembership, AmountShoppingforMonth);
                 Console.WriteLine($"Your shi slip is : {shislup}");
 
                 sum += shislup;
             }
             Console.WriteLine($"\nTotal discount for all the clients: {sum}");
+        }
+
+        public static bool Targil4_a(int age)
+        {
+            bool B = false;
+            if (age >= 15 && age <= 18)
+            {
+                B = true;
+            }
+            return B;
+        }
+        static void Targil4_b()
+        {
+            int age, hour, countA;
+            bool b = false;
+            countA = 0;
+            for (int i = 1; i <= 3; i++)
+            {
+                Console.WriteLine("Enter your age");
+                age = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter you hour you listn");
+                hour = int.Parse(Console.ReadLine());
+                if (hour > 3)
+                {
+                    if (b = Myfuncs.Targil4_a(age))
+                    {
+                        countA++;
+                    }
+                }
+            }
+            Console.WriteLine(countA);
+        }
+
+        public static int Targil5_a(int a, int b, int c)
+        {
+            int count = 0;
+
+            if (a > 90)
+            {
+                count++;
+            }
+               
+            if (b > 90)
+            {
+                count++;
+            }
+
+            if (c > 90)
+            {
+                count++;
+            }
+
+            return count;
+        }
+        static void Targil5_b()
+        {
+            int n, a, b, c, allowCount = 0;
+            string name;
+
+            Console.WriteLine("Enter number of students:");
+            n = int.Parse(Console.ReadLine());
+            for (int i = 1; i <= n; i++)
+            {
+                Console.WriteLine("Enter your name:");
+                name = Console.ReadLine();
+                Console.WriteLine("Enter grade 1: ");
+                a = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter grade 2: ");
+                b = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter grade 3: ");
+                c = int.Parse(Console.ReadLine());
+
+                int countAbove90 = Targil5_a(a, b, c);
+                if (countAbove90 == 3)
+                {
+                    Console.WriteLine($"{name} is allowed to enter the competition.");
+                    allowCount++;
+                }
+            }
+            Console.WriteLine($"Total students allowed: {allowCount}");
         }
 
 
