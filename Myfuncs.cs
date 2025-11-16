@@ -44,6 +44,11 @@ namespace Yakir
             */
             //Myfuncs.Targil5_b();
 
+            //Targil6_a
+            //Console.WriteLine(Myfuncs.Targil6_a(3));
+            //Myfuncs.Targil6_b();
+
+
         }
         public static bool Targil1_a(int Month, int year)
         {
@@ -183,7 +188,7 @@ namespace Yakir
             {
                 count++;
             }
-               
+
             if (b > 90)
             {
                 count++;
@@ -222,6 +227,36 @@ namespace Yakir
                 }
             }
             Console.WriteLine($"Total students allowed: {allowCount}");
+        }
+
+        static bool Targil6_a(int a)
+        {
+
+            int sum = 0;
+            int price;
+            for (int i = 1; i <= a; i++)
+            {
+                price = int.Parse(Console.ReadLine());
+                sum += price;
+            }
+            return sum > 150;
+        }
+        static void Targil6_b()
+        {
+            int price, prod, countF = 0;
+            bool b = true;
+            for (int i = 1; i <= 3; i++)
+            {
+                Console.WriteLine("Enter your prod");
+                prod = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter thr price for each prod");
+                b = Myfuncs.Targil6_a(prod);
+                if (b == false)
+                {
+                    countF++;
+                }
+            }
+            Console.WriteLine($"people {countF} need to pay a fee");
         }
 
 
