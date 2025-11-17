@@ -48,6 +48,19 @@ namespace Yakir
             //Console.WriteLine(Myfuncs.Targil6_a(3));
             //Myfuncs.Targil6_b();
 
+            //Targil8_a
+            /*
+            Console.WriteLine(Myfuncs.Targil8_a("male", "male"));
+            Console.WriteLine(Myfuncs.Targil8_a("male", "femle"));
+            */
+            //Myfuncs.Targil8_b();
+
+            //Targil10_a
+            /*
+            Console.WriteLine(Myfuncs.elapsedTime(1354 , 1454));
+            */
+            //Myfuncs.Targil10_b();
+
 
         }
         public static bool Targil1_a(int Month, int year)
@@ -259,6 +272,116 @@ namespace Yakir
             Console.WriteLine($"people {countF} need to pay a fee");
         }
 
+        public static char Targil8_a(string twin1, string twin2)
+        {
 
+            if (twin1 == "female" && twin2 == "female")
+            {
+                return 'f';
+            }
+            if (twin1 == "male" && twin2 == "male")
+            {
+                return 'm';
+            }
+            return 'v';
+        }
+        static void Targil8_b()
+        {
+            int MALES = 0, FEMALES = 0, EQUAL = 0;
+            string t1, t2;
+            char result;
+
+            for (int i = 1; i <= 1371; i++)
+            {
+                Console.WriteLine("Enter first twin (male/female):");
+                t1 = Console.ReadLine();
+
+                Console.WriteLine("Enter second twin (male/female):");
+                t2 = Console.ReadLine();
+
+                result = Myfuncs.Targil8_a(t1, t2);
+
+                if (result == 'm')
+                {
+                    MALES++;
+                }
+                else if (result == 'f')
+                {
+                    FEMALES++;
+                }
+                else
+                {
+                    EQUAL++;
+                }
+            }
+
+            if (MALES > FEMALES && MALES > EQUAL)
+            {
+                Console.WriteLine("MALES occurred the most.");
+            }
+            else if (FEMALES > MALES && FEMALES > EQUAL)
+            {
+                Console.WriteLine("FEMALES occurred the most.");
+            }
+            else if (EQUAL > MALES && EQUAL > FEMALES)
+            {
+                Console.WriteLine("EQUAL (mixed) occurred the most.");
+            }
+            else
+            {
+                Console.WriteLine("There is a tie between categories.");
+            }
+        }
+
+        public static int elapsedTime(int first, int second)
+        {
+            int firstHours = first / 100;
+            int firstMinutes = first % 100;
+            int firstTotal = firstHours * 60 + firstMinutes;
+
+            int secondHours = second / 100;
+            int secondMinutes = second % 100;
+            int secondTotal = secondHours * 60 + secondMinutes;
+
+           
+            return secondTotal - firstTotal;
+        }
+
+        public static void Targil10_b()
+        {
+            int runnerNumber;
+            int startTime;
+            int finishTime;
+            int runTime;
+            int shortestTime;
+            Console.WriteLine("Enter runner number:");
+            runnerNumber = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter start time (hhmm):");
+            startTime = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter finish time (hhmm):");
+            finishTime = int.Parse(Console.ReadLine());
+            shortestTime = finishTime;
+            for (int i = 1; i <= 3; i++)
+            {
+                Console.WriteLine("Enter runner number:");
+                runnerNumber = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Enter start time (hhmm):");
+                startTime = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Enter finish time (hhmm):");
+                finishTime = int.Parse(Console.ReadLine());
+
+                runTime = elapsedTime(startTime, finishTime);
+
+                if (runTime < shortestTime)
+                {
+                    shortestTime = runTime;
+                }
+            }
+            Console.WriteLine($"Shortest running time: {shortestTime} minutes");
+        }
     }
 }
