@@ -386,7 +386,63 @@ namespace Yakir
             Console.WriteLine($"Shortest running time: {shortestTime} minutes");
         }
 
+        public static double Max3(double price1, double price2, double price3)
+        {
+            double max12 = sum2Max(price1, price2);
+            return sum2Max(max12, price3);
+        }
+        public static void PayAfterSaleInteractive()
+        {
+            Console.Write("Enter price of book 1: ");
+            string s1 = Console.ReadLine();
+            Console.Write("Enter price of book 2: ");
+            string s2 = Console.ReadLine();
+            Console.Write("Enter price of book 3 (enter 0 if you bought only 2 books): ");
+            string s3 = Console.ReadLine();
 
+
+            if (!double.TryParse(s1, out double p1))
+            {
+                Console.WriteLine("Invalid input for book 1.");
+                return;
+            }
+
+            if (!double.TryParse(s2, out double p2))
+            {
+                Console.WriteLine("Invalid input for book 2.");
+                return;
+            }
+
+            if (!double.TryParse(s3, out double p3))
+            {
+                Console.WriteLine("Invalid input for book 3.");
+                return;
+            }
+
+            if (p1 < 0 || p2 < 0 || p3 < 0)
+            {
+                Console.WriteLine("Prices must be non-negative.");
+                return;
+            }
+
+            double totalToPay;
+
+            if (p3 == 0)
+            {
+
+                double max = sum2Max(p1, p2);
+                totalToPay = (p1 + p2) - (max / 2.0);
+                Console.WriteLine("You entered 2 books.");
+            }
+            else
+            {
+                double max = Max3(p1, p2, p3);
+                totalToPay = (p1 + p2 + p3) - (max / 2.0);
+                Console.WriteLine("You entered 3 books.");
+            }
+
+            Console.WriteLine("Total to pay after sale: " + totalToPay);
+        }
 
 
         public static int Targil14_a(int num, int digit)
