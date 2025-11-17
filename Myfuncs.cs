@@ -62,6 +62,8 @@ namespace Yakir
             //Myfuncs.Targil10_b();
 
 
+
+            //Myfuncs.Targil14_c();
         }
         public static bool Targil1_a(int Month, int year)
         {
@@ -343,7 +345,7 @@ namespace Yakir
             int secondMinutes = second % 100;
             int secondTotal = secondHours * 60 + secondMinutes;
 
-           
+
             return secondTotal - firstTotal;
         }
 
@@ -382,6 +384,72 @@ namespace Yakir
                 }
             }
             Console.WriteLine($"Shortest running time: {shortestTime} minutes");
+        }
+
+
+
+
+        public static int Targil14_a(int num, int digit)
+        {
+            int count = 0;
+            while (num > 0)
+            {
+                int lastDigit = num % 10;
+                if (lastDigit == digit)
+                    count++;
+                num /= 10;
+            }
+            return count;
+        }
+
+        public static int Targil14_b(int num, int numDigit)
+        {
+            int minDigit = 10;
+
+            for (int d = 0; d <= 9; d++)
+            {
+                int count = Myfuncs.Targil14_a(num, d);
+                if (count == numDigit && d < minDigit)
+                    minDigit = d;
+            }
+
+
+            return (minDigit == 10) ? -1 : minDigit;
+        }
+        public static void Targil14_c()
+        {
+            int totalCalls = 0;
+
+            Console.WriteLine("Enter numbers representing calls (0 to finish):");
+
+            while (true)
+            {
+                Console.Write("\nEnter call number (or 0 to exit): ");
+                int num = int.Parse(Console.ReadLine());
+                if (num == 0)
+                    break;
+
+                totalCalls++;
+
+
+                int maxCount = 0;
+                for (int d = 0; d <= 9; d++)
+                {
+                    int count = Myfuncs.Targil14_a(num, d);
+                    if (count > maxCount)
+                        maxCount = count;
+                }
+
+
+                int chosenDigit =  Myfuncs.Targil14_b(num, maxCount);
+
+                if (chosenDigit >= 1 && chosenDigit <= 8)
+                    Console.WriteLine($"The call has been transferred to a representative {chosenDigit}");
+                else
+                    Console.WriteLine("No suitable representative found (digit out of range 1-8)");
+            }
+
+            Console.WriteLine($"\n\"Total calls handled : {totalCalls}");
         }
     }
 }
