@@ -9,7 +9,7 @@ namespace Yakir
     {
         static void Main(string[] args)
         {
-            NettedLoops.UnitTests();
+            NesttedLoops.UnitTests();
         }
     }
 }
