@@ -26,7 +26,7 @@ namespace Yakir
             //NesttedLoops.Targil7_69();
             //NesttedLoops.Targil7_70();
             //NesttedLoops.Targil47();
-            NesttedLoops.Targil48();
+            //NesttedLoops.Targil48();
         }
         public static void targil7_66a()
         {
@@ -181,8 +181,8 @@ namespace Yakir
         }
         public static void Targil7_68()
         {
-            const int STUDENT_NUM = 40;
-            const int GRADE_NUM = 20;
+            int STUDENT_NUM = 40;
+            int GRADE_NUM = 20;
             double grade;
             double sum;
             sum = 0;
@@ -221,38 +221,30 @@ namespace Yakir
         }
         public static void Targil7_70()
         {
-            int num = int.Parse(Console.ReadLine());
-            int min = 0;
-            int mini = 0;
-            int salary = 0;
-            int total = 0;
-            for (int j = 0; j < 12; j++)
+            double sum , sal = 0, min = 0, minLastSal = 0, num;
+            Console.WriteLine("How many workers ?");
+            num = double.Parse(Console.ReadLine());
+
+            for (int j = 0; j < num; j++)
             {
-                salary = int.Parse(Console.ReadLine());
-                total += salary;
-
-            }
-            min = total;
-            mini = salary;
-
-            for (int i = 0; i < num - 1; i++)
-            {
-                salary = 0;
-                total = 0;
-                for (int j = 0; j < 12; j++)
+                sum = 0;
+                for (int i = 0; i < 3; i++)
                 {
-                    salary = int.Parse(Console.ReadLine());
-                    total += salary;
-
+                    Console.WriteLine("Enter your salery");
+                    sal = double.Parse(Console.ReadLine());
+                    sum += sal;
                 }
-                if (total < min)
+                Console.WriteLine("=============== Next ===============");
+
+                if (j == 0)
+                    min = sum;
+                else if (sum < min)
                 {
-                    min = total;
-                    mini = salary;
+                    min = sum;
+                    minLastSal = sal;
                 }
-
             }
-            Console.WriteLine(mini);
+            Console.WriteLine("minLastSal : " + minLastSal);
         }
 
         public static void Targil47()
