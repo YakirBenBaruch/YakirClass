@@ -10,22 +10,23 @@ namespace Yakir
     {
         public static void UnitTests()
         {
-            //NettedLoops.targil7_66a();
-            //NettedLoops.targil7_66b();
-            //NettedLoops.targil7_66c();
-            //NettedLoops.targil7_66d();
-            //NettedLoops.Targil7_67a();
-            //NettedLoops.Targil7_67b();
-            //NettedLoops.Targil7_67c();
-            //NettedLoops.Targil7_67d();
-            //NettedLoops.Targil7_67e();
-            //NettedLoops.Targil7_67f();
-            //NettedLoops.Targil7_67g();
-            //NettedLoops.Targil7_67h();
-            //NettedLoops.Targil7_68();
-            //NettedLoops.Targil7_69();
-            //NettedLoops.Targil7_70();
-            //NettedLoops.Targil47();
+            //NesttedLoops.targil7_66a();
+            //NesttedLoops.targil7_66b();
+            //NesttedLoops.targil7_66c();
+            //NesttedLoops.targil7_66d();
+            //NesttedLoops.Targil7_67a();
+            //NesttedLoops.Targil7_67b();
+            //NesttedLoops.Targil7_67c();
+            //NesttedLoops.Targil7_67d();
+            //NesttedLoops.Targil7_67e();
+            //NesttedLoops.Targil7_67f();
+            //NesttedLoops.Targil7_67g();
+            //NesttedLoops.Targil7_67h();
+            //NesttedLoops.Targil7_68();
+            //NesttedLoops.Targil7_69();
+            //NesttedLoops.Targil7_70();
+            //NesttedLoops.Targil47();
+            NesttedLoops.Targil48();
         }
         public static void targil7_66a()
         {
@@ -185,7 +186,7 @@ namespace Yakir
             double grade;
             double sum;
             sum = 0;
-            double average;
+            double average = 0;
             for (int i = 1; i <= STUDENT_NUM; i++)
             {
                 for (int j = 1; j <= GRADE_NUM; j++)
@@ -278,7 +279,25 @@ namespace Yakir
 
         public static void Targil48()
         {
-
+            int grade, sum = 0;
+            double avg = 0, minsum = 0;
+            for (int i = 1; i <= 3; i++)
+            {
+                sum = 0;
+                for (int j = 1; j <= 4; j++)
+                {
+                    Console.WriteLine("Enter you grade in the test");
+                    grade = int.Parse(Console.ReadLine());
+                    sum += grade;
+                    avg = sum / j;
+                }
+                Console.WriteLine();
+                if (avg < minsum)
+                {
+                    avg = minsum;
+                }
+            }
+            Console.WriteLine(avg);
         }
     }
 }
