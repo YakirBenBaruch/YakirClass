@@ -21,7 +21,7 @@ namespace Yakir
             //Console.WriteLine(StringPractice.Targil6_b("hello"));
             //Console.WriteLine(StringPractice.Targil7('a', "maya"));
             //Console.WriteLine(StringPractice.Targil8('a', "maya"));
-
+            //Console.WriteLine(StringPractice.Targil9("HELLO" , "HELL"));
         }
 
         public static int Targil0(string s)
@@ -140,6 +140,31 @@ namespace Yakir
                 }
             }
             return a;
+        }
+
+        public static bool Targil9(string s, string str)
+        {
+            int count = 0;
+            bool b = false;
+
+            if (str.Length > s.Length)
+            {
+                return false;
+            }
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (s[i] == str[i])
+                {
+                    count++;
+                }
+            }
+
+            if (count == str.Length)
+            {
+                b = true;
+            }
+
+            return b;
         }
     }
 }
