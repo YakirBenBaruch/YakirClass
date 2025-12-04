@@ -18,7 +18,10 @@ namespace Yakir
             //Console.WriteLine(StringPractice.Targil4("Yakir" , "Yakir"));
             //Console.WriteLine(StringPractice.Targil5("hello"));
             //Console.WriteLine(StringPractice.Targil6_a('r'));
-            Console.WriteLine(StringPractice.Targil6_b("hello"));
+            //Console.WriteLine(StringPractice.Targil6_b("hello"));
+            //Console.WriteLine(StringPractice.Targil7('a', "maya"));
+            //Console.WriteLine(StringPractice.Targil8('a', "maya"));
+
         }
 
         public static int Targil0(string s)
@@ -91,23 +94,52 @@ namespace Yakir
 
         public static char Targil6_a(Char c)
         {
+            int a = 'a' - 'A';
             if (c >= 'a' && c <= 'z')
             {
-                c = (char)(c - 32);
+                c = (char)(c - a);
             }
             return c;
         }
 
-        public static string Targil6_b(string c)
+        public static string Targil6_b(string s)
         {
-            char s = ' ';
-            if (s >= 'a' && s <= 'z')
+            string str = "";
+            for (int i = 0; i < s.Length; i++)
             {
-
-                s = (char)(s - 32);
-                c += s;
+                str += StringPractice.Targil6_a(s[i]);
             }
-            return c;
+            return str;
+        }
+
+        public static int Targil7(char c, string s)
+        {
+            c = StringPractice.Targil6_a(c);
+            int Count = 0;
+            for (int i = 0; i < s.Length; i++)
+            {
+                char ch = StringPractice.Targil6_a(s[i]);
+                if (ch == c)
+                {
+                    Count++;
+                }
+            }
+            return Count;
+        }
+
+        public static int Targil8(char c, string s)
+        {
+            int a = 0;
+            bool b = true;
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (c == s[i] && b == true)
+                {
+                    b = false;
+                    a = i;
+                }
+            }
+            return a;
         }
     }
 }
