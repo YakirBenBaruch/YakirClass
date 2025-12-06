@@ -166,5 +166,11 @@ namespace Yakir
 
             return b;
         }
+
+        public static bool Targil10(string s, string str)
+        {
+
+        }
+
     }
 }
