@@ -21,7 +21,8 @@ namespace Yakir
             //Console.WriteLine(StringPractice.Targil6_b("hello"));
             //Console.WriteLine(StringPractice.Targil7('a', "maya"));
             //Console.WriteLine(StringPractice.Targil8('a', "maya"));
-            //Console.WriteLine(StringPractice.Targil9("HELLO" , "HELL"));
+            //Console.WriteLine(StringPractice.Targil9( "HELL", "HELLO
+            Console.WriteLine(StringPractice.Targil10("JOSH IN HELL", "HELL"));
         }
 
         public static int Targil0(string s)
@@ -129,7 +130,7 @@ namespace Yakir
 
         public static int Targil8(char c, string s)
         {
-            int a = 0;
+            int a = -1;
             bool b = true;
             for (int i = 0; i < s.Length; i++)
             {
@@ -149,28 +150,53 @@ namespace Yakir
 
             if (str.Length > s.Length)
             {
-                return false;
-            }
-            for (int i = 0; i < str.Length; i++)
-            {
-                if (s[i] == str[i])
+                for (int i = 0; i < s.Length; i++)
                 {
-                    count++;
+                    if (str[i] == s[i])
+                    {
+                        count++;
+                    }
+                    if (count == s.Length)
+                    {
+                        b = true;
+                    }
                 }
+                return b;
             }
-
-            if (count == str.Length)
+            else
             {
-                b = true;
+                for (int i = 0; i < str.Length; i++)
+                {
+                    if (s[i] == str[i])
+                    {
+                        count++;
+                    }
+                    if (count == str.Length)
+                    {
+                        b = true;
+                    }
+                }
+                return b;
             }
-
-            return b;
         }
 
         public static bool Targil10(string s, string str)
         {
 
+            int x = Math.Max(s.Length, str.Length);
+            int y = Math.Min(s.Length, str.Length);
+
+            for (int i = 1; i <= x; i++)
+            {
+                if (str[str.Length - i] != s[s.Length - i])
+                {
+                    return false;
+                }
+
+            }
+            return true;
         }
+
 
     }
 }
