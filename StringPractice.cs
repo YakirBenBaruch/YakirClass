@@ -193,8 +193,5 @@ namespace Yakir
                     return false;
                 }
 
-            }
-            return true;
-        }
     }
 }
