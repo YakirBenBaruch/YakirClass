@@ -10,7 +10,6 @@ namespace Yakir
         static void Main(string[] args)
         {
             StringPractice.UnitTests();
-       
         }
     }
 }
