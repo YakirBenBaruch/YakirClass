@@ -25,9 +25,7 @@ namespace Yakir
             //Console.WriteLine(StringPractice.Targil10("JOSH IN HELL", "HELL"));
             //Console.WriteLine(StringPractice.Targil11("JOSH", 2));
             //Console.WriteLine(StringPractice.Targil12("JOSH", 2));
-            //Console.WriteLine(StringPractice.Targil13("JOSH IN HELL", "HE"));
-
-
+            //Console.WriteLine(StringPractice.Targil13("JOSH IN HELL", "ON"));
         }
 
         public static int Targil0(string s)
@@ -212,9 +210,9 @@ namespace Yakir
         {
             string result = "";
 
-            if (k < 0 || k >= s.Length)
+            if (k < 0 || k > s.Length)
             {
-                return "";
+                return result;
             }
 
             for (int i = 0; i <= k; i++)
@@ -244,89 +242,47 @@ namespace Yakir
 
         public static bool Targil13(string s1, string s2)
         {
-            bool b = false;
-
-            if (s2.Length > s1.Length)
+            string bigger = "";
+            string smaller = "";
+            if (s1.Length > s2.Length)
             {
-                return false;
+                bigger = s1;
+                smaller = s2;
             }
 
-            for (int i = 0; i <= s1.Length - s2.Length; i++)
+            else
             {
-                b = true;
+                bigger = s2;
+                smaller = s1;
+            }
 
-                for (int j = 0; j < s2.Length; j++)
-                {
-                    if (s1[i + j] != s2[j])
-                    {
-                        b = false;
-                    }
-                }
-
-                if (b == true)
+            while (bigger.Length >= smaller.Length)
+            {
+                if (StringPractice.Targil9(bigger, smaller))
                 {
                     return true;
                 }
+                bigger = StringPractice.Targil12(bigger, 1);
             }
-
             return false;
         }
 
         public static string Targil14(string s1, string s2)
         {
-            int minLen = s1.Length < s2.Length ? s1.Length : s2.Length;
+            string a = "";
+            string b = "";
 
-            for (int i = 0; i < minLen; i++)
+            for (int i = 0; i < s1.Length; i++)
             {
-                if (s1[i] > s2[i])
-                {
-                    return s1;
-                }
-                else if (s1[i] < s2[i])
-                {
-                    return s2;
-                }
+                a += StringPractice.Targil6_a(s1[i]);
             }
 
-            if (s1.Length > s2.Length)
+            for (int i = 0; i < s2.Length; i++)
             {
-                return s1;
+                b += StringPractice.Targil6_a(s1[i]);
             }
-            else
-            {
-                return s2;
-            }
+
+            int num = Math.Min(a.Length, b.Length);
         }
-
-        public static int Targil15(string s1, string s2)
-        {
-            int minLen = s1.Length < s2.Length ? s1.Length : s2.Length;
-
-            for (int i = 0; i < minLen; i++)
-            {
-                if (s1[i] > s2[i])
-                {
-                    return 1;
-                }
-                else if (s1[i] < s2[i])
-                {
-                    return -1;
-                }
-            }
-
-            if (s1.Length == s2.Length)
-            {
-                return 0;
-            }
-            else if (s1.Length > s2.Length)
-            {
-                return 1;
-            }
-            else
-            {
-                return -1;
-            }
-        }
-
     }
 }
