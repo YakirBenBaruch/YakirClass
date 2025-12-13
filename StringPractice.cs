@@ -26,6 +26,8 @@ namespace Yakir
             //Console.WriteLine(StringPractice.Targil11("JOSH", 2));
             //Console.WriteLine(StringPractice.Targil12("JOSH", 2));
             //Console.WriteLine(StringPractice.Targil13("JOSH IN HELL", "ON"));
+            //Console.WriteLine(StringPractice.Targil14("appels", "appel"));
+            //Console.WriteLine(StringPractice.Targil15("appels", "appel"));
         }
 
         public static int Targil0(string s)
@@ -269,20 +271,67 @@ namespace Yakir
 
         public static string Targil14(string s1, string s2)
         {
-            string a = "";
-            string b = "";
+            int len = Math.Min(s1.Length, s2.Length);
 
-            for (int i = 0; i < s1.Length; i++)
+            for (int i = 0; i < len; i++)
             {
-                a += StringPractice.Targil6_a(s1[i]);
+                char c1 = Targil6_a(s1[i]);
+                char c2 = Targil6_a(s2[i]);
+
+                if (c1 > c2)
+                {
+                    return s1;
+                }
+                if (c1 < c2)
+                {
+                    return s2;
+                }
             }
 
-            for (int i = 0; i < s2.Length; i++)
+            if (s1.Length > s2.Length)
             {
-                b += StringPractice.Targil6_a(s1[i]);
+                return s1;
             }
 
-            int num = Math.Min(a.Length, b.Length);
+            if (s2.Length > s1.Length)
+            {
+                return s2;
+            }
+
+            return s1;
         }
+
+        public static int Targil15(string s1, string s2)
+        {
+            int len = Math.Min(s1.Length, s2.Length);
+
+            for (int i = 0; i < len; i++)
+            {
+                char c1 = Targil6_a(s1[i]);
+                char c2 = Targil6_a(s2[i]);
+
+                if (c1 > c2)
+                {
+                    return 1;
+                }
+                if (c1 < c2)
+                {
+                    return -1;
+                }
+            }
+
+            if (s1.Length > s2.Length)
+            {
+                return 1;
+            }
+
+            if (s1.Length < s2.Length)
+            {
+                return -1;
+            }
+
+            return 0;
+        }
+
     }
 }
