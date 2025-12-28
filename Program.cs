@@ -9,7 +9,8 @@ namespace Yakir
     {
         static void Main(string[] args)
         {
-            StringPractice.UnitTests();
+            //StringPractice.UnitTests();
+            Cypher.UnitTests();
         }
     }
 }
