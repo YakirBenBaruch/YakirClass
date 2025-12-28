@@ -12,7 +12,7 @@ namespace Yakir
         {
             //Console.WriteLine(Cypher.Key(27));
             //Console.WriteLine(Cypher.Lettar('y'));
-            Console.WriteLine(Cypher.cypher(26 ,"AbCdZ"));
+            //Console.WriteLine(Cypher.cypher(26 ,"AbCdZ"));
         }
 
         public static int Key(int key)
