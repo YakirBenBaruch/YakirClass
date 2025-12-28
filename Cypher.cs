@@ -12,12 +12,17 @@ namespace Yakir
         {
             //Console.WriteLine(Cypher.Key(27));
             //Console.WriteLine(Cypher.Lettar('y'));
-            Console.WriteLine(Cypher.cypher(2 , "aBcD"));
+            Console.WriteLine(Cypher.cypher(26 ,"AbCdZ"));
         }
 
         public static int Key(int key)
         {
-            return key % 26;
+            if (key > 26)
+            {
+                return key % 26;
+            }
+            return key;
+
         }
 
         public static char Lettar(char c)
@@ -58,10 +63,9 @@ namespace Yakir
             for (int i = 0; i < s.Length; i++)
             {
                 char c = s[i];
-
+                c = Cypher.Lettar(c);
                 for (int j = 0; j < key; j++)
-                {
-                    c = Cypher.Lettar(c);
+                {               
                     c = Cypher.Cplus1(c);
                 }
 
