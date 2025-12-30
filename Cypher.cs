@@ -15,6 +15,7 @@ namespace Yakir
             //Console.WriteLine(Cypher.cypher(26 ,"AbCdZ"));
         }
 
+        //הצפנת קיסר
         public static int Key(int key)
         {
             if (key > 26)
@@ -65,7 +66,7 @@ namespace Yakir
                 char c = s[i];
                 c = Cypher.Lettar(c);
                 for (int j = 0; j < key; j++)
-                {               
+                {
                     c = Cypher.Cplus1(c);
                 }
 
@@ -73,6 +74,8 @@ namespace Yakir
             }
             return str;
         }
+
+        //הצפנת ערבול
 
     }
 }

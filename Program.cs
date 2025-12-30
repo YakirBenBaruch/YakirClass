@@ -10,7 +10,8 @@ namespace Yakir
         static void Main(string[] args)
         {
             //StringPractice.UnitTests();
-            Cypher.UnitTests();
+            //Cypher.UnitTests();
+            ArraysPractice.UnitTest();
         }
     }
 }
