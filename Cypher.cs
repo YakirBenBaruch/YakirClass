@@ -76,6 +76,24 @@ namespace Yakir
         }
 
         //הצפנת ערבול
+        public static string HirbulCypher(string s)
+        {
+            string str = "";
+            for (int i = 0; i < s.Length; i = i + 2)
+            {
 
+                if (i == s.Length - 1)
+                {
+                    str = str + s[i];
+                }
+                else
+                {
+                    str = str + s[i + 1];
+                    str = str + s[i];
+                }
+            }
+            return str;
+
+        }
     }
 }
