@@ -65,26 +65,75 @@ namespace Yakir
 
         public static void T10_23()
         {
-            int num;
-            Console.WriteLine("Enter num of student ");
-            num = int.Parse(Console.ReadLine());
-            string[] name = new string[num];
-            string[] arr = new string[num];
+            Console.WriteLine("Enter num of students:");
+            int num = int.Parse(Console.ReadLine());
 
-            for (int i = 0; i < name.Length; i++)
+            string[] names = new string[num];
+
+            for (int i = 0; i < names.Length; i++)
             {
-                Console.WriteLine($"Enter name of student {i}");
-                name[i] = Console.ReadLine();
+                Console.WriteLine($"Enter name of student {i + 1}:");
+                names[i] = Console.ReadLine();
             }
 
-            for (int k = 0; k < 3; k++)
+            int shifts = 75 / 20;
+
+            for (int k = 0; k < shifts; k++)
             {
-                for (int j = 0; j < name.Length - 1; j++)
+                string first = names[0];
+
+                for (int j = 0; j < names.Length - 1; j++)
                 {
-                    name[j] = name[j + 1];
-                    Console.WriteLine(name[j]);
+                    names[j] = names[j + 1];
                 }
+
+                names[names.Length - 1] = first;
+            }
+
+            Console.WriteLine("\nOrder after the hike:");
+            for (int i = 0; i < names.Length; i++)
+            {
+                Console.WriteLine(names[i]);
             }
         }
+        public static void T10_23_B()
+        {
+            Console.WriteLine("Enter number of boys:");
+            int boys = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter number of girls:");
+            int girls = int.Parse(Console.ReadLine());
+
+            int total = boys + girls;
+
+            string[] names = new string[total];
+
+            for (int i = 0; i < total; i++)
+            {
+                Console.WriteLine($"Enter name {i + 1}:");
+                names[i] = Console.ReadLine();
+            }
+
+            int shifts = 75 / 20;
+
+            for (int k = 0; k < shifts; k++)
+            {
+                string first = names[0];
+
+                for (int i = 0; i < names.Length - 1; i++)
+                {
+                    names[i] = names[i + 1];
+                }
+
+                names[names.Length - 1] = first;
+            }
+
+            Console.WriteLine("\nOrder after the hike:");
+            for (int i = 0; i < names.Length; i++)
+            {
+                Console.WriteLine(names[i]);
+            }
+        }
+
     }
 }
