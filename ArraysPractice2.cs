@@ -65,19 +65,26 @@ namespace Yakir
 
         public static void T10_23()
         {
-            int People;
-            Console.WriteLine("Enter num of people");
-            People = int.Parse(Console.ReadLine());
-            int[] Num = new int[People];
-            string[] name = new string[People];
-            for (int i = 20; i <= 75; i += 20)
+            int num;
+            Console.WriteLine("Enter num of student ");
+            num = int.Parse(Console.ReadLine());
+            string[] name = new string[num];
+            string[] arr = new string[num];
+
+            for (int i = 0; i < name.Length; i++)
             {
-                for (int j = 0; j < Num.Length; j++)
-                {
-                    name[j] = Console.ReadLine();
-                }
+                Console.WriteLine($"Enter name of student {i}");
+                name[i] = Console.ReadLine();
             }
 
+            for (int k = 0; k < 3; k++)
+            {
+                for (int j = 0; j < name.Length - 1; j++)
+                {
+                    name[j] = name[j + 1];
+                    Console.WriteLine(name[j]);
+                }
+            }
         }
     }
 }
