@@ -12,7 +12,11 @@ namespace Yakir
         public static void UnitTest()
         {
             //ArraysPractice2.T10_19();
-            ArraysPractice2.T10_23();
+            //ArraysPractice2.T10_23();
+            //ArraysPractice2.T10_23_B();
+            //ArraysPractice2.T10_24();
+            //ArraysPractice2.T10_26();
+
         }
 
         public static void T10_19()
@@ -135,5 +139,36 @@ namespace Yakir
             }
         }
 
+        public static void T10_24()
+        {
+            Console.WriteLine("Enter number of elements:");
+            int n = int.Parse(Console.ReadLine());
+            int[] arr = new int[n];
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine($"Enter number {i + 1}:");
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine("Series in descending order:");
+            for (int i = arr.Length - 1; i >= 0; i--)
+            {
+                Console.WriteLine(arr[i]);
+            }
+        }
+
+        public static void T10_26()
+        {
+            int[] arr = new int[8];
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                if ((i == arr[i]) || (i == arr[i + 1]))
+                {
+                    Console.WriteLine(i);
+                }
+            }
+            // פלט : 4 , 5 , 6
+        }
     }
 }
