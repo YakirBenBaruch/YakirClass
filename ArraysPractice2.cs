@@ -16,7 +16,6 @@ namespace Yakir
             //ArraysPractice2.T10_23_B();
             //ArraysPractice2.T10_24();
             //ArraysPractice2.T10_26();
-
         }
 
         public static void T10_19()
@@ -168,7 +167,41 @@ namespace Yakir
                     Console.WriteLine(i);
                 }
             }
-            // פלט : 4 , 5 , 6
+            // א. פלט : 4 , 5 , 6
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] == (10 * i))
+                {
+                    arr[i] = arr[i] + 1;
+                }
+                else
+                {
+                    arr[i] = arr[i] - 1;
+                }
+            }
+            // { 9, 19, 39, 31, 3, 4, 6, 5 }
+
+            //ג
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                arr[i] = arr[i + 1];
+            }
+
+            for (int i = 1; i < arr.Length; i++)
+            {
+                arr[i] = arr[i - 1];
+            }
+
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                arr[i] = arr[i] * 2;
+            }
+
+            for (int i = 0; i * 2 < arr.Length; i++)
+            {
+                arr[i] = arr[i * 2];
+            }
         }
     }
 }
