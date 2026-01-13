@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,20 @@ namespace Yakir
         public static void UnitTest()
         {
             //ArraysPractice2.T10_19();
-            //ArraysPractice2.T10_23();
+            //ArraysPractice2.T10_23_A();
             //ArraysPractice2.T10_23_B();
-            //ArraysPractice2.T10_24();
+
+            /*
+            int[] arr = [1, 2, 3, 4, 5 , 6];
+            ArraysPractice2.T10_24(arr);
+            for(int i=0;i<arr.Length;i++)
+            {
+                Console.WriteLine(arr[arr.Length - i - 1]);
+            }
+            */
+
             //ArraysPractice2.T10_26();
+            //ArraysPractice2.T10_28();
         }
 
         public static void T10_19()
@@ -66,7 +77,7 @@ namespace Yakir
             arr[0] = last;
         }
 
-        public static void T10_23()
+        public static void T10_23_A()
         {
             Console.WriteLine("Enter num of students:");
             int num = int.Parse(Console.ReadLine());
@@ -101,59 +112,25 @@ namespace Yakir
         }
         public static void T10_23_B()
         {
-            Console.WriteLine("Enter number of boys:");
-            int boys = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Enter number of girls:");
-            int girls = int.Parse(Console.ReadLine());
-
-            int total = boys + girls;
-
-            string[] names = new string[total];
-
-            for (int i = 0; i < total; i++)
+            int girls, boys;
+            Console.WriteLine("Enter num of girls and boys");
+            girls = int.Parse(Console.ReadLine());
+            boys = int.Parse(Console.ReadLine());
+            int[] girl = new int[girls];
+            int[] total = new int[boys + girls + 4];
+            for (int i = total.Length - 4; i < total.Length - boys - 5; i--)
             {
-                Console.WriteLine($"Enter name {i + 1}:");
-                names[i] = Console.ReadLine();
-            }
 
-            int shifts = 75 / 20;
-
-            for (int k = 0; k < shifts; k++)
-            {
-                string first = names[0];
-
-                for (int i = 0; i < names.Length - 1; i++)
-                {
-                    names[i] = names[i + 1];
-                }
-
-                names[names.Length - 1] = first;
-            }
-
-            Console.WriteLine("\nOrder after the hike:");
-            for (int i = 0; i < names.Length; i++)
-            {
-                Console.WriteLine(names[i]);
             }
         }
 
-        public static void T10_24()
+        public static void T10_24(int[] arr)
         {
-            Console.WriteLine("Enter number of elements:");
-            int n = int.Parse(Console.ReadLine());
-            int[] arr = new int[n];
-
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
-                Console.WriteLine($"Enter number {i + 1}:");
-                arr[i] = int.Parse(Console.ReadLine());
-            }
-
-            Console.WriteLine("Series in descending order:");
-            for (int i = arr.Length - 1; i >= 0; i--)
-            {
-                Console.WriteLine(arr[i]);
+                int temp = arr[i];
+                arr[i] = arr[arr.Length - 1 - i];
+                arr[arr.Length - 1 - i] = temp;
             }
         }
 
@@ -203,5 +180,19 @@ namespace Yakir
                 arr[i] = arr[i * 2];
             }
         }
+
+        public static void T10_28()
+        {
+            double[] arr = new double[50];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = (double)i / 2 + 0.5;
+                Console.WriteLine(arr[i]);
+            }
+            //הטעיות היו שהייתה חריגה מגבולת המערך שהיה תנאי בלולאה שהיא ציהיה עד האורך של המחרוזת כפול 2 ולכן יש חריגה בגבולת המערך
+            //הטעות השנייה היא שהייתה היא שחילקנו שני מספרים שלמים ויימנו את החילוק במשתנה ממשי אז הפכתי את אחד המשתנים לממשי ואז הוספתי 0.5 כדי שזה יתחיל מ0.5 ולא מ - 0
+        }
+
+
     }
 }
