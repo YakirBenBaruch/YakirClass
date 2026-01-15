@@ -12,7 +12,8 @@ namespace Yakir
             //StringPractice.UnitTests();
             //Cypher.UnitTests();
             //ArraysPractice.UnitTest();
-            ArraysPractice2.UnitTest();
+            //ArraysPractice2.UnitTest();
+            ArraysPractice3.UnitTest();
         }
     }
 }
