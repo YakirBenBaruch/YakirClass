@@ -12,7 +12,7 @@ namespace Yakir
         public static void UnitTest()
         {
             //ArraysPractice3.T10_31();
-            ArraysPractice3.T10_33();
+            //ArraysPractice3.T10_33();
         }
 
         public static void T10_31()
@@ -20,14 +20,17 @@ namespace Yakir
             int student;
             Console.WriteLine("Enter num of student");
             student = int.Parse(Console.ReadLine());
+
             int[] class1 = new int[student];
             int[] grade1 = new int[student];
             int[] grade2 = new int[student];
             int[] finelGrade = new int[student];
+
             for (int i = 0; i < class1.Length; i++)
             {
                 Console.WriteLine($"Enter your one grade for student {i + 1} ");
                 grade1[i] = int.Parse(Console.ReadLine());
+
                 Console.WriteLine($"Enter your second grade for student {i + 1} ");
                 grade2[i] = int.Parse(Console.ReadLine());
             }
@@ -37,10 +40,12 @@ namespace Yakir
                 {
                     finelGrade[j] = grade1[j];
                 }
+
                 else
                 {
                     finelGrade[j] = grade2[j];
                 }
+
                 Console.WriteLine($" First grade for studenu {j} is {grade1[j]} the second grade is {grade2[j]} and the final grade is {finelGrade[j]}");
             }
         }
