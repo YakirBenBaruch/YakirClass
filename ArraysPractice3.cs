@@ -16,7 +16,7 @@ namespace Yakir
             //ArraysPractice3.T10_34();
             //ArraysPractice3.T10_36();
             //ArraysPractice3.T10_37();
-
+            //ArraysPractice3.T10_38();
         }
 
         public static void T10_31()
