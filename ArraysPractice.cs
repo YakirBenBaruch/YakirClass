@@ -17,7 +17,7 @@ namespace Yakir
             //ArraysPractice.T10_12();
             //ArraysPractice.T10_13();
             //ArraysPractice.T10_17();
-            ArraysPractice.T10_18();
+            //ArraysPractice.T10_18();
 
         }
 

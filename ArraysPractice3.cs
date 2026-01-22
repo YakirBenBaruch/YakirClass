@@ -215,5 +215,10 @@ namespace Yakir
             Console.WriteLine($"5 appeared {Count5} times");
             Console.WriteLine($"6 appeared {Count6} times");
         }
+
+        public static void T10_38()
+        {
+            
+        }
     }
 }
