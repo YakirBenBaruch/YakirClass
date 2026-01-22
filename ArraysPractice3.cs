@@ -16,6 +16,8 @@ namespace Yakir
             //ArraysPractice3.T10_34();
             //ArraysPractice3.T10_36();
             //ArraysPractice3.T10_37();
+            ArraysPractice3.T10_38();
+
         }
 
         public static void T10_31()
@@ -217,6 +219,23 @@ namespace Yakir
         }
 
         public static void T10_38()
+        {
+            int children = 6;
+            int[] arr = new int[children];
+            int[] counts = new int[7];
+            Random rnd = new Random();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = rnd.Next(1, 7);
+                counts[arr[i] - 1]++;
+            }
+            for (int j = 0; j < counts.Length - 1; j++)
+            {
+                Console.WriteLine($"{j + 1} appeared {counts[j]} times");
+            }
+        }
+
+        public static void T10_40()
         {
             
         }
