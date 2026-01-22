@@ -15,6 +15,7 @@ namespace Yakir
             //ArraysPractice3.T10_33();
             //ArraysPractice3.T10_34();
             //ArraysPractice3.T10_36();
+            //ArraysPractice3.T10_37();
         }
 
         public static void T10_31()
@@ -169,6 +170,50 @@ namespace Yakir
             }
 
             Console.WriteLine($"The winner is: {winner}");
+        }
+
+        public static void T10_37()
+        {
+            int num;
+            int Count1 = 0, Count2 = 0, Count3 = 0, Count4 = 0 , Count5 = 0 , Count6 = 0;
+            Console.WriteLine("Enter num");
+            num = int.Parse(Console.ReadLine());
+            int[] arr = new int[num];
+            Random rnd = new Random();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = rnd.Next(1, 7);
+                if (arr[i] == 1)
+                {
+                    Count1++;
+                }
+                else if (arr[i] == 2)
+                {
+                    Count2++;
+                }
+                else if (arr[i] == 3)
+                {
+                    Count3++;
+                }
+                else if (arr[i] == 4)
+                {
+                    Count4++;
+                }
+                else if (arr[i] == 5)
+                {
+                    Count5++;
+                }
+                else if (arr[i] == 6)
+                {
+                    Count6++;
+                }
+            }
+            Console.WriteLine($"1 appeared {Count1} times");
+            Console.WriteLine($"2 appeared {Count2} times");
+            Console.WriteLine($"3 appeared {Count3} times");
+            Console.WriteLine($"4 appeared {Count4} times");
+            Console.WriteLine($"5 appeared {Count5} times");
+            Console.WriteLine($"6 appeared {Count6} times");
         }
     }
 }
