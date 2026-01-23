@@ -222,14 +222,14 @@ namespace Yakir
         {
             int children = 6;
             int[] arr = new int[children];
-            int[] counts = new int[7];
+            int[] counts = new int[6];
             Random rnd = new Random();
             for (int i = 0; i < arr.Length; i++)
             {
                 arr[i] = rnd.Next(1, 7);
                 counts[arr[i] - 1]++;
             }
-            for (int j = 0; j < counts.Length - 1; j++)
+            for (int j = 0; j < counts.Length; j++)
             {
                 Console.WriteLine($"{j + 1} appeared {counts[j]} times");
             }
@@ -237,7 +237,36 @@ namespace Yakir
 
         public static void T10_40()
         {
-            
+            int num;
+            string Color;
+            Console.WriteLine("Enter num");
+            num = int.Parse(Console.ReadLine());
+            string[] arr = new string[num];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine($"Enter color for player {i + 1}");
+                Color = Console.ReadLine();
+                arr[i] = Color;
+            }
+
+            int[] count = new int[num];
+            Random rnd = new Random();
+
+            Console.WriteLine("\nPress ENTER to draw a color. Type Q then ENTER to quit.\n");
+            string input = Console.ReadLine();
+
+            while (input != "Q" && input != "q")
+            {
+                if (input == "")
+                {
+                    int index = rnd.Next(num);
+                    Console.WriteLine(arr[index]);
+                    count[index]++;
+                }
+
+                Console.WriteLine("\nPress ENTER to draw a color. Type Q then ENTER to quit.\n");
+                input = Console.ReadLine();
+            }
         }
     }
 }
