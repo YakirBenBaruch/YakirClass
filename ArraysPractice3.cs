@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,8 +17,9 @@ namespace Yakir
             //ArraysPractice3.T10_34();
             //ArraysPractice3.T10_36();
             //ArraysPractice3.T10_37();
-            ArraysPractice3.T10_38();
-
+            //ArraysPractice3.T10_38();
+            //ArraysPractice3.T10_40();
+            ArraysPractice3.T10_41();
         }
 
         public static void T10_31()
@@ -252,7 +254,7 @@ namespace Yakir
             int[] count = new int[num];
             Random rnd = new Random();
 
-            Console.WriteLine("\nPress ENTER to draw a color. Type Q then ENTER to quit.\n");
+            Console.WriteLine("Press ENTER to draw a color. Type Q then ENTER to quit.");
             string input = Console.ReadLine();
 
             while (input != "Q" && input != "q")
@@ -264,8 +266,57 @@ namespace Yakir
                     count[index]++;
                 }
 
-                Console.WriteLine("\nPress ENTER to draw a color. Type Q then ENTER to quit.\n");
+                Console.WriteLine("Press ENTER to draw a color. Type Q then ENTER to quit.");
                 input = Console.ReadLine();
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("Final counts:");
+
+            for (int j = 0; j < arr.Length; j++)
+            {
+                Console.WriteLine($"{arr[j]}: {count[j]}");
+            }
+        }
+
+        public static void T10_41()
+        {
+            int[] Player = new int[4];
+            int[] sum = new int[4];
+            Random rnd = new Random();
+            int rounds;
+
+            Console.WriteLine("Enter num of rounds");
+            rounds = int.Parse(Console.ReadLine());
+
+            for (int j = 0; j < rounds; j++)
+            {
+                Console.WriteLine($"Round {j + 1}:");
+                for (int i = 0; i < Player.Length; i++)
+                {
+                    Player[i] = 0;
+                    Console.Write("Player in position 1 (1-4): ");
+                    int p1 = int.Parse(Console.ReadLine());
+
+                    Console.Write("Player in position 2 (1-4): ");
+                    int p2 = int.Parse(Console.ReadLine());
+
+                    Console.Write("Player in position 3 (1-4): ");
+                    int p3 = int.Parse(Console.ReadLine());
+
+                    sum[p1 -1] += 7;
+                    sum[p2 -1] += 3;
+                    if (Player[i] == 0)
+                    {
+                        sum[i] -= 4;
+                    }
+                }
+            }
+            Console.WriteLine();
+
+            for (int k = 0; k < sum.Length; k++)
+            {
+                Console.WriteLine($"Player {k + 1} total points: {sum[k]}");
             }
         }
     }
