@@ -19,7 +19,7 @@ namespace Yakir
             //ArraysPractice3.T10_37();
             //ArraysPractice3.T10_38();
             //ArraysPractice3.T10_40();
-            ArraysPractice3.T10_41();
+            //ArraysPractice3.T10_41();
         }
 
         public static void T10_31()
@@ -179,7 +179,7 @@ namespace Yakir
         public static void T10_37()
         {
             int num;
-            int Count1 = 0, Count2 = 0, Count3 = 0, Count4 = 0 , Count5 = 0 , Count6 = 0;
+            int Count1 = 0, Count2 = 0, Count3 = 0, Count4 = 0, Count5 = 0, Count6 = 0;
             Console.WriteLine("Enter num");
             num = int.Parse(Console.ReadLine());
             int[] arr = new int[num];
@@ -244,6 +244,7 @@ namespace Yakir
             Console.WriteLine("Enter num");
             num = int.Parse(Console.ReadLine());
             string[] arr = new string[num];
+            int[] count = new int[num];
             for (int i = 0; i < arr.Length; i++)
             {
                 Console.WriteLine($"Enter color for player {i + 1}");
@@ -251,7 +252,6 @@ namespace Yakir
                 arr[i] = Color;
             }
 
-            int[] count = new int[num];
             Random rnd = new Random();
 
             Console.WriteLine("Press ENTER to draw a color. Type Q then ENTER to quit.");
@@ -285,16 +285,20 @@ namespace Yakir
             int[] sum = new int[4];
             Random rnd = new Random();
             int rounds;
+            int Irounds = 0;
 
             Console.WriteLine("Enter num of rounds");
             rounds = int.Parse(Console.ReadLine());
 
-            for (int j = 0; j < rounds; j++)
+
+            for (int i = 0; i < Player.Length; i++)
             {
-                Console.WriteLine($"Round {j + 1}:");
-                for (int i = 0; i < Player.Length; i++)
+                if (Irounds < rounds)
                 {
+                    Console.WriteLine($"Round {i + 1}:");
+
                     Player[i] = 0;
+
                     Console.Write("Player in position 1 (1-4): ");
                     int p1 = int.Parse(Console.ReadLine());
 
@@ -304,20 +308,27 @@ namespace Yakir
                     Console.Write("Player in position 3 (1-4): ");
                     int p3 = int.Parse(Console.ReadLine());
 
-                    sum[p1 -1] += 7;
-                    sum[p2 -1] += 3;
+                    Console.WriteLine();
+
+                    sum[p1 - 1] += 7;
+                    sum[p2 - 1] += 3;
                     if (Player[i] == 0)
                     {
                         sum[i] -= 4;
                     }
+                    Irounds++;
                 }
             }
-            Console.WriteLine();
 
             for (int k = 0; k < sum.Length; k++)
             {
-                Console.WriteLine($"Player {k + 1} total points: {sum[k]}");
+                Console.WriteLine($"Player {k + 1} get : {sum[k]} points");
             }
+        }
+
+        public static void T10_42()
+        {
+
         }
     }
 }
