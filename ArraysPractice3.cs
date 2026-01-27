@@ -330,25 +330,49 @@ namespace Yakir
 
         public static void T10_42()
         {
-            int max = 0;
+            int[] movieCount = new int[6];   
+            int[] copySum = new int[6];
+
             int code;
-            int[] counts = new int[6];
-            int[] sum = new int[6];
             Console.WriteLine("Enter code");
             code = int.Parse(Console.ReadLine());
+
             while (code != 0)
             {
-                counts[code / 1000]++;
+                int department = code / 1000;   
+                int copies = code % 10;
+
+                movieCount[department - 1]++;
+                copySum[department - 1] += copies;
+
                 Console.WriteLine("Enter code");
                 code = int.Parse(Console.ReadLine());
             }
-            for (int i = 0; i < counts.Length; i++)
+
+            int maxMovies = movieCount[0];
+            int maxMoviesDept = 1;
+
+            int maxCopies = copySum[0];
+            int maxCopiesDept = 1;
+
+            for (int i = 1; i < 6; i++)
             {
-                if (counts[i] > max)
+                if (movieCount[i] > maxMovies)
                 {
-                    max = i + 1;
+                    maxMovies = movieCount[i];
+                    maxMoviesDept = i + 1;
+                }
+
+                if (copySum[i] > maxCopies)
+                {
+                    maxCopies = copySum[i];
+                    maxCopiesDept = i + 1;
                 }
             }
+
+            Console.WriteLine($"Department with most movies: {maxMoviesDept}");
+            Console.WriteLine($"Department with most copies: {maxCopiesDept}");
         }
+
     }
 }
