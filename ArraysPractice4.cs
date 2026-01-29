@@ -10,28 +10,54 @@ namespace Yakir
     {
         public static void UnitTest()
         {
+            //ArraysPractice4.T1();
+            //ArraysPractice4.T2();
+            //ArraysPractice4.T3();
 
         }
 
         public static void T1()
         {
-            /*
-            סעיף א
+            int[] type = new int[3];
+            int[] SumPoints = new int[5];
+            int points = 0;
+            int player;
+            int max = 0;
+            int maxType = 0;
+            int counts = 0;
+            Console.WriteLine("Enter player");
+            player = int.Parse(Console.ReadLine());
 
-כדי לדעת איזה שחקן צבר את מספר הנקודות הגדול ביותר, סופרים לכל שחקן בנפרד את סך הנקודות שהוא קלע לאורך המשחק. לאחר סיום הקלט משווים בין הסכומים של כל השחקנים ובודקים למי מהם יש את הסכום הגבוה ביותר. השחקן עם הסכום הגבוה ביותר הוא התשובה.
+            while (player != 0)
+            {
+                Console.WriteLine("Enter his points");
+                points = int.Parse(Console.ReadLine());
+                counts += points;
+                type[points - 1]++;
+                SumPoints[player - 1] += points;
+                if (SumPoints[player - 1] > max)
+                {
+                    max = SumPoints[player - 1];
+                }
+                if (type[points - 1] > maxType)
+                {
+                    maxType = type[points - 1];
+                }
+                Console.WriteLine("Enter player");
+                player = int.Parse(Console.ReadLine());
 
-סעיף ב
+            }
+            Console.WriteLine(max);
+            Console.WriteLine(points);
+            Console.WriteLine(maxType);
+            for (int i = 0; i < SumPoints.Length; i++)
+            {
+                if (SumPoints[i] == 0)
+                {
+                    Console.WriteLine(SumPoints[i]);
+                }
 
-כדי לחשב כמה נקודות צברה הקבוצה במשך כל המשחק, מחברים את מספר הנקודות של כל הקליעות שהוזנו בקלט. בסיום הקלט הסכום שהתקבל הוא מספר הנקודות הכולל של הקבוצה.
-
-סעיף ג
-
-כדי למצוא מהו סוג הקליעה הנפוץ ביותר, סופרים כמה פעמים הופיעה קליעה של נקודה אחת, כמה פעמים הופיעה קליעה של שתי נקודות וכמה פעמים הופיעה קליעה של שלוש נקודות. לאחר מכן משווים בין שלושת הספירות וקובעים איזה סוג קליעה הופיע הכי הרבה פעמים.
-
-סעיף ד
-
-כדי לדעת איזה שחקן או שחקנים לא צברו אף נקודה במהלך המשחק, בודקים עבור כל שחקן אם סך הנקודות שלו הוא אפס. כל שחקן שעבורו סכום הנקודות הוא אפס הוא שחקן שלא קלע כלל במהלך המשחק.
-            */
+            }
         }
 
         public static void T2()
@@ -39,7 +65,7 @@ namespace Yakir
             int[] arr = new int[8];
             int[] counts = new int[2];
             int element;
-            for ( int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
                 element = arr[i];
                 counts[element % 2]++;
@@ -48,7 +74,33 @@ namespace Yakir
             {
                 Console.WriteLine(counts[i]);
             }
-            // א. פלט : 
+            // א. פלט : 3 5
+            // ב. 10 , 70 , 56 , 58 , 34 , 12, 34 , 79 , 97 , 35
+            // ג. : מטרת התוכנית היא לספור כמה מספרים זוגיים ואי זוגיים יש במערך ואחרכך להציג אותם
+        }
+
+        public static void T3()
+        {
+            char c;
+            int[] counts = new int[26];
+            Console.WriteLine("Enter char");
+            c = char.Parse(Console.ReadLine());
+            counts[c - 'a']++;
+            while (c != '*')
+            {
+                Console.WriteLine("Enter char");
+                c = char.Parse(Console.ReadLine());
+                counts[c - 'a']++;
+            }
+            for (int i = 0; i < counts.Length; i++)
+            {
+                Console.WriteLine(counts[i]);
+            }
+        }
+
+        public static void T4()
+        {
+
         }
     }
 }
