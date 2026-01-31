@@ -13,7 +13,6 @@ namespace Yakir
             //ArraysPractice4.T1();
             //ArraysPractice4.T2();
             //ArraysPractice4.T3();
-
         }
 
         public static void T1()
@@ -100,7 +99,69 @@ namespace Yakir
 
         public static void T4()
         {
+            const int DRUGS = 150;
 
+    long[] groupSum = new long[4];          // 0:0-10, 1:11-30, 2:31-50, 3:51+
+    long[] drugSum = new long[DRUGS + 1];   // 1..150
+
+    int age = int.Parse(Console.ReadLine());   // גיל ראשון
+    while (age != -1)
+    {
+        int drug = int.Parse(Console.ReadLine());   // מספר תרופה
+        int amount = int.Parse(Console.ReadLine()); // כמות
+
+        int g;
+        if (age <= 10) g = 0;
+        else if (age <= 30) g = 1;
+        else if (age <= 50) g = 2;
+        else g = 3;
+
+        groupSum[g] += amount;
+
+        if (drug >= 1 && drug <= DRUGS)
+            drugSum[drug] += amount;
+
+        age = int.Parse(Console.ReadLine()); // גיל הבא
+    }
+
+    // max
+    long max = groupSum[0];
+    for (int i = 1; i < 4; i++)
+        if (groupSum[i] > max) max = groupSum[i];
+
+    Console.WriteLine(max);
+
+    // הדפסת קבוצות במקסימום (בלי bool: משתמשים במונה מודפסים)
+    int printed = 0;
+    for (int i = 0; i < 4; i++)
+    {
+        if (groupSum[i] == max)
+        {
+            if (printed > 0) Console.Write(", ");
+            if (i == 0) Console.Write("0-10");
+            else if (i == 1) Console.Write("11-30");
+            else if (i == 2) Console.Write("31-50");
+            else Console.Write("51+");
+            printed++;
+        }
+    }
+    Console.WriteLine();
+
+    // תרופות שלא נצרכו (בלי bool: סופרים כמה לא נצרכו)
+    int unusedCount = 0;
+    for (int d = 1; d <= DRUGS; d++)
+        if (drugSum[d] == 0) unusedCount++;
+
+    if (unusedCount == 0)
+    {
+        Console.WriteLine("אין תרופות שלא נצרכו");
+    }
+    else
+    {
+        for (int d = 1; d <= DRUGS; d++)
+            if (drugSum[d] == 0) Console.Write(d + " ");
+        Console.WriteLine();
+    }
         }
     }
 }
