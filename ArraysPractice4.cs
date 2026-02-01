@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -99,15 +100,88 @@ namespace Yakir
 
         public static void T4()
         {
-            int[] arr = new int[10];
-            int sum = 0;
-            double avg = 0;
-            for (int i = 0; i < arr.Length; i++)
+            int[] ageGroups = new int[4];
+            int[] drugCounters = new int[150];
+
+            Console.WriteLine("Enter Age:");
+            int age = int.Parse(Console.ReadLine());
+
+            while (age != -1)
             {
-                sum += arr[i];
+                int drugNumber = int.Parse(Console.ReadLine());
+                int amount = int.Parse(Console.ReadLine());
+
+                drugCounters[drugNumber - 1] += amount;
+
+                if (age <= 10)
+                {
+                    ageGroups[0] += amount;
+                }
+                else if (age <= 30)
+                {
+                    ageGroups[1] += amount;
+                }
+                else if (age <= 50)
+                {
+                    ageGroups[2] += amount;
+                }
+                else
+                {
+                    ageGroups[3] += amount;
+                }
+
+                age = int.Parse(Console.ReadLine());
             }
-            avg = sum / arr.Length;
-            Console.WriteLine(avg);
+
+            int max = ageGroups[0];
+            for (int i = 1; i < 4; i++)
+                if (ageGroups[i] > max)
+                {
+                    max = ageGroups[i];
+                }
+
+            Console.WriteLine("Age groups with the highest consumption:");
+            if (ageGroups[0] == max)
+            {
+                Console.WriteLine("Ages 0–10");
+            }
+
+            if (ageGroups[1] == max)
+            {
+                Console.WriteLine("Ages 11–30");
+            }
+
+            if (ageGroups[2] == max)
+            {
+                Console.WriteLine("Ages 31–50");
+            }
+
+            if (ageGroups[3] == max)
+            {
+                Console.WriteLine("Ages 51 and up");
+            }
+            Console.WriteLine("Medications not consumed at all: ");
+            for (int i = 0; i < 150; i++)
+            {
+                if (drugCounters[i] == 0)
+                {
+                    Console.WriteLine(i + 1);
+                }
+
+            }
+            //ג:תבנית מערך מונה,מערך סכום,מקסימום.
+        }
+
+        public static void T5()
+        {
+            int[] rooms = { 14, 11, 10, 8, -1, 6, -1, 2, 0, 13, 4, -1, 15, 1, 7, 5 };
+            int startroom = 3;
+            int currentroom = startroom;
+            while (rooms[currentroom] != -1)
+            {
+                currentroom = rooms[currentroom];
+            }
+            Console.WriteLine(currentroom);
         }
     }
 }
