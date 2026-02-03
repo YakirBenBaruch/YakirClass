@@ -15,43 +15,39 @@ namespace Yakir
             //Console.WriteLine(Calc3(67, 80));
             //Console.WriteLine(Calc3(68, 80));
         }
-        private static int Calc371(int Magen371, int Bagrut371)
-        {
-            return (int)(Magen371 * 0.3 + Bagrut371 * 0.7 + 0.5);
-        }
-        private static int Calc3(int Final371, int Proj)
-        {
-            return (int)(0.6 * Final371 + 0.4 * Proj + 0.5);
-        }
-        private static int Calc271(int Magen271, int Bagrut271)
-        {
-            return (int)(Magen271 * 0.4 + Bagrut271 * 0.6 + 0.5);
-        }
-        private static bool Has5(int Bagrut271)
-        {
-            return Bagrut271 >= 55;
-        }
-        private static int Calc5(int Final271, int Final3)
-        {
-            return (int)(Final271 * 0.4 + Final3 * 0.6 + 0.5);
-        }
-        public static string FinalString(int Magen371, int Bagrut371, int Magen271, int Bagrut271, int Proj)
+        private static int Calc371(int magen371, int bagrut371)
+        { return (int)(magen371 * 0.3 + bagrut371 * 0.7 + 0.5); }
+
+        private static int Calc3(int final371, int proj)
+        { return (int)(0.6 * final371 + 0.4 * proj + 0.5); }
+
+        private static int Calc271(int magen271, int bagrut271)
+        { return (int)(magen271 * 0.4 + bagrut271 * 0.6 + 0.5); }
+
+        private static bool Has5(int bagrut271) { return bagrut271 >= 55; }
+
+        private static int Calc5(int final271, int final3)
+        { return (int)(final271 * 0.4 + final3 * 0.6 + 0.5); }
+
+        public static string FinalString(int magen371, int bagrut371, int magen271, int bagrut271, int proj)
         {
             string s = "";
-            int F371 = Calc371(Magen371, Bagrut371);
-            int F3 = Calc3(F371, Proj);
-            int Final;
-            if (Has5(Bagrut271))
+            int f371 = Calc371(magen371, bagrut371);
+            int f3 = Calc3(f371, proj);
+            int final;
+            if (Has5(bagrut271))
             {
-                s = "You got 5 in CS !\n";
-                int F271 = Calc271(Magen271, Bagrut271);
-                Final = Calc5(F271, F3);
+                s = "You got 5 units in CS!\n";
+                int f271 = Calc271(magen271, bagrut271);
+                final = Calc5(f271, f3);
             }
             else
             {
-                s = "You got 3 units on CS ! \n";
-
+                s = "You got 3 units in CS!\n";
+                final = f3;
             }
+            s += "Your final grade is: " + final;
+            return s;
         }
     }
 }
