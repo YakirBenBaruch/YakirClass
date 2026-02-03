@@ -15,6 +15,7 @@ namespace Yakir
             //ArraysPractice2.UnitTest();
             //ArraysPractice3.UnitTest();
             //ArraysPractice4.UnitTest();
+            ArraysPractice5.UnitTest();
             
         }
     }

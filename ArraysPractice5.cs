@@ -16,8 +16,8 @@ namespace Yakir
         public static int T1(int N)
         {
             int[] arr = new int[N];
-            int[] resistance = new int[N]; 
-            int countR = 0 , sum = 0; ;
+            int[] resistance = new int[N];
+            int countR = 0, sum = 0; ;
             double ave = 0;
             for (int i = 0; i < N; i++)
             {
@@ -25,8 +25,12 @@ namespace Yakir
                 resistance[i] = int.Parse(Console.ReadLine());
                 sum += resistance[i];
             }
-            ave = sum / N;
 
+            ave = sum / N;
+            for (int j = 0; j < resistance.Length; j++)
+            {
+
+            }
         }
     }
 }
