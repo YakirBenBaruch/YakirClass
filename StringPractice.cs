@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Yakir
 {
-    internal class StringPractice
+    public class StringPractice
     {
         public static void UnitTests()
         {

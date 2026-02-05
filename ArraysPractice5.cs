@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Yakir
 {
-    internal class ArraysPractice5
+    public class ArraysPractice5
     {
         public static void UnitTest()
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Yakir
 {
-    internal class Cypher
+    public class Cypher
     {
         public static void UnitTests()
         {

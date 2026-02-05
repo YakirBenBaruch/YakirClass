@@ -15,8 +15,18 @@ namespace Yakir
             //ArraysPractice2.UnitTest();
             //ArraysPractice3.UnitTest();
             //ArraysPractice4.UnitTest();
-            ArraysPractice5.UnitTest();
-            
+            //ArraysPractice5.UnitTest();
+
+            /*
+            string str = "Hello Josh";
+            string s2 = str.ToUpper();
+            string s3 = str.ToLower();
+            Console.WriteLine(s2);
+            Console.WriteLine(s3);
+            Console.WriteLine(str.CompareTo(s2));
+            */
+
+            ClassPractice.UnitTest();
         }
     }
 }
