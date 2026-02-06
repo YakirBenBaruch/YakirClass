@@ -26,7 +26,7 @@ namespace Yakir
             Console.WriteLine(str.CompareTo(s2));
             */
 
-            ClassPractice.UnitTest();
+            //ClassPractice.UnitTest();
         }
     }
 }
