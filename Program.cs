@@ -27,6 +27,7 @@ namespace Yakir
             */
 
             //ClassPractice.UnitTest();
+            FootballGame.UnitTest();
         }
     }
 }
