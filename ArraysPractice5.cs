@@ -12,7 +12,7 @@ namespace Yakir
         {
             //Console.WriteLine(ArraysPractice5.T1(5));
             Console.WriteLine(ArraysPractice5.T2(new string[] { "Yakir", "Shlomi", "Avi", "Roni", "Moshe" }, new int[] { 50, 60, 70, 80, 90 }));
-        }#
+        }
 
         public static int T1(int N)
         {           
