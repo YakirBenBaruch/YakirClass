@@ -11,9 +11,10 @@ namespace Yakir
         public static void UnitTest()
         {
             //Console.WriteLine(ArraysPractice5.T1(5));
-            Console.WriteLine(ArraysPractice5.T2(new string[] { "Yakir", "Shlomi", "Avi", "Roni", "Moshe" }, new int[] { 50, 60, 70, 80, 90 }));
+            //Console.WriteLine(ArraysPractice5.T2(new string[] { "Yakir", "Shlomi", "Avi", "Roni", "Moshe" }, new int[] { 50, 60, 70, 80, 90 }));
+            int[] winners = ArraysPractice5.T3(5);
+            Console.WriteLine($"First: {winners[0]}, Second: {winners[1]}");
         }
-
         public static int T1(int N)
         {           
             int[] arr = new int[N];
@@ -62,5 +63,46 @@ namespace Yakir
             }
             return s;
         }
+
+        public static int[] T3(int N)
+        {
+            int[] counts = new int[N + 1];
+
+            int vote;
+            Console.WriteLine("Enter project number (1..N) or -1 to finish:");
+            vote = int.Parse(Console.ReadLine());
+
+            while (vote != -1)
+            {
+                counts[vote]++;
+                Console.WriteLine("Enter project number (1..N) or -1 to finish:");
+                vote = int.Parse(Console.ReadLine());
+            }
+
+            int first = 1, second = 2;
+            if (counts[second] > counts[first])
+            {
+                int tmp = first;
+                first = second;
+                second = tmp;
+            }
+
+            for (int i = 3; i <= N; i++)
+            {
+                if (counts[i] > counts[first])
+                {
+                    second = first;
+                    first = i;
+                }
+                else if (counts[i] > counts[second])
+                {
+                    second = i;
+                }
+            }
+
+            return new int[] { first, second };
+        }
+
+        
     }
 }
