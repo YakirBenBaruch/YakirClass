@@ -11,7 +11,8 @@ namespace Yakir
         public static void UnitTest()
         {
             //Console.WriteLine(ArraysPractice5.T1(5));
-        }
+            Console.WriteLine(ArraysPractice5.T2(new string[] { "Yakir", "Shlomi", "Avi", "Roni", "Moshe" }, new int[] { 50, 60, 70, 80, 90 }));
+        }#
 
         public static int T1(int N)
         {           
@@ -39,6 +40,27 @@ namespace Yakir
 
             return countR;
         }
-           
+
+        public static string T2(string[] name , int[] grade)
+        {
+            string s = "";
+            int ave = 0;
+            int sum = 0;
+            for (int i = 0; i < name.Length; i++)
+            {
+                sum += grade[i];
+            }
+
+            ave = sum / name.Length;
+
+            for (int j = 0; j < grade.Length; j++)
+            {
+                if (grade[j] > ave)
+                {
+                    s += name[j] + " ";
+                }
+            }
+            return s;
+        }
     }
 }
