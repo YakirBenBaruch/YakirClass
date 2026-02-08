@@ -15,7 +15,7 @@ namespace Yakir
             //ArraysPractice2.UnitTest();
             //ArraysPractice3.UnitTest();
             //ArraysPractice4.UnitTest();
-            ArraysPractice5.UnitTest();
+            //ArraysPractice5.UnitTest();
 
             /*
             string str = "Hello Josh";
@@ -26,7 +26,7 @@ namespace Yakir
             Console.WriteLine(str.CompareTo(s2));
             */
 
-            //ClassPractice.UnitTest();
+            ClassPractice.UnitTest();
             //FootballGame.UnitTest();
         }
     }

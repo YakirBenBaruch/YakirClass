@@ -12,12 +12,12 @@ namespace Yakir
         public int magen371;
         public int bagrut371;
         public int magen271;
-        public int bagrut271;
+        private int bagrut271;
         public int proj;
         public int Final371;
         public int Final271;
 
-        public CssGrades(string n , int m3 , int b3 , int m2 , int b2 , int p)
+        public CssGrades(string n, int m3, int b3, int m2, int b2, int p)
         {
             name = n;
             magen371 = m3;
@@ -25,6 +25,18 @@ namespace Yakir
             magen271 = m2;
             bagrut271 = b2;
             proj = p;
+        }
+
+        public void SetBagrut271(int b2)
+        {
+            if (b2 >= 0 && b2 <= 1000)
+            {
+                bagrut271 = b2;
+            }
+        }
+        public int GetBagrut271()
+        {
+            return bagrut271;
         }
 
         public int Calc371()
@@ -47,7 +59,8 @@ namespace Yakir
         {
             return (int)(Calc271() * 0.4 + Calc3() * 0.6 + 0.5);
         }
-        public string FinalString()
+        
+        public override string ToString()
         {
             string s = "";
             int Final;
