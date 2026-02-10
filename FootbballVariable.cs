@@ -23,6 +23,53 @@ public class FootballVariable
         ScoreT2 = 0;
     }
 
+    public void SetTeam1(string t1)
+    {
+        Team1 = t1;
+    }
+
+    public void SetTeam2(string t2)
+    {
+        Team2 = t2;
+    }
+
+    public void SetScoreT1(int score)
+    {
+        if (score >= 0)
+        {
+            ScoreT1 = score;
+        }
+    }
+
+    public void SetScoreT2(int score)
+    {
+        if (score >= 0)
+        {
+            ScoreT2 = score;
+        }
+    }
+
+    public int GetScoreT1()
+    {
+        return ScoreT1;
+    }
+
+    public int GetScoreT2()
+    {
+        return ScoreT2;
+    }
+
+    public string GetTeam1()
+    {
+        return Team1;
+    }
+
+    public string GetTeam2()
+    {
+        return Team2;
+    }
+
+
     public void AddGoalT1()
     {
         ScoreT1++;
@@ -39,7 +86,7 @@ public class FootballVariable
         {
             ScoreT1 += goals;
         }
-            
+
     }
 
     public void AddGoalsT2(int goals)
@@ -48,7 +95,7 @@ public class FootballVariable
         {
             ScoreT2 += goals;
         }
-            
+
     }
 
     public string Winner()
@@ -67,7 +114,7 @@ public class FootballVariable
         return "Tie";
     }
 
-    public string GameString()
+    public override string ToString()
     {
         string s = "";
         s += Team1 + " " + ScoreT1 + " - " + ScoreT2 + " " + Team2 + "\n";

@@ -8,28 +8,26 @@ namespace Yakir
 {
     public class CssGrades
     {
-        public string name;
-        public int magen371;
-        public int bagrut371;
-        public int magen271;
+        private string name;
+        private int magen371;
+        private int bagrut371;
+        private int magen271;
         private int bagrut271;
-        public int proj;
-        public int Final371;
-        public int Final271;
+        private int proj;
 
-        public CssGrades(string n, int m3, int b3, int m2, int b2, int p)
+        public CssGrades(string name, int magen371, int bagrut371, int magen271, int bagrut271, int proj)
         {
-            name = n;
-            magen371 = m3;
-            bagrut371 = b3;
-            magen271 = m2;
-            bagrut271 = b2;
-            proj = p;
+            this.name = name;
+            this.magen371 = magen371;
+            this.bagrut371 = bagrut371;
+            this.magen271 = magen271;
+            this.bagrut271 = bagrut271;
+            this.proj = proj;
         }
 
         public void SetBagrut271(int b2)
         {
-            if (b2 >= 0 && b2 <= 1000)
+            if (b2 >= 0 && b2 <= 100)
             {
                 bagrut271 = b2;
             }

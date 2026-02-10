@@ -26,7 +26,7 @@ namespace Yakir
             Console.WriteLine();
 
             Console.WriteLine(game1.Winner());
-            Console.WriteLine(game1.GameString());
+            Console.WriteLine(game1.ToString());
         }
 
     }

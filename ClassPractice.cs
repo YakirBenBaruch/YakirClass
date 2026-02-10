@@ -19,10 +19,13 @@ namespace Yakir
             //Console.WriteLine(student1.Has5());
             //Console.WriteLine(student1.Calc5());
             //Console.WriteLine(student1.FinalString());
-            Console.WriteLine(student1);
-            student1.SetBagrut271(71);
-            Console.WriteLine(student1.GetBagrut271());
-            Console.WriteLine(student1);
+            //Console.WriteLine(student1);
+            //student1.SetBagrut271(71);
+            //Console.WriteLine(student1.GetBagrut271());
+            //Console.WriteLine(student1);
+
+            CssGrades student2;
+            student2 = new CssGrades();
         }
     }
 }
