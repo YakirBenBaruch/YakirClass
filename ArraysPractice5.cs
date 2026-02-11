@@ -12,11 +12,12 @@ namespace Yakir
         {
             //Console.WriteLine(ArraysPractice5.T1(5));
             //Console.WriteLine(ArraysPractice5.T2(new string[] { "Yakir", "Shlomi", "Avi", "Roni", "Moshe" }, new int[] { 50, 60, 70, 80, 90 }));
-            int[] winners = ArraysPractice5.T3(5);
-            Console.WriteLine($"First: {winners[0]}, Second: {winners[1]}");
+            //int[] winners = ArraysPractice5.T3(5);
+            //Console.WriteLine($"First: {winners[0]}, Second: {winners[1]}");
+            ArraysPractice5.T4(3);
         }
         public static int T1(int N)
-        {           
+        {
             int[] arr = new int[N];
             int[] resistance = new int[N];
             int countR = 0, sum = 0;
@@ -29,7 +30,7 @@ namespace Yakir
                 sum += resistance[i];
             }
 
-            ave = (double)sum / N; 
+            ave = (double)sum / N;
 
             for (int j = 0; j < resistance.Length; j++)
             {
@@ -42,7 +43,7 @@ namespace Yakir
             return countR;
         }
 
-        public static string T2(string[] name , int[] grade)
+        public static string T2(string[] name, int[] grade)
         {
             string s = "";
             int ave = 0;
@@ -103,6 +104,36 @@ namespace Yakir
             return new int[] { first, second };
         }
 
-        
+        public static int T4(int N)
+        {
+            int[] Judges = new int[5];
+            int[] Proj = new int[N];
+            int[] SumP = new int[N];
+
+            for (int i = 0; i < Proj.Length; i++)
+            {
+                Console.WriteLine($"Enter the Grades for Proj number {i + 1} ");
+                for (int j = 0; j < Judges.Length; j++)
+                {
+                    Judges[j] = int.Parse(Console.ReadLine());
+                    SumP[i] += Judges[j];
+                }
+            }
+
+            int max = SumP[0];
+            int Imax = 1;
+
+            for (int i = 1; i < SumP.Length; i++)
+            {
+                if (SumP[i] > max)
+                {
+                    max = SumP[i];
+                    Imax = i + 1;
+                }
+            }
+
+            return Imax;
+        }
+
     }
 }

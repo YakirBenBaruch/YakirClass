@@ -24,8 +24,8 @@ namespace Yakir
             //Console.WriteLine(student1.GetBagrut271());
             //Console.WriteLine(student1);
 
-            CssGrades student2;
-            student2 = new CssGrades();
+            //CssGrades student2;
+            //student2 = new CssGrades();
         }
     }
 }
