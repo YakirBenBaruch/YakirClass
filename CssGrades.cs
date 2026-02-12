@@ -29,12 +29,12 @@ namespace Yakir
         {
             if (b2 >= 0 && b2 <= 100)
             {
-                bagrut271 = b2;
+                this.bagrut271 = b2;
             }
         }
         public int GetBagrut271()
         {
-            return bagrut271;
+            return this.bagrut271;
         }
 
         public int Calc371()

@@ -15,76 +15,73 @@ public class FootballVariable
     public int ScoreT1;
     public int ScoreT2;
 
-    public FootballVariable(string t1, string t2)
+    public FootballVariable(string Team1, string Team2)
     {
-        Team1 = t1;
-        Team2 = t2;
-        ScoreT1 = 0;
-        ScoreT2 = 0;
+        this.Team1 = Team1;
+        this.Team2 = Team2;
+        this.ScoreT1 = 0;
+        this.ScoreT2 = 0;
     }
 
     public void SetTeam1(string t1)
     {
-        Team1 = t1;
+        this.Team1 = t1;
+    }
+    public string GetTeam1()
+    {
+        return this.Team1;
     }
 
     public void SetTeam2(string t2)
     {
-        Team2 = t2;
+        this.Team2 = t2;
     }
+    public string GetTeam2()
+    {
+        return this.Team2;
+    }
+
+
 
     public void SetScoreT1(int score)
     {
         if (score >= 0)
         {
-            ScoreT1 = score;
+            this.ScoreT1 = score;
         }
+    }
+    public int GetScoreT1()
+    {
+        return this.ScoreT1;
     }
 
     public void SetScoreT2(int score)
     {
         if (score >= 0)
         {
-            ScoreT2 = score;
+            this.ScoreT2 = score;
         }
     }
-
-    public int GetScoreT1()
-    {
-        return ScoreT1;
-    }
-
     public int GetScoreT2()
     {
-        return ScoreT2;
+        return this.ScoreT2;
     }
-
-    public string GetTeam1()
-    {
-        return Team1;
-    }
-
-    public string GetTeam2()
-    {
-        return Team2;
-    }
-
 
     public void AddGoalT1()
     {
-        ScoreT1++;
+        this.ScoreT1++;
     }
 
     public void AddGoalT2()
     {
-        ScoreT2++;
+        this.ScoreT2++;
     }
 
     public void AddGoalsT1(int goals)
     {
         if (goals > 0)
         {
-            ScoreT1 += goals;
+            this.ScoreT1 += goals;
         }
 
     }
@@ -93,31 +90,32 @@ public class FootballVariable
     {
         if (goals > 0)
         {
-            ScoreT2 += goals;
+            this.ScoreT2 += goals;
         }
 
     }
 
     public string Winner()
     {
-        if (ScoreT1 > ScoreT2)
+        if (this.ScoreT1 > this.ScoreT2)
         {
-            return Team1;
+            return this.Team1;
         }
 
-
-        if (ScoreT2 > ScoreT1)
+        else if (this.ScoreT2 > this.ScoreT1)
         {
-            return Team2;
+            return this.Team2;
         }
-
-        return "Tie";
+        else
+        {
+            return "Tie";
+        }
     }
 
     public override string ToString()
     {
         string s = "";
-        s += Team1 + " " + ScoreT1 + " - " + ScoreT2 + " " + Team2 + "\n";
+        s += this.Team1 + " " + this.ScoreT1 + " - " + this.ScoreT2 + " " + this.Team2 + "\n";
         s += "Winner: " + Winner();
         return s;
     }
