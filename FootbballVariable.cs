@@ -43,26 +43,26 @@ public class FootballVariable
 
 
 
-    public void SetScoreT1(int score)
+    public void GetScoreT1(int score)
     {
         if (score >= 0)
         {
             this.ScoreT1 = score;
         }
     }
-    public int GetScoreT1()
+    public int SetScoreT1()
     {
         return this.ScoreT1;
     }
 
-    public void SetScoreT2(int score)
+    public void GetScoreT2(int score)
     {
         if (score >= 0)
         {
             this.ScoreT2 = score;
         }
     }
-    public int GetScoreT2()
+    public int SetScoreT2()
     {
         return this.ScoreT2;
     }
