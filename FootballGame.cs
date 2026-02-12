@@ -27,7 +27,6 @@ namespace Yakir
 
             //Console.WriteLine(game1.Winner());
             //Console.WriteLine(game1.ToString());
-            ------------------------------------------------------------
             //game1.AddGoalT1();
             //game1.AddGoalT1();
             //game1.AddGoalT2();
