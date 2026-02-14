@@ -135,5 +135,27 @@ namespace Yakir
             return Imax;
         }
 
+        // הזזה ימינה
+        public static void T_5_RotateRight(int[] arr)
+        {
+            int temp = arr[arr.Length - 1];
+
+            for (int i = arr.Length - 1; i > 0; i--)
+                arr[i] = arr[i - 1];
+
+            arr[0] = temp;
+        }
+
+        // הזזה שמאלה
+        public static void T_5_RotateLeft(int[] arr)
+        {
+            int temp = arr[0];
+
+            for (int i = 0; i < arr.Length - 1; i++)
+                arr[i] = arr[i + 1];
+
+            arr[arr.Length - 1] = temp;
+        }
+
     }
 }
