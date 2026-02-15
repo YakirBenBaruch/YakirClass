@@ -23,46 +23,46 @@ public class FootballVariable
         this.ScoreT2 = 0;
     }
 
-    public void GetTeam1(string Team1)
+    public void SetTeam1(string Team1)
     {
         this.Team1 = Team1;
     }
-    public string SetTeam1()
+    public string GetTeam1()
     {
         return this.Team1;
     }
 
-    public void GetTeam2(string Team2)
+    public void SetTeam2(string Team2)
     {
         this.Team2 = Team2;
     }
-    public string SetTeam2()
+    public string GetTeam2()
     {
         return this.Team2;
     }
 
 
 
-    public void GetScoreT1(int score)
+    public void SetScoreT1(int score)
     {
         if (score >= 0)
         {
             this.ScoreT1 = score;
         }
     }
-    public int SetScoreT1()
+    public int GetScoreT1()
     {
         return this.ScoreT1;
     }
 
-    public void GetScoreT2(int score)
+    public void SetScoreT2(int score)
     {
         if (score >= 0)
         {
             this.ScoreT2 = score;
         }
     }
-    public int SetScoreT2()
+    public int GetScoreT2()
     {
         return this.ScoreT2;
     }
