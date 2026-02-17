@@ -14,7 +14,7 @@ namespace Yakir
             //Console.WriteLine(ArraysPractice5.T2(new string[] { "Yakir", "Shlomi", "Avi", "Roni", "Moshe" }, new int[] { 50, 60, 70, 80, 90 }));
             //int[] winners = ArraysPractice5.T3(5);
             //Console.WriteLine($"First: {winners[0]}, Second: {winners[1]}");
-            ArraysPractice5.T4(3);
+            //ArraysPractice5.T4(3);
         }
         public static int T1(int N)
         {

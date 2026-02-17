@@ -45,12 +45,15 @@ namespace Yakir
         {
             if (this.year != other.year)
             {
-                return this.year - other.year;
+                return this.year.CompareTo(other.year);
             }
-            else
+                
+            if (this.month != other.month)
             {
-                return 
+                return this.month.CompareTo(other.month);
             }
+            
+            return this.day.CompareTo(other.day);
         }
         public override string ToString()
         {

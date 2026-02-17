@@ -15,7 +15,7 @@ namespace Yakir
             //ArraysPractice2.UnitTest();
             //ArraysPractice3.UnitTest();
             //ArraysPractice4.UnitTest();
-            //ArraysPractice5.UnitTest();
+            ArraysPractice5.UnitTest();
 
             /*
             string str = "Hello Josh";
@@ -29,7 +29,7 @@ namespace Yakir
             //ClassPractice.UnitTest();
             //FootballGame.UnitTest();
             //Point.UnitTest();
-            Date.UnitTest();
+            //Date.UnitTest();
         }
     }
 }

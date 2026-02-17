@@ -56,7 +56,7 @@ namespace Yakir
         {
             double midX = (this.x + P.x) / 2;
             double midY = (this.y + P.y) / 2;
-
+            
             return new Point(midX, midY);
         }
 
