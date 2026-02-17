@@ -21,6 +21,12 @@ namespace Yakir
 
         }
 
+        public Point(Point P) : this(P.x, P.y)
+        {
+            this.x = P.x;
+            this.y = P.y;
+        }
+
         public void Setx(int x)
         {
             this.x = x;

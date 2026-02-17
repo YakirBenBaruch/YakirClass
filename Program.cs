@@ -28,7 +28,8 @@ namespace Yakir
 
             //ClassPractice.UnitTest();
             //FootballGame.UnitTest();
-            Point.UnitTest();
+            //Point.UnitTest();
+            Date.UnitTest();
         }
     }
 }
