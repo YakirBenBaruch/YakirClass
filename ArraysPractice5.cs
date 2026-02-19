@@ -15,6 +15,11 @@ namespace Yakir
             //int[] winners = ArraysPractice5.T3(5);
             //Console.WriteLine($"First: {winners[0]}, Second: {winners[1]}");
             //ArraysPractice5.T4(3);
+            //ArraysPractice5.T_5_RotateRight(new int[] { 1, 2, 3, 4, 5 });
+            //ArraysPractice5.T_5_RotateLeft(new int[] { 1, 2, 3, 4, 5 });
+            //ArraysPractice5.T6_a(90, 80, 70);
+            //ArraysPractice5.T6_b(new int[] { 90, 80, 70 }, new int[] { 80, 70, 60 }, new int[] { 70, 60, 50 });
+            //ArraysPractice5.T7(new int[] { 1, 2, 3, 4, 5 }, new int[] { 1, 3, 2, 4, 5 }, 2);
         }
         public static int T1(int N)
         {
@@ -67,7 +72,7 @@ namespace Yakir
 
         public static int[] T3(int N)
         {
-            int[] counts = new int[N + 1];
+            int[] counts = new int[N];
 
             int vote;
             Console.WriteLine("Enter project number (1..N) or -1 to finish:");
@@ -141,7 +146,9 @@ namespace Yakir
             int temp = arr[arr.Length - 1];
 
             for (int i = arr.Length - 1; i > 0; i--)
+            {
                 arr[i] = arr[i - 1];
+            }
 
             arr[0] = temp;
         }
@@ -152,10 +159,52 @@ namespace Yakir
             int temp = arr[0];
 
             for (int i = 0; i < arr.Length - 1; i++)
+            {
                 arr[i] = arr[i + 1];
+            }
 
             arr[arr.Length - 1] = temp;
         }
+
+        public static int T6_a(int Bagrut, int Magen, int Proj)
+        {
+            double Sum = 0;
+            Sum += Bagrut * 0.49 + Magen * 0.3 + Proj * 0.21;
+            Sum += 0.5;
+
+            return (int)Sum;
+        }
+
+        public static int[] T6_b(int[] Bagrut, int[] Magen, int[] Proj)
+        {
+            int[] finalGrades = new int[Bagrut.Length];
+            for (int i = 0; i < Bagrut.Length; i++)
+            {
+                finalGrades[i] = T6_a(Bagrut[i], Magen[i], Proj[i]);
+            }
+            return finalGrades;
+        }
+
+        public static int[] T7(int[] arr1, int[] arr2, int n)
+        {
+            int Max = 0;
+            int[] arr = new int[Max];
+            Max = Math.Max(arr1[0], arr2[0]);
+
+            for (int i = 0; i < Max; i++)
+            {
+                if (arr1[i] == arr2[i])
+                {
+                    if (arr1[i] % n == 0)
+                    {
+                        arr[i] = arr1[i];
+                    }
+                }
+            }
+
+            return arr;
+        }
+
 
     }
 }
