@@ -17,7 +17,7 @@ namespace Yakir
             //ArraysPractice5.T4(3);
             //ArraysPractice5.T_5_RotateRight(new int[] { 1, 2, 3, 4, 5 });
             //ArraysPractice5.T_5_RotateLeft(new int[] { 1, 2, 3, 4, 5 });
-            //ArraysPractice5.T6_a(90, 80, 70);
+            Console.WriteLine(ArraysPractice5.T6_a(90, 80, 70));
             //ArraysPractice5.T6_b(new int[] { 90, 80, 70 }, new int[] { 80, 70, 60 }, new int[] { 70, 60, 50 });
             //ArraysPractice5.T7(new int[] { 1, 2, 3, 4, 5 }, new int[] { 1, 3, 2, 4, 5 }, 2);
         }
