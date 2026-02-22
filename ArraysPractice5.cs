@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -289,11 +289,135 @@ namespace Yakir
 
         public static void T10_c()
         {
-            int max = 0;
-            for (int i = 0; i < 5; i++)
+            int[] arr = new int[2000];
+
+            for (int i = 0; i < arr.Length; i++)
             {
+                Console.WriteLine($"Student {i + 1}: Enter start level:");
+                int Slevel = int.Parse(Console.ReadLine());
+
+                Console.WriteLine($"Student {i + 1}: Enter start unit:");
+                int Sunit = int.Parse(Console.ReadLine());
+
+                Console.WriteLine($"Student {i + 1}: Enter current level:");
+                int Scurrentlevel = int.Parse(Console.ReadLine());
+
+                Console.WriteLine($"Student {i + 1}: Enter current unit:");
+                int Unitcurrent = int.Parse(Console.ReadLine());
+
+                arr[i] = T10_a(Slevel, Sunit, Scurrentlevel, Unitcurrent);
+            }
+
+            int max = T10_b(arr);
+
+            int count = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] == max)
+                    count++;
+            }
+
+            Console.WriteLine("Max improvement: " + max);
+            Console.WriteLine("Number of students with max improvement: " + count);
+        }
+
+        public static int[] T11a()
+        {
+            int[] arr = new int[3]; // 0=ציור, 1=תאטרון, 2=שירה
+
+            Console.WriteLine("Enter number of registrations today:");
+            int n = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine("Enter activity (0=Painting, 1=Theater, 2=Singing):");
+                int activity = int.Parse(Console.ReadLine());
+
+                arr[activity]++;
+            }
+
+            return arr;
+        }
+
+        public static int T11b(int[] arr)
+        {
+            int rooms = 0;
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] < 40)
+                    rooms += 1;
+                else
+                    rooms += 2;
+            }
+
+            return rooms;
+        }
+
+        public static void T11C()
+        {
+            int[] arr = T11a();
+            int totalRooms = T11b(arr);
+
+            Console.WriteLine("Total rooms needed: " + totalRooms);
+        }
+
+        public static double T12a()
+        {
+            int grade;
+            int count = 0;
+            int sum = 0;
+
+            Console.WriteLine("Enter satisfaction grades (1-10). -1 to stop:");
+
+            grade = int.Parse(Console.ReadLine());
+
+            while (grade != -1)
+            {
+                sum += grade;
+                count++;
+
+                grade = int.Parse(Console.ReadLine());
+            }
+
+            if (count < 100)
+                return 0;
+
+            return (double)sum / count;
+        }
+
+        public static bool T12b(double[] arr)
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] <= 8)
+                    return false;
+            }
+
+            return true;
+        }
+
+        public static void T12C()
+        {
+            double[] months = new double[12];
+
+            for (int i = 0; i < 12; i++)
+            {
+                Console.WriteLine("Month " + (i + 1));
+                months[i] = T12a();
+            }
+
+            if (T12b(months))
+            {
+                Console.WriteLine("The employees qualify for Employee of the Year.");
+            }
+
+            else
+            {
+                Console.WriteLine("The employees do not qualify.");
 
             }
+
         }
     }
 }
