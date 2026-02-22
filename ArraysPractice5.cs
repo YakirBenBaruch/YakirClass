@@ -17,9 +17,11 @@ namespace Yakir
             //ArraysPractice5.T4(3);
             //ArraysPractice5.T_5_RotateRight(new int[] { 1, 2, 3, 4, 5 });
             //ArraysPractice5.T_5_RotateLeft(new int[] { 1, 2, 3, 4, 5 });
-            Console.WriteLine(ArraysPractice5.T6_a(90, 80, 70));
+            //Console.WriteLine(ArraysPractice5.T6_a(90, 80, 70));
             //ArraysPractice5.T6_b(new int[] { 90, 80, 70 }, new int[] { 80, 70, 60 }, new int[] { 70, 60, 50 });
             //ArraysPractice5.T7(new int[] { 1, 2, 3, 4, 5 }, new int[] { 1, 3, 2, 4, 5 }, 2);
+            //Console.WriteLine(ArraysPractice5.T9(20));
+
         }
         public static int T1(int N)
         {
@@ -205,6 +207,93 @@ namespace Yakir
             return arr;
         }
 
+        public static int T8(int[] arr)
+        {
+            int num = 0;
 
+            for (int i = 0; i < arr.Length; i++)
+            {
+                num = num * 10 + arr[i];
+            }
+
+            return num;
+        }
+
+        public static int[] T9(int age)
+        {
+            int[] arr = new int[3];
+
+            if (age >= 12 && age <= 16 && age <= 18)
+            {
+                arr[0] = 1;
+                arr[1] = 0;
+                arr[2] = 0;
+            }
+            else if (age >= 16 && age <= 18)
+            {
+                arr[1] = 1;
+                arr[0] = 0;
+                arr[2] = 0;
+            }
+            else if (age > 18)
+            {
+                arr[2] = 1;
+                arr[0] = 0;
+                arr[1] = 0;
+            }
+
+            return arr;
+        }
+
+        public static int T10_a(int Slevel, int Sunit, int Scurrentlevel, int Unitcurrent)
+        {
+            if (Slevel == 1 && Sunit == 1)
+            {
+                return Unitcurrent - Sunit;
+            }
+
+            else if (Slevel == 1 && Scurrentlevel == 2)
+            {
+                return Unitcurrent - Sunit + 1;
+            }
+
+            else if (Slevel == 2 && Sunit == 1)
+            {
+                return Unitcurrent - Sunit - 1;
+            }
+            else if (Slevel == 2 && Sunit == 2)
+            {
+                return Unitcurrent - Sunit;
+            }
+
+            else
+            {
+                return -1; // Invalid input
+            }
+        }
+
+        public static int T10_b(int[] arr)
+        {
+            int max = arr[0];
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] > max)
+                {
+                    max = arr[i];
+                }
+            }
+
+            return max;
+        }
+
+        public static void T10_c()
+        {
+            int max = 0;
+            for (int i = 0; i < 5; i++)
+            {
+
+            }
+        }
     }
 }
