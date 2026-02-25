@@ -10,10 +10,57 @@ namespace Yakir
     {
         private Point bottomLeft;
         private Point topRight;
-        public Rectangle(Point topLeft, Point bottomRight)
+
+        // 1) בנאי: Rectangle(Point bottomLeft, Point topRight)
+        public Rectangle(Point bottomLeft, Point topRight)
         {
             this.bottomLeft = new Point(bottomLeft);
             this.topRight = new Point(topRight);
+        }
+
+        // 2) בנאי: Rectangle(Point bottomLeft, double width, double height)
+        public Rectangle(Point bottomLeft, double width, double height)
+        {
+            this.bottomLeft = new Point(bottomLeft);
+            this.topRight = new Point(bottomLeft.x + width, bottomLeft.y + height);
+        }
+
+        private double Width()
+        {
+            return topRight.x - bottomLeft.x;
+        }
+
+        private double Height()
+        {
+            return topRight.y - bottomLeft.y;
+        }
+
+        // double GetArea()
+        public double GetArea()
+        {
+            return Width() * Height();
+        }
+
+        // double GetPerimeter()
+        public double GetPerimeter()
+        {
+            return 2 * (Width() + Height());
+        }
+
+        // void Move(double deltaX, double deltaY)
+        public void Move(double deltaX, double deltaY)
+        {
+            bottomLeft.x += deltaX;
+            bottomLeft.y += deltaY;
+
+            topRight.x += deltaX;
+            topRight.y += deltaY;
+        }
+
+        // string ToString()
+        public override string ToString()
+        {
+            return "Rectangle:\n" + $"bottom-left point = ({bottomLeft.x}, {bottomLeft.y})\n" + $"top-right point = ({topRight.x}, {topRight.y})";
         }
     }
 }
