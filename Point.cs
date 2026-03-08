@@ -60,6 +60,28 @@ namespace Yakir
             return new Point(midX, midY);
         }
 
+        public double gradient(Point P)
+        {
+            int gradient = 0;
+            int dx = (int)(P.x - this.x);
+            int dy = (int)(P.y - this.y);
+
+            gradient = dy / dx;
+            return gradient;
+        }
+
+       public static Point FarthestfromOrigin(Point[] points)
+        {
+            Point farthest = points[0];
+            for (int i = 1; i < points.Length; i++)
+            {
+                if (points[i].Distance(new Point(0, 0)) > farthest.Distance(new Point(0, 0)))
+                {
+                    farthest = points[i];
+                }
+            }
+            return farthest;
+        }
         public override string ToString()
         {
             return $"({this.x} , {this.y})";
@@ -74,13 +96,23 @@ namespace Yakir
             p1.Sety(6);
             Console.WriteLine(p1.Gety());
             Console.WriteLine(p1);
+
             Console.WriteLine("========================");
+            
             Point p2 = new Point();
             Console.WriteLine(p2);
             double distance = p1.Distance(p2);
             Console.WriteLine(distance);
+            Point midpoint = p1.Midpoint(p2);
+            Console.WriteLine(midpoint);
 
+            Console.WriteLine("========================");
 
+            double gradient = p1.gradient(p2);
+            Console.WriteLine(gradient);
+            Point[] points = { p1, p2, new Point(10, 10) };
+            Point farthest = Point.FarthestfromOrigin(points);
+            Console.WriteLine(farthest);
         }
     }
 }
