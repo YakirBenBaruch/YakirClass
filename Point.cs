@@ -73,7 +73,7 @@ namespace Yakir
        public static Point FarthestfromOrigin(Point[] points)
         {
             Point farthest = points[0];
-            for (int i = 1; i < points.Length; i++)
+            for (int i = 1; i <= points.Length; i++)
             {
                 if (points[i].Distance(new Point(0, 0)) > farthest.Distance(new Point(0, 0)))
                 {
