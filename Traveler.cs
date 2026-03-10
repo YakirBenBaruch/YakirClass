@@ -25,8 +25,7 @@ namespace Yakir
 
         public override string ToString()
         {
-            return passport.ToString() +
-                   "\nHas paid: " + hasPaid;
+            return passport.ToString() + "\nHas paid: " + hasPaid;
         }
 
         public bool CheckTravel(Date travelDate)

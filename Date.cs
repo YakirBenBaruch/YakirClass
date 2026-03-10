@@ -55,6 +55,16 @@ namespace Yakir
             
             return this.day.CompareTo(other.day);
         }
+
+        public static bool leapYear(int year)
+        {
+            bool B = false;
+            if (year % 4 == 0 && year % 100 == 0 || year % 400 == 0)
+            {
+                B = true;
+            }
+            return B;
+        }
         public override string ToString()
         {
             return $"{day}/{month}/{year}";
@@ -80,6 +90,9 @@ namespace Yakir
             d1.setYear(2025);
 
             Console.WriteLine(d1.ToString());
+
+            Console.WriteLine(Date.leapYear(2020));
+            Console.WriteLine(Date.leapYear(2021));
         }
     }
 }

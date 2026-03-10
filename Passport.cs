@@ -21,12 +21,6 @@ namespace Yakir
             this.number = passport.number;
             this.expiryDate = new Date(passport.expiryDate);
         }
-
-        public override string ToString()
-        {
-            return "Name: " + name + "\nPass. num: " + number + "\nExp date: " + expiryDate;
-        }
-
         public bool IsValid(Date dateChecked)
         {
             return expiryDate.CompareTo(dateChecked) >= 0;
@@ -35,6 +29,11 @@ namespace Yakir
         public void SetExpiryDate(Date expiryDate)
         {
             this.expiryDate = new Date(expiryDate);
+        }
+
+        public override string ToString()
+        {
+            return "Name: " + name + "\nPass. num: " + number + "\nExp date: " + expiryDate;
         }
 
         public static void UnitTest()

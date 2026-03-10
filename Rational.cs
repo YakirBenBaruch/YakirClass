@@ -15,24 +15,30 @@ namespace Yakir
         {
             if (y == 0)
             {
-                numerator = 0;
-                denom = 1;
+                this.numerator = 0;
+                this.denom = 1;
             }
             else
             {
-                numerator = x;
-                denom = y;
+                this.numerator = x;
+                this.denom = y;
             }
+        }
+
+        public Rational(Rational other) : this(other.numerator, other.denom)
+        {
+            this.numerator = other.numerator;
+            this.denom = other.denom;
         }
 
         public int GetNumerator()
         {
-            return numerator;
+            return this.numerator;
         }
 
         public int GetDenom()
         {
-            return denom;
+            return this.denom;
         }
 
         public bool IsEqual(Rational num)
@@ -51,11 +57,13 @@ namespace Yakir
 
         public Rational Divide(Rational num)
         {
-            if (num.numerator == 0)
-                return null;
-
             int newNum = this.numerator * num.denom;
             int newDen = this.denom * num.numerator;
+
+            if (num.numerator == 0)
+            {
+                return null;
+            }
 
             return new Rational(newNum, newDen);
         }

@@ -82,6 +82,25 @@ namespace Yakir
             }
             return farthest;
         }
+
+        public static int[] arrmidpoint(Point[] points)
+        {
+            Point[] midpoints = new Point[points.Length];
+            for (int i = 0; i < points.Length; i++)
+            {
+                midpoints[i] = points[i].Midpoint(new Point(0, 0));
+            }
+
+            for (int i = 0; i < midpoints.Length; i++)
+            {
+                Console.WriteLine(midpoints[i]);
+                return new int[] { (int)midpoints[i].x, (int)midpoints[i].y };
+            }
+
+            return null;
+        }
+
+
         public override string ToString()
         {
             return $"({this.x} , {this.y})";
@@ -113,6 +132,12 @@ namespace Yakir
             Point[] points = { p1, p2, new Point(10, 10) };
             Point farthest = Point.FarthestfromOrigin(points);
             Console.WriteLine(farthest);
+
+            Console.WriteLine("========================");
+            
+            int[] midpoints = Point.arrmidpoint(points);
+            Console.WriteLine($"Midpoints: ({midpoints[0]}, {midpoints[1]})");
+
         }
     }
 }
