@@ -1,18 +1,22 @@
-using System;
+﻿using System;
 
 namespace Yakir
 {
     public class SortOfaDance
     {
+        //א) הסרטון מדגים לנו מערך לא ממוין ובמהלך הסרטון נוצר לנו אלגוריתם שממין את המערךל והופך את המערך למערך ממוין מהגדול לקטן.
         public static int[] Dance(int[] arr)
         {
-           for ( int i = 0; i < arr.Length; i++)
+            for (int j = 0; j < arr.Length - 1; j++)
             {
-                if (arr[i] > arr[i + 1])
+                for (int i = 0; i < arr.Length - 1; i++)
                 {
-                    int temp = arr[i];
-                    arr[i] = arr[i + 1];
-                    arr[i + 1] = temp;
+                    if (arr[i] > arr[i + 1])
+                    {
+                        int temp = arr[i];
+                        arr[i] = arr[i + 1];
+                        arr[i + 1] = temp;
+                    }
                 }
             }
             return arr;
@@ -22,7 +26,11 @@ namespace Yakir
         {
             int[] arr = { 5, 3, 8, 4, 2 };
             int[] result = Dance(arr);
-            Console.WriteLine(string.Join(", ", result));
+
+            for (int i = 0; i < result.Length; i++)
+            {
+                Console.Write(result[i] + " ");
+            }
         }
     }
 }

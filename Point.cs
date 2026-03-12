@@ -73,7 +73,7 @@ namespace Yakir
        public static Point FarthestfromOrigin(Point[] points)
         {
             Point farthest = points[0];
-            for (int i = 1; i <= points.Length; i++)
+            for (int i = 1; i <= points.Length - 1; i++)
             {
                 if (points[i].Distance(new Point(0, 0)) > farthest.Distance(new Point(0, 0)))
                 {
@@ -86,7 +86,7 @@ namespace Yakir
         public static int[] arrmidpoint(Point[] points)
         {
             Point[] midpoints = new Point[points.Length];
-            for (int i = 0; i < points.Length; i++)
+            for (int i = 0; i < points.Length - 1; i++)
             {
                 midpoints[i] = points[i].Midpoint(new Point(0, 0));
             }
