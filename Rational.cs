@@ -84,6 +84,12 @@ namespace Yakir
             int newY = this.y * num.GetNumerator();
             return new Rational(newX, newY);
         }
+
+        public double ToDecimal()
+        {
+            return (double)this.x / this.y;
+        }
+        
         public override string ToString()
         {
             return "<" + this.x + ">/<" + this.y + ">";

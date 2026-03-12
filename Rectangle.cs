@@ -52,6 +52,15 @@ namespace Yakir
             topRight.y += deltaY;
         }
 
+        public bool Pointsln(Point p)
+        {
+            if (p.x >= bottomLeft.x && p.x <= topRight.x && p.y >= bottomLeft.y && p.y <= topRight.y)
+            {
+                return true;
+            }
+
+            return false;
+        }
         public override string ToString()
         {
             return "Rectangle:\n" + $"bottom-left point = ({bottomLeft.x}, {bottomLeft.y})\n" + $"top-right point = ({topRight.x}, {topRight.y})";

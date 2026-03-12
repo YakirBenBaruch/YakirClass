@@ -23,16 +23,27 @@ namespace Yakir
             return hasPaid;
         }
 
-        public override string ToString()
-        {
-            return passport.ToString() + "\nHas paid: " + hasPaid;
-        }
-
         public bool CheckTravel(Date travelDate)
         {
             return hasPaid && passport.IsValid(travelDate);
         }
 
+        public static int TravelersAllowedToTravel(Traveler[] travelers, Date travelDate)
+        {
+            int count = 0;
+            for (int i = 0; i < travelers.Length; i++)
+            {
+                if (travelers[i].CheckTravel(travelDate))
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+        public override string ToString()
+        {
+            return passport.ToString() + "\nHas paid: " + hasPaid;
+        }
         public static void UnitTest()
         {
             Console.WriteLine("========== Traveler UnitTest ==========");
