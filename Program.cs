@@ -26,6 +26,7 @@ namespace Yakir
             Console.WriteLine(str.CompareTo(s2));
             */
 
+
             //ClassPractice.UnitTest();
             //FootballGame.UnitTest();
             //Point.UnitTest();
@@ -33,6 +34,9 @@ namespace Yakir
             //Rational.UnitTest();
             //Passport.UnitTest();
             //Traveler.UnitTest();
+            //Rectangle.UnitTest();
+            SortOfaDance.UnitTest();
+            //CalclMyGrade.UnitTest();
         }
     }
 }
