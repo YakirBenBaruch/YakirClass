@@ -90,9 +90,35 @@ namespace Yakir
             return (double)this.x / this.y;
         }
         
+        public Rational Add(Rational num)
+        {
+            int newX = this.x * num.y;
+            int newY = this.y * num.y;
+            return new Rational(newX, newY);
+        }
+
+        public Rational Subtract(Rational num)
+        {
+            int newX = this.x * num.y - this.y * num.x;
+            int newY = this.y * num.y;
+            return new Rational(newX, newY);
+        }
         public override string ToString()
         {
             return "<" + this.x + ">/<" + this.y + ">";
+        }
+
+        public static void UnitTest()
+        {
+            Rational r1 = new Rational(1, 2);
+            Rational r2 = new Rational(3, 4);
+            Rational r3 = r1.Multiply(r2);
+            Rational r4 = r1.Divide(r2);
+
+            Console.WriteLine("r1: " + r1);
+            Console.WriteLine("r2: " + r2);
+            Console.WriteLine("r1 * r2: " + r3);
+            Console.WriteLine("r1 / r2: " + r4);
         }
     }
 }

@@ -65,5 +65,22 @@ namespace Yakir
         {
             return "Rectangle:\n" + $"bottom-left point = ({bottomLeft.x}, {bottomLeft.y})\n" + $"top-right point = ({topRight.x}, {topRight.y})";
         }
+
+        public static void UnitTest()
+        {
+            Rectangle rect = new Rectangle(new Point(0, 0), new Point(4, 3));
+            Console.WriteLine(rect);
+            Console.WriteLine("Area: " + rect.GetArea());
+            Console.WriteLine("Perimeter: " + rect.GetPerimeter());
+
+            rect.Move(1, 1);
+            Console.WriteLine("After moving by (1, 1):");
+            Console.WriteLine(rect);
+
+            Point p1 = new Point(2, 2);
+            Point p2 = new Point(5, 5);
+            Console.WriteLine($"Does the rectangle contain point {p1}? {rect.Pointsln(p1)}");
+            Console.WriteLine($"Does the rectangle contain point {p2}? {rect.Pointsln(p2)}");
+        }
     }
 }

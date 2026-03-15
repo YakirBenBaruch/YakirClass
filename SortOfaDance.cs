@@ -31,6 +31,15 @@ namespace Yakir
             {
                 Console.Write(result[i] + " ");
             }
+
+            Console.WriteLine();
+
+            int[] arr2 = { 10, 1, 5, 3, 7 };
+            int[] result2 = Dance(arr2);
+            for (int i = 0; i < result2.Length; i++)
+            {
+                Console.Write(result2[i] + " ");
+            }
         }
     }
 }
