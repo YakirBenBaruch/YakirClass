@@ -65,10 +65,28 @@ namespace Yakir
             }
             return B;
         }
+
+        
         public override string ToString()
         {
             return $"{day}/{month}/{year}";
         }
+
+        public static void SortDates(Date[] dates)
+        {
+            for (int i = 0; i <= dates.Length - 1; i++)
+            {
+                for (int j = 0; j < dates.Length - 1; j++)
+                {
+                    if (dates[j].CompareTo(dates[j + 1]) > 0)
+                    {
+                        Date temp = dates[j];
+                        dates[j] = dates[j + 1];
+                        dates[j + 1] = temp;
+                    }
+                }
+            }
+        }   
 
         public static void UnitTest()
         {

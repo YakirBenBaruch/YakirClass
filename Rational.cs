@@ -97,6 +97,25 @@ namespace Yakir
             return new Rational(newX, newY);
         }
 
+        public Rational Reduce()
+        {
+            int min = x;
+            if (y < min)
+            {
+                min = y;
+            }
+
+            int gcd = 1;
+
+            for (int i = 1; i <= min; i++)
+            {
+                if (x % i == 0 && y % i == 0)
+                {
+                    gcd = i;
+                }
+            }
+            return new Rational(x / gcd, y / gcd);
+        }
         public Rational Subtract(Rational num)
         {
             int newX = this.x * num.y - this.y * num.x;
