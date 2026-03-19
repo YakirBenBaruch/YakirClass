@@ -54,7 +54,7 @@ namespace Yakir
 
         public bool Pointsln(Point p)
         {
-            if (p.x >= bottomLeft.x && p.x <= topRight.x && p.y >= bottomLeft.y && p.y <= topRight.y)
+            if (p.Getx() >= bottomLeft.Getx() && p.Getx() <= topRight.Getx() && p.Gety() >= bottomLeft.Gety() && p.Gety() <= topRight.Gety())
             {
                 return true;
             }
@@ -63,7 +63,7 @@ namespace Yakir
         }
         public override string ToString()
         {
-            return "Rectangle:\n" + $"bottom-left point = ({bottomLeft.x}, {bottomLeft.y})\n" + $"top-right point = ({topRight.x}, {topRight.y})";
+            return "Rectangle:\n" + $"bottom-left point = ({bottomLeft.Getx()}, {bottomLeft.Gety()})\n" + $"top-right point = ({topRight.Getx()}, {topRight.y})";
         }
 
         public static void UnitTest()
