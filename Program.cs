@@ -35,7 +35,7 @@ namespace Yakir
             //Passport.UnitTest();
             //Traveler.UnitTest();
             //Rectangle.UnitTest();
-            SortOfaDance.UnitTest();
+            //SortOfaDance.UnitTest();
             //CalclMyGrade.UnitTest();
         }
     }
