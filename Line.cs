@@ -7,6 +7,12 @@ namespace Yakir
         private double a;
         private double b;
 
+        public int GetA() { return (int)a; }
+        public int GetB() { return (int)b; }
+
+        public void SetA(double a) { this.a = a; }
+        public void SetB(double b) { this.b = b; }
+
         public Line(double a, double b)
         {
             this.a = a;
@@ -95,7 +101,13 @@ namespace Yakir
             else
             {
                 return null;
-            } 
+            }
+        }
+
+        public Line Perpendicular(Point p)
+        {
+            double newA = -1 / this.a;
+            return new Line(newA, p);
         }
     }
 }
