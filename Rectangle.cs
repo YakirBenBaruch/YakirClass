@@ -20,17 +20,17 @@ namespace Yakir
         public Rectangle(Point bottomLeft, double width, double height)
         {
             this.bottomLeft = new Point(bottomLeft);
-            this.topRight = new Point(bottomLeft.x + width, bottomLeft.y + height);
+            this.topRight = new Point(bottomLeft.Getx() + width, bottomLeft.y + height);
         }
 
         private double Width()
         {
-            return topRight.x - bottomLeft.x;
+            return topRight.Getx() - bottomLeft.Getx();
         }
 
         private double Height()
         {
-            return topRight.y - bottomLeft.y;
+            return topRight.Gety() - bottomLeft.Gety();
         }
 
         public double GetArea()

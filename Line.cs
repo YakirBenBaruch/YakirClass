@@ -109,5 +109,19 @@ namespace Yakir
             double newA = -1 / this.a;
             return new Line(newA, p);
         }
+
+        public double Distance(Point p)
+        {
+            Line L2 = this.Perpendicular(p);
+            Point P2 = this.LineIntercept(L2);
+            double distance = p.Distance(P2);
+
+            return distance;
+        }
+
+        public double AreaWithX(Line line)
+        {
+
+        }
     }
 }
