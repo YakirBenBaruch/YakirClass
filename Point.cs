@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Yakir
 {
@@ -16,6 +12,7 @@ namespace Yakir
             this.x = x;
             this.y = y;
         }
+
         public Point() : this(0, 0)
         {
 
@@ -23,23 +20,24 @@ namespace Yakir
 
         public Point(Point P) : this(P.x, P.y)
         {
-            this.x = P.x;
-            this.y = P.y;
+
         }
 
-        public void Setx(int x)
+        public void Setx(double x)
         {
             this.x = x;
         }
+
         public double Getx()
         {
             return this.x;
         }
 
-        public void Sety(int y)
+        public void Sety(double y)
         {
             this.y = y;
         }
+
         public double Gety()
         {
             return this.y;
@@ -47,7 +45,7 @@ namespace Yakir
 
         public double Distance(Point P)
         {
-            double dx2 = Math.Pow(this.x - P.Getx() , 2);
+            double dx2 = Math.Pow(this.x - P.Getx(), 2);
             double dy2 = Math.Pow(this.y - P.Gety(), 2);
             return Math.Sqrt(dx2 + dy2);
         }
@@ -56,49 +54,50 @@ namespace Yakir
         {
             double midX = (this.x + P.x) / 2;
             double midY = (this.y + P.y) / 2;
-            
+
             return new Point(midX, midY);
         }
 
         public double gradient(Point P)
         {
-            int gradient = 0;
-            int dx = (int)(P.x - this.x);
-            int dy = (int)(P.y - this.y);
+            double dx = P.x - this.x;
+            double dy = P.y - this.y;
 
-            gradient = dy / dx;
-            return gradient;
+            if (dx == 0)
+                return double.MaxValue;
+
+            return dy / dx;
         }
 
-       public static Point FarthestfromOrigin(Point[] points)
+        public static Point FarthestfromOrigin(Point[] points)
         {
+            Point origin = new Point(0, 0);
             Point farthest = points[0];
-            for (int i = 1; i <= points.Length - 1; i++)
+
+            for (int i = 1; i < points.Length; i++)
             {
-                if (points[i].Distance(new Point(0, 0)) > farthest.Distance(new Point(0, 0)))
+                if (points[i].Distance(origin) > farthest.Distance(origin))
                 {
                     farthest = points[i];
                 }
             }
+
             return farthest;
         }
 
-        public static int[] arrmidpoint(Point[] points)
+        public static Point[] arrmidpoint(Point[] points)
         {
             Point[] midpoints = new Point[points.Length];
-            for (int i = 0; i < points.Length - 1; i++)
+            Point origin = new Point(0, 0);
+
+            for (int i = 0; i < points.Length; i++)
             {
-                midpoints[i] = points[i].Midpoint(new Point(0, 0));
+                midpoints[i] = points[i].Midpoint(origin);
             }
 
-            for (int i = 0; i < midpoints.Length; i++)
-            {
-                Console.WriteLine(midpoints[i]);
-                return new int[] { (int)midpoints[i].x, (int)midpoints[i].y };
-            }
-
-            return null;
+            return midpoints;
         }
+
         public override string ToString()
         {
             return $"({this.x} , {this.y})";
@@ -108,18 +107,23 @@ namespace Yakir
         {
             Point p1 = new Point(3, 4);
             Console.WriteLine(p1);
+
             p1.Setx(5);
             Console.WriteLine(p1.Getx());
+
             p1.Sety(6);
             Console.WriteLine(p1.Gety());
+
             Console.WriteLine(p1);
 
             Console.WriteLine("========================");
-            
+
             Point p2 = new Point();
             Console.WriteLine(p2);
+
             double distance = p1.Distance(p2);
             Console.WriteLine(distance);
+
             Point midpoint = p1.Midpoint(p2);
             Console.WriteLine(midpoint);
 
@@ -127,15 +131,18 @@ namespace Yakir
 
             double gradient = p1.gradient(p2);
             Console.WriteLine(gradient);
+
             Point[] points = { p1, p2, new Point(10, 10) };
             Point farthest = Point.FarthestfromOrigin(points);
             Console.WriteLine(farthest);
 
             Console.WriteLine("========================");
-            
-            int[] midpoints = Point.arrmidpoint(points);
-            Console.WriteLine($"Midpoints: ({midpoints[0]}, {midpoints[1]})");
 
+            Point[] midpoints = Point.arrmidpoint(points);
+            for (int i = 0; i < midpoints.Length; i++)
+            {
+                Console.WriteLine(midpoints[i]);
+            }
         }
     }
 }

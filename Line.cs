@@ -34,10 +34,10 @@ namespace Yakir
         public Line(Point p1, Point p2)
         {
             this.a = (p2.Gety() - p1.Gety()) / (p2.Getx() - p1.Getx());
-            this.b = p1.Getx() - this.a * p1.Getx();
+            this.b = p1.Gety() - this.a * p1.Getx();
         }
 
-        public Line(Line line)
+        public Line(Line line) 
         {
             this.a = line.a;
             this.b = line.b;
@@ -121,7 +121,35 @@ namespace Yakir
 
         public double AreaWithX(Line line)
         {
+            if (this.a == line.a)
+                return 0;
 
+            Point p1 = this.Xintercept();
+            Point p2 = line.Xintercept();
+            Point p3 = this.LineIntercept(line);
+
+            if (p1 == null || p2 == null || p3 == null)
+                return 0;
+
+            double baseLength = Math.Abs(p1.Getx() - p2.Getx());
+            double height = Math.Abs(p3.Gety());
+
+            return (baseLength * height) / 2;
+        }
+
+        public override string ToString()
+        {
+            if (b >= 0)
+            {
+
+                return "f(x) = " + a + "x + " + b;
+            }
+
+            else
+            {
+                return "f(x) = " + a + "x - " + Math.Abs(b);
+            }
+                
         }
     }
 }
