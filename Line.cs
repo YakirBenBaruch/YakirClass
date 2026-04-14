@@ -137,6 +137,28 @@ namespace Yakir
             return (baseLength * height) / 2;
         }
 
+        public double[] TriangleAnglesWithX(Line line)
+        {
+            if (this.a == line.a)
+                return new double[0];
+
+            Point A = this.Xintercept();
+            Point B = line.Xintercept();
+            Point C = this.LineIntercept(line);
+
+            if (A == null || B == null || C == null)
+                return new double[0];
+
+            double AB = A.Distance(B);
+            double AC = A.Distance(C);
+            double BC = B.Distance(C);
+
+            double angleA = Math.Acos((AB * AB + AC * AC - BC * BC) / (2 * AB * AC)) * 180 / Math.PI;
+            double angleB = Math.Acos((AB * AB + BC * BC - AC * AC) / (2 * AB * BC)) * 180 / Math.PI;
+            double angleC = 180 - angleA - angleB;
+
+            return new double[] { angleA, angleB, angleC };
+        }
         public override string ToString()
         {
             if (b >= 0)
