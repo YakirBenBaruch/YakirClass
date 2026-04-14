@@ -149,7 +149,6 @@ namespace Yakir
             {
                 return "f(x) = " + a + "x - " + Math.Abs(b);
             }
-                
         }
     }
 }
