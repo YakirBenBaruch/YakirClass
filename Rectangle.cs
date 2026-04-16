@@ -20,7 +20,7 @@ namespace Yakir
         public Rectangle(Point bottomLeft, double width, double height)
         {
             this.bottomLeft = new Point(bottomLeft);
-            this.topRight = new Point(bottomLeft.Getx() + width, bottomLeft.y + height);
+            this.topRight = new Point(bottomLeft.Getx() + width, bottomLeft.Gety() + height);
         }
 
         private double Width()
@@ -43,14 +43,14 @@ namespace Yakir
             return 2 * (Width() + Height());
         }
 
-        public void Move(double deltaX, double deltaY)
-        {
-            bottomLeft.x += deltaX;
-            bottomLeft.y += deltaY;
+        //public void Move(double deltaX, double deltaY)
+        //{
+        //    bottomLeft.x += deltaX;
+        //    bottomLeft.y += deltaY;
 
-            topRight.x += deltaX;
-            topRight.y += deltaY;
-        }
+        //    topRight.x += deltaX;
+        //    topRight.y += deltaY;
+        //}
 
         public bool Pointsln(Point p)
         {
@@ -63,7 +63,7 @@ namespace Yakir
         }
         public override string ToString()
         {
-            return "Rectangle:\n" + $"bottom-left point = ({bottomLeft.Getx()}, {bottomLeft.Gety()})\n" + $"top-right point = ({topRight.Getx()}, {topRight.y})";
+            return "Rectangle:\n" + $"bottom-left point = ({bottomLeft.Getx()}, {bottomLeft.Gety()})\n" + $"top-right point = ({topRight.Getx()}, {topRight.Gety()})";
         }
 
         public static void UnitTest()
@@ -73,7 +73,7 @@ namespace Yakir
             Console.WriteLine("Area: " + rect.GetArea());
             Console.WriteLine("Perimeter: " + rect.GetPerimeter());
 
-            rect.Move(1, 1);
+            //rect.Move(1, 1);
             Console.WriteLine("After moving by (1, 1):");
             Console.WriteLine(rect);
 

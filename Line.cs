@@ -7,8 +7,8 @@ namespace Yakir
         private double a;
         private double b;
 
-        public int GetA() { return (int)a; }
-        public int GetB() { return (int)b; }
+        public double GetA() { return a; }
+        public double GetB() { return b; }
 
         public void SetA(double a) { this.a = a; }
         public void SetB(double b) { this.b = b; }
@@ -37,7 +37,7 @@ namespace Yakir
             this.b = p1.Gety() - this.a * p1.Getx();
         }
 
-        public Line(Line line) 
+        public Line(Line line)
         {
             this.a = line.a;
             this.b = line.b;
@@ -171,6 +171,29 @@ namespace Yakir
             {
                 return "f(x) = " + a + "x - " + Math.Abs(b);
             }
+        }
+
+        public static void UnitTest()
+        {
+            Line l1 = new Line(2, 3);
+            Line l2 = new Line(2, 3);
+            Line l3 = new Line(2, 4);
+            Line l4 = new Line(3, 4);
+            Console.WriteLine(l1.LineStatus(l2)); // -1
+            Console.WriteLine(l1.LineStatus(l3)); // 0
+            Console.WriteLine(l1.LineStatus(l4)); // 1
+            Point p = new Point(1, 5);
+            Console.WriteLine(l1.IsOnLine(p)); // true
+            Point intercept = l1.LineIntercept(l4);
+            Console.WriteLine(intercept); // (5, 13)
+            Line perpendicular = l1.Perpendicular(p);
+            Console.WriteLine(perpendicular); // f(x) = -0.5x + 5.5
+            double distance = l1.Distance(p);
+            Console.WriteLine(distance); // 0
+            double area = l1.AreaWithX(l4);
+            Console.WriteLine(area); // 20
+            double[] angles = l1.TriangleAnglesWithX(l4);
+            Console.WriteLine(string.Join(", ", angles)); // 45, 45, 90
         }
     }
 }

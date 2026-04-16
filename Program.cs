@@ -37,6 +37,8 @@ namespace Yakir
             //Rectangle.UnitTest();
             //SortOfaDance.UnitTest();
             //CalclMyGrade.UnitTest();
+            //Line.UnitTest();
+            Parabula.UnitTest();
         }
     }
 }
