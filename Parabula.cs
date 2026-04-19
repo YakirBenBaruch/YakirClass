@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -95,27 +96,91 @@ namespace Yakir
         public Line Tangent(double x)
         {
             double m = 2 * this.a * x + this.b;
+            double y = this.a * x * x + this.b * x + this.c;
+            return new Line(m, y);
         }
-        
+
+        public Point[] InterceptLine(Line line)
+        {
+            Point[] arr;
+            Parabula p = new Parabula(this.a, this.b - line.GetA(), this.c - line.GetB());
+            double n = line.GetA();
+            double m = line.GetB();
+            arr = p.Xintercept();
+            if (arr != null)
+            {
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    arr[i].Sety(this.GetY(arr[i].Getx()));
+                }
+            }
+            return arr;
+        }
+
+        public Line PerpendicularFromPoint(Point p, double Xcoord)
+        {
+            Line masik = new Line();
+            masik = this.Tangent(Xcoord).Perpendicular(p);
+            return masik;
+        }
+
+        public Point[] InterceptParabola(Parabula par)
+        {
+            Point[] arr;
+            Parabula parabula = new Parabula(this.a - par.GetA(), this.b - par.GetB(), this.c - par.GetC());
+            arr = parabula.Xintercept();
+            if (arr != null)
+            {
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    arr[i].Sety(this.GetY(arr[i].Getx()));
+                }
+            }
+            return arr;
+        }
+
+        public double ExtremeArea()
+        {
+
+        }
+
+        public double ExtremeArea(Line ln)
+        {
+
+        }
+
+        public override string ToString()
+        {
+            return "Parabula: y = " + this.a + "x^2 + " + this.b + "x + " + this.c;
+        }
         public static void UnitTest()
         {
             Parabula p1 = new Parabula(1, -3, 2);
             Console.WriteLine("---- Test 1: Create + Yintercept ----");
             Console.WriteLine("Y-intercept: " + p1.Yintercept());
             Console.WriteLine();
-            Console.WriteLine("---- Test 2: Xintercept ----");
             Console.WriteLine();
-            Console.WriteLine("---- Test 3: GetY ----");
+            Console.WriteLine("---- Test 2: GetY ----");
             double yAt2 = p1.GetY(2);
             Console.WriteLine("Y at x=2: " + yAt2);
             Console.WriteLine();
-            Console.WriteLine("---- Test 4: IsOnParabula ----");
+            Console.WriteLine("---- Test 3: IsOnParabula ----");
             Point testPoint = new Point(1, 0);
             Console.WriteLine("Is point " + testPoint + " on the parabola? " + p1.IsOnParabula(testPoint));
             Console.WriteLine();
-            Console.WriteLine("---- Test 5: Extreme ----");
+            Console.WriteLine("---- Test 4: Extreme ----");
             Point extremePoint = p1.Extreme();
             Console.WriteLine("Extreme point: " + extremePoint);
+            Console.WriteLine();
+            Console.WriteLine("---- Test 5: Tangent ----");
+            Line tangentLine = p1.Tangent(7);
+            Console.WriteLine("Tangent at x=7: " + tangentLine);
+            Console.WriteLine("---- Test 6: Perpendicular From Point ----");
+            Point testPoint2 = new Point(2, 3);
+            Line perpendicularLine = p1.PerpendicularFromPoint(testPoint2, 2);
+            Console.WriteLine("Perpendicular from point " + testPoint2 + " at x=2: " + perpendicularLine);
+            Console.WriteLine("---- Test 7: InterceptParabola ----");
+
         }
     }
 }
