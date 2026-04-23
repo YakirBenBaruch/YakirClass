@@ -230,7 +230,6 @@ namespace Yakir
             Line perpendicularLine = p1.PerpendicularFromPoint(testPoint2, 2);
             Console.WriteLine("Perpendicular from point " + testPoint2 + " at x=2: " + perpendicularLine);
             Console.WriteLine("---- Test 7: InterceptParabola ----");
-
         }
     }
 }
