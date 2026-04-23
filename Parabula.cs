@@ -141,12 +141,62 @@ namespace Yakir
 
         public double ExtremeArea()
         {
+            Point[] arr = this.Xintercept();
 
+            if (arr == null || arr.Length < 2)
+                return 0;
+
+            Point p1 = arr[0];
+            Point p2 = arr[1];
+            Point p3 = this.Extreme();
+
+            double area = Math.Abs(
+                p1.Getx() * (p2.Gety() - p3.Gety()) +
+                p2.Getx() * (p3.Gety() - p1.Gety()) +
+                p3.Getx() * (p1.Gety() - p2.Gety())
+            ) / 2.0;
+
+            return area;
         }
 
         public double ExtremeArea(Line ln)
         {
+            Point[] arr = this.InterceptLine(ln);
 
+            if (arr == null || arr.Length < 2)
+                return 0;
+
+            Point p1 = arr[0];
+            Point p2 = arr[1];
+            Point p3 = this.Extreme();
+
+            double area = Math.Abs(
+                p1.Getx() * (p2.Gety() - p3.Gety()) +
+                p2.Getx() * (p3.Gety() - p1.Gety()) +
+                p3.Getx() * (p1.Gety() - p2.Gety())
+            ) / 2.0;
+
+            return area;
+        }
+
+        public double ExtremeAREA(Line ln)
+        {
+            Point[] arr = this.InterceptLine(ln);
+
+            if (arr == null || arr.Length < 2)
+                return 0;
+
+            Point p1 = arr[0];
+            Point p2 = arr[1];
+            Point p3 = this.Extreme();
+
+            double area = Math.Abs(
+                p1.Getx() * (p2.Gety() - p3.Gety()) +
+                p2.Getx() * (p3.Gety() - p1.Gety()) +
+                p3.Getx() * (p1.Gety() - p2.Gety())
+            ) / 2.0;
+
+            return area;
         }
 
         public override string ToString()
