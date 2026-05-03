@@ -39,6 +39,19 @@ namespace Yakir
             //CalclMyGrade.UnitTest();
             //Line.UnitTest();
             //Parabula.UnitTest();
+
+            //int[,] metrix;
+            //metrix = new int[3, 4];
+            //int a = metrix[2, 2];
+            //for (int row = 0; row < metrix.GetLength(0); row++)
+            //{
+            //    for (int col = 0; col < metrix.GetLength(1); col++)
+            //    {
+            //        Console.Write(metrix[row, col] + " \t ");
+            //    }
+            //    Console.WriteLine();
+            //}
+            Matrix.Test();
         }
     }
 }
