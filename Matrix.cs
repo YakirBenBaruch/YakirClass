@@ -82,6 +82,47 @@ namespace Yakir
             return (double)sum / grades.GetLength(0);
         }
 
+        public static int T9a(int[,] arr, int row, int col)
+        {
+            int SumRow = 0;
+            int SumCol = 0;
+
+            for (int i = 0; i < arr.GetLength(1); i++)
+            {
+                SumRow += arr[row, i];
+            }
+
+            for (int i = 0; i < arr.GetLength(0); i++)
+            {
+                SumCol += arr[i, col];
+            }
+            if (SumRow == SumCol)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public static int T9b(int[,] arr)
+        {
+            int count = 0;
+            for (int row = 0; row < arr.GetLength(0); row++)
+            {
+                for (int col = 0; col < arr.GetLength(1); col++)
+                {
+                    if (T9a(arr, row, col) == 1)
+                    {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+
+        
         public static void Test()
         {
             //  מערך דו ממדי עם תשע-עשר תלמידים וארבע ציונים לכל תלמיד
