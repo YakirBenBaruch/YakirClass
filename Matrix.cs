@@ -122,7 +122,46 @@ namespace Yakir
             return count;
         }
 
-        
+        public static bool CheckPlace(int[,] arr, int row, int col)
+        {
+            int sumUp = 0;
+            int sumDown = 0;
+            for (int i = 0; i < row; i++)
+            {
+                for (int j = 0; j < col; j++)
+                {
+                    sumUp += arr[i, j];
+                }
+            }
+
+            for (int i = row + 1; i < arr.GetLength(0); i++)
+            {
+                for (int j = col + 1; j < arr.GetLength(1); j++)
+                {
+                    sumDown += arr[i, j];
+                }
+            }
+
+            if (sumUp > sumDown)
+                return true;
+
+            return false;
+        }
+
+        // סעיף ב
+        public static void PrintPlaces(int[,] arr)
+        {
+            for (int i = 1; i < arr.GetLength(0) - 1; i++)
+            {
+                for (int j = 1; j < arr.GetLength(1) - 1; j++)
+                {
+                    if (CheckPlace(arr, i, j) == true)
+                    {
+                        Console.WriteLine("[" + i + "," + j + "]");
+                    }
+                }
+            }
+        }
         public static void Test()
         {
             //  מערך דו ממדי עם תשע-עשר תלמידים וארבע ציונים לכל תלמיד
