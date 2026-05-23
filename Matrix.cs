@@ -162,6 +162,173 @@ namespace Yakir
                 }
             }
         }
+
+        public static bool IsAlternating(int[,] mat, int i, int j)
+        {
+            if (i + 2 >= 36 || j + 2 >= 52)
+            {
+                return false;
+            }
+
+            if (mat[i, j] != mat[i + 1, j + 1] &&
+                mat[i + 1, j + 1] != mat[i + 2, j + 2])
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+
+        public static int IsUniform(int[,] mat, int i, int j)
+        {
+            if (i + 2 >= 36 || j + 2 >= 52)
+            {
+                return 0;
+            }
+
+            if (mat[i, j] == 1 &&
+                mat[i + 1, j + 1] == 1 &&
+                mat[i + 2, j + 2] == 1)
+            {
+                return 1;
+            }
+
+            return 0;
+        }
+
+        public static int CountUniform(int[,] mat)
+        {
+            int count = 0;
+
+            for (int i = 0; i < 36; i++)
+            {
+                for (int j = 0; j < 52; j++)
+                {
+                    count = count + IsUniform(mat, i, j);
+                }
+            }
+
+            return count;
+        }
+
+        public static int IsDescendingRow(int[,] arr, int row, int j, int k)
+        {
+            for (int col = j; col < k; col++)
+            {
+                if (arr[row, col] <= arr[row, col + 1])
+                {
+                    return 0;
+                }
+            }
+
+            return 1;
+        }
+
+
+        public static int CountDescendingRows(int[,] arr, int j, int k)
+        {
+            int count = 0;
+
+            for (int row = 0; row < 32; row++)
+            {
+                count = count + IsDescendingRow(arr, row, j, k);
+            }
+
+            return count;
+        }
+
+        public static int IsPositiveRow(int[,] arr, int i)
+        {
+            for (int j = 0; j < 45; j++)
+            {
+                if (arr[i, j] <= 0)
+                {
+                    return 0;
+                }
+            }
+
+            return 1;
+        }
+
+
+        public static int IsPositiveCol(int[,] arr, int j)
+        {
+            for (int i = 0; i < 42; i++)
+            {
+                if (arr[i, j] <= 0)
+                {
+                    return 0;
+                }
+            }
+
+            return 1;
+        }
+
+
+        public static void CheckPositiveRowsArray(int[,] arr)
+        {
+            int countRows = 0;
+            int countCols = 0;
+
+            for (int i = 0; i < 42; i++)
+            {
+                countRows = countRows + IsPositiveRow(arr, i);
+            }
+
+            for (int j = 0; j < 45; j++)
+            {
+                countCols = countCols + IsPositiveCol(arr, j);
+            }
+
+            if (countRows > countCols)
+            {
+                Console.WriteLine("yes");
+            }
+            else
+            {
+                Console.WriteLine("no");
+            }
+        }
+
+        public static int Place(int[,] arr, int x)
+        {
+            int count = 0;
+
+            for (int i = 0; i < arr.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    if (arr[i, j] == x)
+                    {
+                        return count;
+                    }
+
+                    count++;
+                }
+            }
+
+            return -1;
+        }
+
+
+        public static void PrintAndCount(int[,] arr, int num1, int num2)
+        {
+            int count = 0;
+
+            for (int i = 0; i < arr.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    if (count >= num1 && count <= num2)
+                    {
+                        Console.Write(arr[i, j] + " ");
+                    }
+
+                    count++;
+                }
+            }
+        }
         public static void Test()
         {
             //  מערך דו ממדי עם תשע-עשר תלמידים וארבע ציונים לכל תלמיד
@@ -175,6 +342,139 @@ namespace Yakir
             Console.WriteLine("Row student #3 avrg is: " + Matrix.RowAvrg(grd, 2));
             Console.WriteLine("-------------------------------");
             Console.WriteLine("Col Test #2 avrg is: " + Matrix.ColAvrg(grd, 1));
+            Console.WriteLine("-------------------------------");
+            Console.WriteLine("-------------------------------");
+            Console.WriteLine("-------------------------------");
+            Console.WriteLine("----- T9b -----");
+
+            int[,] arrT9 = new int[36, 52];
+
+            arrT9[0, 0] = 1;
+            arrT9[1, 1] = 1;
+            arrT9[2, 2] = 1;
+
+            Console.WriteLine("T9b: " + T9b(arrT9));
+
+
+            Console.WriteLine("----- CheckPlace -----");
+
+            int[,] arrPlaceCheck =
+            {
+        { 10, 10, 1, 1 },
+        { 10, 10, 1, 1 },
+        { 1, 1, 1, 1 },
+        { 1, 1, 1, 1 }
+    };
+
+            Console.WriteLine(CheckPlace(arrPlaceCheck, 2, 2));
+
+
+            Console.WriteLine("----- PrintPlaces -----");
+
+            PrintPlaces(arrPlaceCheck);
+
+
+            Console.WriteLine("----- IsAlternating -----");
+
+            int[,] matAlt = new int[36, 52];
+
+            matAlt[0, 0] = 1;
+            matAlt[1, 1] = 0;
+            matAlt[2, 2] = 1;
+
+            Console.WriteLine(IsAlternating(matAlt, 0, 0));
+
+
+            Console.WriteLine("----- IsUniform -----");
+
+            int[,] matUniform = new int[36, 52];
+
+            matUniform[0, 0] = 1;
+            matUniform[1, 1] = 1;
+            matUniform[2, 2] = 1;
+
+            Console.WriteLine(IsUniform(matUniform, 0, 0));
+
+
+            Console.WriteLine("----- CountUniform -----");
+
+            Console.WriteLine(CountUniform(matUniform));
+
+
+            Console.WriteLine("----- IsDescendingRow -----");
+
+            int[,] arrDesc = new int[32, 5];
+
+            arrDesc[0, 0] = 9;
+            arrDesc[0, 1] = 7;
+            arrDesc[0, 2] = 5;
+            arrDesc[0, 3] = 3;
+            arrDesc[0, 4] = 1;
+
+            Console.WriteLine(IsDescendingRow(arrDesc, 0, 0, 4));
+
+
+            Console.WriteLine("----- CountDescendingRows -----");
+
+            int[,] arrDescRows = new int[32, 5];
+
+            for (int i = 0; i < 32; i++)
+            {
+                arrDescRows[i, 0] = 9;
+                arrDescRows[i, 1] = 7;
+                arrDescRows[i, 2] = 5;
+                arrDescRows[i, 3] = 3;
+                arrDescRows[i, 4] = 1;
+            }
+
+            Console.WriteLine(CountDescendingRows(arrDescRows, 0, 4));
+
+
+            Console.WriteLine("----- IsPositiveRow -----");
+
+            int[,] arrPositive = new int[42, 45];
+
+            for (int i = 0; i < 42; i++)
+            {
+                for (int j = 0; j < 45; j++)
+                {
+                    arrPositive[i, j] = 1;
+                }
+            }
+
+            Console.WriteLine(IsPositiveRow(arrPositive, 0));
+
+
+            Console.WriteLine("----- IsPositiveCol -----");
+
+            Console.WriteLine(IsPositiveCol(arrPositive, 0));
+
+
+            Console.WriteLine("----- CheckPositiveRowsArray -----");
+
+            CheckPositiveRowsArray(arrPositive);
+
+
+            Console.WriteLine("----- Place -----");
+
+            int[,] arrPlace =
+            {
+        { 39, 72, 3, 8, 0, 2, 54 },
+        { 18, 16, 13, 47, 41, 87, 65 },
+        { 34, 78, 37, 99, 97, 46, 56 },
+        { 51, 50, 12, 31, 58, 63, 18 },
+        { 23, 4, 11, 26, 83, 25, 67 }
+    };
+
+            Console.WriteLine(Place(arrPlace, 13));
+            Console.WriteLine(Place(arrPlace, 100));
+
+
+            Console.WriteLine("----- PrintAndCount -----");
+
+            PrintAndCount(arrPlace, 19, 29);
+
+            Console.WriteLine();
         }
     }
 }
