@@ -51,7 +51,7 @@ namespace Yakir
             //    }
             //    Console.WriteLine();
             //}
-            Matrix.Test();
+            //Matrix.Test();
         }
     }
 }
