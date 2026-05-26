@@ -12,18 +12,17 @@ namespace Yakir
         private int NumOfBranchNumber;
         private int AccountNumber;
         private string OwnersID;
-        private double AccountBalance;
+        private double AccountBalance = 0;
         private Date ExpiryDateOfSaving;
 
-        public SavingAccount(int numOfBankAccounts, int numOfBranchNumber, int accountNumber,
-                             string ownersID, double accountBalance, Date expiryDateOfSaving)
+        public SavingAccount(int numOfBankAccounts, int numOfBranchNumber, int accountNumber, string ownersID, Date expiryDateOfSaving)
         {
-            NumOfBankAccounts = numOfBankAccounts;
-            NumOfBranchNumber = numOfBranchNumber;
-            AccountNumber = accountNumber;
-            OwnersID = ownersID;
-            AccountBalance = accountBalance;
-            ExpiryDateOfSaving = new Date(expiryDateOfSaving);
+            this.NumOfBankAccounts = numOfBankAccounts;
+            this.NumOfBranchNumber = numOfBranchNumber;
+            this.AccountNumber = accountNumber;
+            this.OwnersID = ownersID;
+            this.AccountBalance = 0;
+            this.ExpiryDateOfSaving = new Date(expiryDateOfSaving);
         }
 
         public int GetNumOfBankAccounts()

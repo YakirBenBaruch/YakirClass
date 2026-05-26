@@ -72,7 +72,7 @@ namespace Yakir
 
         public bool Withdraw(double amount)
         {
-            if (amount < 0 || this.AccountBalance - amount < -OverDraftLimit)
+            if (amount < 0 || this.AccountBalance - amount < -DefaultOverDraftLimit)
             {
                 return false;
             }
