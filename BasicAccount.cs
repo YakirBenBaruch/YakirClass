@@ -39,6 +39,16 @@ namespace Yakir
             return AccountBalance;
         }
 
+        public bool Deposit(double amount)
+        {
+            if (amount < 0)
+            {
+                return false;
+            }
 
+            this.AccountBalance += amount;
+
+            return true;
+        }
     }
 }

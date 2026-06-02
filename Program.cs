@@ -52,6 +52,7 @@ namespace Yakir
             //    Console.WriteLine();
             //}
             //Matrix.Test();
+            Employee.UnitTest();
         }
     }
 }
