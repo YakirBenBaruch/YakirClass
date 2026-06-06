@@ -8,11 +8,20 @@ namespace Yakir
 {
     public class BasicAccount
     {
-        private int NumOfBankAccounts;
-        private int NumOfBranchNumber;
-        private int AccountNumber;
-        private string OwnersID;
-        private double AccountBalance = 0;
+        protected int NumOfBankAccounts;
+        protected int NumOfBranchNumber;
+        protected int AccountNumber;
+        protected string OwnersID;
+        protected double AccountBalance;
+
+        public BasicAccount(int numOfBankAccounts, int numOfBranchNumber, int accountNumber, string ownersID)
+        {
+            this.NumOfBankAccounts = numOfBankAccounts;
+            this.NumOfBranchNumber = numOfBranchNumber;
+            this.AccountNumber = accountNumber;
+            this.OwnersID = ownersID;
+            this.AccountBalance = 0;
+        }
 
         public int GetNumOfBankAccounts()
         {
@@ -41,14 +50,22 @@ namespace Yakir
 
         public bool Deposit(double amount)
         {
-            if (amount < 0)
+            if (amount <= 0)
             {
                 return false;
             }
 
             this.AccountBalance += amount;
-
             return true;
+        }
+
+        public override string ToString()
+        {
+            return "Bank account number: " + NumOfBankAccounts +
+                   "\nBranch number: " + NumOfBranchNumber +
+                   "\nAccount number: " + AccountNumber +
+                   "\nOwner's ID: " + OwnersID +
+                   "\nAccount balance: " + AccountBalance;
         }
     }
 }

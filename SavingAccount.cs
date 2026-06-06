@@ -6,48 +6,14 @@ using System.Threading.Tasks;
 
 namespace Yakir
 {
-    public class SavingAccount
+    public class SavingAccount : BasicAccount
     {
-        private int NumOfBankAccounts;
-        private int NumOfBranchNumber;
-        private int AccountNumber;
-        private string OwnersID;
-        private double AccountBalance = 0;
         private Date ExpiryDateOfSaving;
 
         public SavingAccount(int numOfBankAccounts, int numOfBranchNumber, int accountNumber, string ownersID, Date expiryDateOfSaving)
+            : base(numOfBankAccounts, numOfBranchNumber, accountNumber, ownersID)
         {
-            this.NumOfBankAccounts = numOfBankAccounts;
-            this.NumOfBranchNumber = numOfBranchNumber;
-            this.AccountNumber = accountNumber;
-            this.OwnersID = ownersID;
-            this.AccountBalance = 0;
             this.ExpiryDateOfSaving = new Date(expiryDateOfSaving);
-        }
-
-        public int GetNumOfBankAccounts()
-        {
-            return NumOfBankAccounts;
-        }
-
-        public int GetNumOfBranchNumber()
-        {
-            return NumOfBranchNumber;
-        }
-
-        public int GetAccountNumber()
-        {
-            return AccountNumber;
-        }
-
-        public string GetOwnersID()
-        {
-            return OwnersID;
-        }
-
-        public double GetAccountBalance()
-        {
-            return AccountBalance;
         }
 
         public void SetExpiryDateOfSaving(Date expiryDateOfSaving)
@@ -55,20 +21,9 @@ namespace Yakir
             this.ExpiryDateOfSaving = new Date(expiryDateOfSaving);
         }
 
-        public bool Deposit(double amount)
-        {
-            if (amount > 0)
-            {
-                AccountBalance += amount;
-                return true;
-            }
-
-            return false;
-        }
-
         public bool Withdrawal(double amount, Date withdrawalDate)
         {
-            if (amount <= AccountBalance && withdrawalDate.CompareTo(ExpiryDateOfSaving) >= 0)
+            if (amount > 0 && amount <= AccountBalance && withdrawalDate.CompareTo(ExpiryDateOfSaving) >= 0)
             {
                 AccountBalance -= amount;
                 return true;
@@ -79,11 +34,7 @@ namespace Yakir
 
         public override string ToString()
         {
-            return "Bank number: " + NumOfBankAccounts +
-                   "\nBranch number: " + NumOfBranchNumber +
-                   "\nAccount number: " + AccountNumber +
-                   "\nOwner ID: " + OwnersID +
-                   "\nAccount balance: " + AccountBalance +
+            return base.ToString() +
                    "\nExpiry date of saving: " + ExpiryDateOfSaving;
         }
     }
