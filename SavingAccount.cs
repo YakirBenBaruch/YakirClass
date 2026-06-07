@@ -10,8 +10,8 @@ namespace Yakir
     {
         private Date ExpiryDateOfSaving;
 
-        public SavingAccount(int numOfBankAccounts, int numOfBranchNumber, int accountNumber, string ownersID, Date expiryDateOfSaving)
-            : base(numOfBankAccounts, numOfBranchNumber, accountNumber, ownersID)
+        public SavingAccount(int numOfBankAccounts, int numOfBranchNumber, int accountNumber, string ownersID, Date expiryDateOfSaving) : base(numOfBankAccounts, numOfBranchNumber, accountNumber, ownersID)
+
         {
             this.ExpiryDateOfSaving = new Date(expiryDateOfSaving);
         }
