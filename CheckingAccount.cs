@@ -43,5 +43,15 @@ namespace Yakir
             return base.ToString() +
                    "\nOverdraft limit: " + OverDraftLimit;
         }
+
+        public static void UnitTest()
+        {
+            CheckingAccount checkingAccount1 = new CheckingAccount(1, 123, 456789, "ID123", 1000);
+            Console.WriteLine(checkingAccount1);
+            Console.WriteLine("Deposit 500: " + checkingAccount1.Deposit(500));
+            Console.WriteLine("Withdraw 1200: " + checkingAccount1.Withdraw(1200));
+            Console.WriteLine("Withdraw 300: " + checkingAccount1.Withdraw(300));
+            Console.WriteLine(checkingAccount1);
+        }
     }
 }

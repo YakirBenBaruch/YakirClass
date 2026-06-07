@@ -67,5 +67,15 @@ namespace Yakir
                    "\nOwner's ID: " + OwnersID +
                    "\nAccount balance: " + AccountBalance;
         }
+
+        public static void UnitTest()
+        {
+            BasicAccount account = new BasicAccount(123, 456, 789, "ID123");
+            Console.WriteLine(account);
+            Console.WriteLine("Deposit 100: " + account.Deposit(100));
+            Console.WriteLine(account);
+            Console.WriteLine("Deposit -50: " + account.Deposit(-50));
+            Console.WriteLine(account);
+        }
     }
 }

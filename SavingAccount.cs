@@ -37,5 +37,15 @@ namespace Yakir
             return base.ToString() +
                    "\nExpiry date of saving: " + ExpiryDateOfSaving;
         }
+
+        public static void UnitTest()
+        {
+            SavingAccount savingAccount1 = new SavingAccount(1, 123, 456789, "ID123", new Date(31, 12, 2024));
+            Console.WriteLine(savingAccount1);
+            Console.WriteLine("Deposit 1000: " + savingAccount1.Deposit(1000));
+            Console.WriteLine("Withdraw 500 on 30/12/2024: " + savingAccount1.Withdrawal(500, new Date(30, 12, 2024)));
+            Console.WriteLine("Withdraw 500 on 31/12/2024: " + savingAccount1.Withdrawal(500, new Date(31, 12, 2024)));
+            Console.WriteLine(savingAccount1);
+        }
     }
 }
