@@ -49,7 +49,7 @@ namespace Yakir
 
         public override string ToString()
         {
-            return "Name: " + this.Name + "\nDate of get into work: " + this.DateOfGetIntoWork + "\nSalary: " + this.Salary + "\nBonus: " + this.Bonus();
+            return "Name: " + this.Name + "\nStart Working at : " + this.DateOfGetIntoWork + "\nSalary: " + this.Salary + "\nBonus: " + this.Bonus();
         }
 
         public static void UnitTest()
