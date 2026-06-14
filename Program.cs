@@ -9,6 +9,7 @@ namespace Yakir
     {
         static void Main(string[] args)
         {
+            //מערכים
             //StringPractice.UnitTests();
             //Cypher.UnitTests();
             //ArraysPractice.UnitTest();
@@ -17,16 +18,17 @@ namespace Yakir
             //ArraysPractice4.UnitTest();
             //ArraysPractice5.UnitTest();
 
-            /*
-            string str = "Hello Josh";
-            string s2 = str.ToUpper();
-            string s3 = str.ToLower();
-            Console.WriteLine(s2);
-            Console.WriteLine(s3);
-            Console.WriteLine(str.CompareTo(s2));
-            */
+
+            //מחרוזות
+            //string str = "Hello Josh";
+            //string s2 = str.ToUpper();
+            //string s3 = str.ToLower();
+            //Console.WriteLine(s2);
+            //Console.WriteLine(s3);
+            //Console.WriteLine(str.CompareTo(s2));
 
 
+            //מחלקות
             //ClassPractice.UnitTest();
             //FootballGame.UnitTest();
             //Point.UnitTest();
@@ -40,6 +42,8 @@ namespace Yakir
             //Line.UnitTest();
             //Parabula.UnitTest();
 
+
+            //מערכים דו מימדיים
             //int[,] metrix;
             //metrix = new int[3, 4];
             //int a = metrix[2, 2];
@@ -52,7 +56,18 @@ namespace Yakir
             //    Console.WriteLine();
             //}
             //Matrix.Test();
-            Employee.UnitTest();
+
+
+            //ירושה
+            //BasicAccount.UnitTest();
+            //CheckingAccount.UnitTest();
+            //SavingAccount.UnitTest();
+            //BusinessAccount.UnitTest();
+            //Employee.UnitTest();
+            //Manager.UnitTest();
+            //MyCompany.UnitTest();
+            //פולימורפיזם
+            //BankServices.UnitTest();
         }
     }
 }
