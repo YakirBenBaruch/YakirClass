@@ -68,6 +68,20 @@ namespace Yakir
             //MyCompany.UnitTest();
             //פולימורפיזם
             //BankServices.UnitTest();
+
+            //התחלה של רקורסיה
+            //GetAmountOfDigits(123456789);
+            //public static int GetAmountOfDigits(int number)
+            //{
+            //    int count = 0;
+            //    while (number != 0)
+            //    {
+            //        number /= 10;
+            //        count++;
+            //    }
+            //    return count;
+            //}
+            Recursion.UnitTest();
         }
     }
 }
