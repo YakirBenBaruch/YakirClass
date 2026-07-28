@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Yakir
 {
     public class BasicAccount
-    {
+    { 
         protected int NumOfBankAccounts;
         protected int NumOfBranchNumber;
         protected int AccountNumber;

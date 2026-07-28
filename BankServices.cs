@@ -38,5 +38,28 @@ namespace Yakir
             return false;
         }
 
+        public string GetAccountDetails(int accountNumber)
+        {
+            for (int i = 0; i < Accounts.Length; i++)
+            {
+                if (Accounts[i] != null && Accounts[i].GetAccountNumber() == accountNumber)
+                {
+                    return Accounts[i].ToString();
+                }
+            }
+            return " ";
+        }
+
+        public BasicAccount[] AcountPerPerson(string ownersID)
+        {
+            for (int i = 0; i < Accounts.Length; i++)
+            {
+                if (Accounts[i] != null && Accounts[i].GetOwnersID() == ownersID)
+                {
+                    return new BasicAccount[] { Accounts[i] };
+                }
+            }
+            return null;
+        }
     }
 }
