@@ -18,6 +18,7 @@ namespace Yakir
             return 1 + Count(num / 10);
         }
 
+         
         public static void UnitTest()
         {
             int number = 1717;
