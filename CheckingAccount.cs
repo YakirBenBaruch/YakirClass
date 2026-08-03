@@ -38,6 +38,14 @@ namespace Yakir
             return true;
         }
 
+        public override bool AtRisk()
+        {
+            if (this.AccountBalance < 0)
+            {
+                return true;
+            }
+            return false;
+        }
         public override string ToString()
         {
             return base.ToString() +

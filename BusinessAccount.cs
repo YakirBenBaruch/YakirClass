@@ -97,6 +97,16 @@ namespace Yakir
             return true;
         }
 
+        public override bool AtRisk()
+        {
+            if (this.AccountBalance == this.OverDraftLimit * 0.9)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public override string ToString()
         {
             return base.ToString() +

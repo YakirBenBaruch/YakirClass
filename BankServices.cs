@@ -75,5 +75,96 @@ namespace Yakir
 
             return count;
         }
+
+        public BasicAccount[] GetAccountsByOwner(string ownerID)
+        {
+            int count = 0;
+
+            for (int i = 0; i < Accounts.Length; i++)
+            {
+                if (Accounts[i] != null && Accounts[i].GetOwnersID() == ownerID)
+                {
+                    count++;
+                }
+            }
+
+            if (count == 0)
+            {
+                return null;
+            }
+
+            BasicAccount[] ownerAccounts = new BasicAccount[count];
+            int index = 0;
+
+            for (int i = 0; i < Accounts.Length; i++)
+            {
+                if (Accounts[i] != null && Accounts[i].GetOwnersID() == ownerID)
+                {
+                    ownerAccounts[index] = Accounts[i];
+                    index++;
+                }
+            }
+
+            return ownerAccounts;
+        }
+
+        public string GetOwnerWithMostMoney()
+        {
+            string maxOwnerID = "";
+            double maxMoney = 0;
+
+            for (int i = 0; i < Accounts.Length; i++)
+            {
+                if (Accounts[i] != null)
+                {
+                    string ownerID = Accounts[i].GetOwnersID();
+                    double totalMoney = 0;
+
+                    for (int j = 0; j < Accounts.Length; j++)
+                    {
+                        if (Accounts[j] != null && Accounts[j].GetOwnersID() == ownerID)
+                        {
+                            totalMoney += Accounts[j].GetAccountBalance();
+                        }
+                    }
+
+                    if (totalMoney > maxMoney)
+                    {
+                        maxMoney = totalMoney;
+                        maxOwnerID = ownerID;
+                    }
+                }
+            }
+
+            return maxOwnerID;
+        }
+
+        public BasicAccount[] RiskAccounts()
+        {
+            int count = 0;
+
+            for (int i = 0; i < Accounts.Length; i++)
+            {
+                if (Accounts[i] != null && Accounts[i].AtRisk() == true)
+                {
+                    count++;
+                }
+            }
+
+            BasicAccount[] risksAccounts = new BasicAccount[count];
+
+            int index = 0;
+
+            for (int i = 0; i < Accounts.Length; i++)
+            {
+                if (Accounts[i] != null && Accounts[i].AtRisk() == true)
+                {
+                    risksAccounts[index] = Accounts[i];
+                    index++;
+                }
+            }
+
+            return risksAccounts;
+        }
     }
 }

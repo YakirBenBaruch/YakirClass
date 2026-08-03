@@ -68,6 +68,11 @@ namespace Yakir
                    "\nAccount balance: " + AccountBalance;
         }
 
+        public virtual bool AtRisk()
+        {
+            return false;
+        }
+
         public static void UnitTest()
         {
             BasicAccount account = new BasicAccount(123, 456, 789, "ID123");
