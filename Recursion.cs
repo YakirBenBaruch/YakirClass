@@ -18,7 +18,32 @@ namespace Yakir
             return 1 + Count(num / 10);
         }
 
-         
+        public static int SumNumbers(int N)
+        {
+            if (N == 1)
+            {
+                return 1;
+            }
+
+            else
+            {
+                return N + SumNumbers(N - 1);
+            }
+        }
+
+        public static int Factorial(int N)
+        {
+            if (N == 0 || N == 1)
+            {
+                return 1;
+            }
+
+            else
+            {
+                return N * Factorial(N - 1);
+            }
+        }
+
         public static void UnitTest()
         {
             int number = 1717;
