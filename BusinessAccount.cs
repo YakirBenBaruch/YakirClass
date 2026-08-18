@@ -117,17 +117,56 @@ namespace Yakir
 
         public static void UnitTest()
         {
-            BusinessAccount businessAccount1 = new BusinessAccount(1, 123, 456789, "ID123", "MyBusiness", 1000, 5000);
-            Console.WriteLine(businessAccount1);
-            Console.WriteLine("Deposit 2000: " + businessAccount1.Deposit(2000));
-            Console.WriteLine("Withdraw 6000: " + businessAccount1.Withdraw(6000));
-            Console.WriteLine("Withdraw 7000: " + businessAccount1.Withdraw(7000));
-            Console.WriteLine(businessAccount1);
-            CheckingAccount checkingAccount1 = new CheckingAccount(2, 456, 987654, "ID456", 500);
-            Console.WriteLine(checkingAccount1);
-            Console.WriteLine("Transfer salary of 3000 to checking account: " + businessAccount1.TransferSalary(3000, checkingAccount1));
-            Console.WriteLine(businessAccount1);
-            Console.WriteLine(checkingAccount1);
+            BusinessAccount account1 = new BusinessAccount(1, 123, 456789, "ID123", "MyBusiness", 1000, 5000);
+
+            Console.WriteLine("GetBusinessName: " + (account1.GetBusinessName() == "MyBusiness"));
+            Console.WriteLine("GetOverDraftLimit: " + (account1.GetOverDraftLimit() == 1000));
+            Console.WriteLine("GetMortgageLimit: " + (account1.GetMortgageLimit() == 5000));
+
+            account1.SetBusinessName("UpdatedBusiness");
+
+            Console.WriteLine("SetBusinessName: " + (account1.GetBusinessName() == "UpdatedBusiness"));
+            Console.WriteLine("Set negative mortgage limit: " + (account1.SetMortgageLimit(-100) == false));
+            Console.WriteLine("Mortgage unchanged: " + (account1.GetMortgageLimit() == 5000));
+            Console.WriteLine("Set mortgage limit: " + (account1.SetMortgageLimit(2000) == true));
+            Console.WriteLine("New mortgage limit: " + (account1.GetMortgageLimit() == 2000));
+            Console.WriteLine("Deposit 2000: " + (account1.Deposit(2000) == true));
+            Console.WriteLine("Withdraw zero: " + (account1.Withdraw(0) == false));
+            Console.WriteLine("Withdraw negative amount: " + (account1.Withdraw(-100) == false));
+            Console.WriteLine("Withdraw to exact limit: " + (account1.Withdraw(5000) == true));
+            Console.WriteLine("Balance at exact limit: " + (account1.GetAccountBalance() == -3000));
+            Console.WriteLine("Withdraw over limit: " + (account1.Withdraw(1) == false));
+            Console.WriteLine("Balance after failed withdrawal: " + (account1.GetAccountBalance() == -3000));
+            Console.WriteLine("AtRisk with negative balance: " + (account1.AtRisk() == false));
+            Console.WriteLine("ToString: " + account1.ToString().Contains("UpdatedBusiness"));
+
+            BusinessAccount defaultAccount = new BusinessAccount(2, 456, 987654, "ID456", "DefaultBusiness");
+
+            Console.WriteLine("Default overdraft limit: " + (defaultAccount.GetOverDraftLimit() == 500));
+            Console.WriteLine("Default mortgage limit: " + (defaultAccount.GetMortgageLimit() == 0));
+
+            BusinessAccount invalidLimitsAccount = new BusinessAccount(3, 789, 123456, "ID789", "InvalidLimits", -1000, -5000);
+
+            Console.WriteLine("Invalid overdraft becomes default: " + (invalidLimitsAccount.GetOverDraftLimit() == 500));
+            Console.WriteLine("Invalid mortgage becomes zero: " + (invalidLimitsAccount.GetMortgageLimit() == 0));
+
+            BusinessAccount riskAccount = new BusinessAccount(4, 111, 222333, "ID111", "RiskBusiness", 1000, 0);
+
+            Console.WriteLine("Initial AtRisk: " + (riskAccount.AtRisk() == false));
+            Console.WriteLine("Deposit 900: " + (riskAccount.Deposit(900) == true));
+            Console.WriteLine("AtRisk at 90 percent: " + (riskAccount.AtRisk() == true));
+
+            BusinessAccount salaryAccount = new BusinessAccount(5, 222, 333444, "ID222", "SalaryBusiness", 1000, 0);
+            CheckingAccount checkingAccount = new CheckingAccount(6, 333, 444555, "ID333", 500);
+
+            Console.WriteLine("Deposit before salary transfer: " + (salaryAccount.Deposit(1000) == true));
+            Console.WriteLine("Transfer salary: " + (salaryAccount.TransferSalary(300, checkingAccount) == true));
+            Console.WriteLine("Business balance after transfer: " + (salaryAccount.GetAccountBalance() == 700));
+            Console.WriteLine("Checking balance after transfer: " + (checkingAccount.GetAccountBalance() == 300));
+            Console.WriteLine("Transfer zero salary: " + (salaryAccount.TransferSalary(0, checkingAccount) == false));
+            Console.WriteLine("Transfer salary over limit: " + (salaryAccount.TransferSalary(2000, checkingAccount) == false));
+            Console.WriteLine("Business balance after failed transfer: " + (salaryAccount.GetAccountBalance() == 700));
+            Console.WriteLine("Checking balance after failed transfer: " + (checkingAccount.GetAccountBalance() == 300));
         }
     }
 }

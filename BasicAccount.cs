@@ -76,10 +76,17 @@ namespace Yakir
         public static void UnitTest()
         {
             BasicAccount account = new BasicAccount(123, 456, 789, "ID123");
-            Console.WriteLine(account);
-            Console.WriteLine("Deposit 100: " + account.Deposit(100));
-            Console.WriteLine(account);
-            Console.WriteLine("Deposit -50: " + account.Deposit(-50));
+
+            Console.WriteLine("GetNumOfBankAccounts: " + (account.GetNumOfBankAccounts() == 123));
+            Console.WriteLine("GetNumOfBranchNumber: " + (account.GetNumOfBranchNumber() == 456));
+            Console.WriteLine("GetAccountNumber: " + (account.GetAccountNumber() == 789));
+            Console.WriteLine("GetOwnersID: " + (account.GetOwnersID() == "ID123"));
+            Console.WriteLine("Initial balance: " + (account.GetAccountBalance() == 0));
+            Console.WriteLine("Deposit 100: " + (account.Deposit(100) == true));
+            Console.WriteLine("Balance after deposit: " + (account.GetAccountBalance() == 100));
+            Console.WriteLine("Deposit -50: " + (account.Deposit(-50) == false));
+            Console.WriteLine("Balance after failed deposit: " + (account.GetAccountBalance() == 100));
+            Console.WriteLine("AtRisk: " + (account.AtRisk() == false));
             Console.WriteLine(account);
         }
     }

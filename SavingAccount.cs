@@ -49,12 +49,27 @@ namespace Yakir
 
         public static void UnitTest()
         {
-            SavingAccount savingAccount1 = new SavingAccount(1, 123, 456789, "ID123", new Date(31, 12, 2024));
-            Console.WriteLine(savingAccount1);
-            Console.WriteLine("Deposit 1000: " + savingAccount1.Deposit(1000));
-            Console.WriteLine("Withdraw 500 on 30/12/2024: " + savingAccount1.Withdrawal(500, new Date(30, 12, 2024)));
-            Console.WriteLine("Withdraw 500 on 31/12/2024: " + savingAccount1.Withdrawal(500, new Date(31, 12, 2024)));
-            Console.WriteLine(savingAccount1);
+            SavingAccount account = new SavingAccount(1, 123, 456789, "ID123", new Date(31, 12, 2024));
+
+            Console.WriteLine("Initial AtRisk: " + (account.AtRisk() == true));
+            Console.WriteLine("Deposit 1000: " + (account.Deposit(1000) == true));
+            Console.WriteLine("Balance after deposit: " + (account.GetAccountBalance() == 1000));
+            Console.WriteLine("AtRisk after deposit: " + (account.AtRisk() == false));
+            Console.WriteLine("Withdrawal before expiry date: " + (account.Withdrawal(500, new Date(30, 12, 2024)) == false));
+            Console.WriteLine("Balance after failed withdrawal: " + (account.GetAccountBalance() == 1000));
+            Console.WriteLine("Withdrawal zero: " + (account.Withdrawal(0, new Date(31, 12, 2024)) == false));
+            Console.WriteLine("Withdrawal negative amount: " + (account.Withdrawal(-100, new Date(31, 12, 2024)) == false));
+            Console.WriteLine("Withdrawal over balance: " + (account.Withdrawal(1001, new Date(31, 12, 2024)) == false));
+            Console.WriteLine("Withdrawal on expiry date: " + (account.Withdrawal(500, new Date(31, 12, 2024)) == true));
+            Console.WriteLine("Balance after withdrawal: " + (account.GetAccountBalance() == 500));
+
+            account.SetExpiryDateOfSaving(new Date(31, 12, 2025));
+
+            Console.WriteLine("Withdrawal before new expiry date: " + (account.Withdrawal(500, new Date(1, 1, 2025)) == false));
+            Console.WriteLine("Withdrawal on new expiry date: " + (account.Withdrawal(500, new Date(31, 12, 2025)) == true));
+            Console.WriteLine("Final balance: " + (account.GetAccountBalance() == 0));
+            Console.WriteLine("Final AtRisk: " + (account.AtRisk() == true));
+            Console.WriteLine(account);
         }
     }
 }
