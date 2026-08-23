@@ -64,8 +64,12 @@ namespace Yakir
 
         public static int T4(int N)
         {
+            if (N < 10)
+                return 1;
 
+            return 1 + T4(N / 10);
         }
+
         public static void UnitTest()
         {
             int number = 1717;
