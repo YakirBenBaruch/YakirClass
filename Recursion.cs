@@ -65,16 +65,60 @@ namespace Yakir
         public static int T4(int N)
         {
             if (N < 10)
+            {
                 return 1;
+            }
 
             return 1 + T4(N / 10);
         }
 
+        public static int T5(int N1, int N2)
+        {
+            if (N1 < N2)
+            {
+                return 0;
+            }
+
+            return 1 + T5(N1 - N2, N2);
+        }
+
+        public static int T6(int N1, int N2)
+        {
+            if (N1 < N2)
+            {
+                return N1;
+            }
+
+            return T6(N1 - N2, N2);
+        }
+
+        public static bool T7(int X, int Y)
+        {
+            if (X == 0)
+            {
+                return true;
+            }
+
+            if (X < Y)
+            {
+                return false;
+            }
+
+            return T7(X - Y, Y);
+        }
         public static void UnitTest()
         {
             int number = 1717;
             int digitCount = Count(number);
             Console.WriteLine($"The number of digits in {number} is: {digitCount}");
+            Console.WriteLine(T1(5));
+            Console.WriteLine(T2(5));
+            Console.WriteLine(T3(7));
+            Console.WriteLine(T4(1717));
+            Console.WriteLine(T5(17, 5));
+            Console.WriteLine(T6(17, 5));
+            Console.WriteLine(T7(12, 3));
+            Console.WriteLine(T7(14, 3));
         }
     }
 }
