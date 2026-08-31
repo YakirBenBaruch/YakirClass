@@ -106,6 +106,44 @@ namespace Yakir
 
             return T7(X - Y, Y);
         }
+
+        public static bool T8(int N, int I)
+        {
+            if (N < 2)
+            {
+                return false;
+            }
+
+            if (I == N)
+            {
+                return true;
+            }
+
+            if (N % I == 0)
+            {
+                return false;
+            }
+
+            return T8(N, I + 1);
+        }
+
+        public static bool T9(int N)
+        {
+            if (N < 10)
+            {
+                return true;
+            }
+
+            int lastDigit = N % 10;
+            int beforeLastDigit = (N / 10) % 10;
+
+            if (lastDigit % 2 != beforeLastDigit % 2)
+            {
+                return false;
+            }
+
+            return T9(N / 10);
+        }
         public static void UnitTest()
         {
             int number = 1717;
@@ -119,6 +157,8 @@ namespace Yakir
             Console.WriteLine(T6(17, 5));
             Console.WriteLine(T7(12, 3));
             Console.WriteLine(T7(14, 3));
+            Console.WriteLine(T8(29, 2));
+            Console.WriteLine(T9(2468));
         }
     }
 }
