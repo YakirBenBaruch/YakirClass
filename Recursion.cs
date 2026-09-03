@@ -144,6 +144,29 @@ namespace Yakir
 
             return T9(N / 10);
         }
+        public static int T10(int N)
+        {
+            if (N == 0)
+            {
+                return 0;
+            }
+
+            if (N == 1)
+            {
+                return 2;
+            }
+
+            if (N % 2 == 0)
+            {
+                return (N * N) + T10(N - 1);
+            }
+
+            else
+            {
+                return (N * 2) + T10(N - 1);
+            }
+        }
+
         public static void UnitTest()
         {
             int number = 1717;
@@ -159,6 +182,7 @@ namespace Yakir
             Console.WriteLine(T7(14, 3));
             Console.WriteLine(T8(29, 2));
             Console.WriteLine(T9(2468));
+            Console.WriteLine(T10(5));
         }
     }
 }
