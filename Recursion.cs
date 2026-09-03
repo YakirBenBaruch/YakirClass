@@ -151,20 +151,17 @@ namespace Yakir
                 return 0;
             }
 
-            if (N == 1)
-            {
-                return 2;
-            }
-
             if (N % 2 == 0)
             {
                 return (N * N) + T10(N - 1);
             }
 
-            else
-            {
-                return (N * 2) + T10(N - 1);
-            }
+            return (N * 2) + T10(N - 1);
+        }
+
+        public static int T11(int N)
+        {
+
         }
 
         public static void UnitTest()
