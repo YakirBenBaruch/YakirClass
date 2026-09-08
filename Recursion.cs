@@ -161,7 +161,12 @@ namespace Yakir
 
         public static int T11(int N)
         {
+            int Index = N;
 
+            if (Index == 0)
+            {
+                return 0;
+            }
         }
 
         public static void UnitTest()
