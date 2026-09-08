@@ -159,14 +159,111 @@ namespace Yakir
             return (N * 2) + T10(N - 1);
         }
 
-        public static int T11(int N)
+        public static double T11(int N)
         {
-            int Index = N;
-
-            if (Index == 0)
+            if (N == 0)
             {
                 return 0;
             }
+
+            else
+            {
+                if (N % 2 == 0)
+                {
+                    return -Math.Sqrt(2 * N - 1) + T11(N - 1);
+                }
+
+                else
+                {
+                    return (2 * N - 1) + T11(N - 1);
+                }
+            }
+        }
+
+        public static int T14(int[] arr, int i)
+        {
+            if (i == 0)
+            {
+                return arr[0];
+            }
+
+            return arr[i] + T14(arr, i - 1);
+        }
+
+        public static int T15(int[] arr, int i)
+        {
+            if (i == 0)
+            {
+                if (arr[0] > 0)
+                {
+                    return 1;
+                }
+
+                return 0;
+            }
+
+            if (arr[i] > 0)
+            {
+                return 1 + T15(arr, i - 1);
+            }
+
+            else
+            {
+                return T15(arr, i - 1);
+            }
+        }
+
+        public static int T16(int[] arr, int num, int i = 0)
+        {
+            if (i > arr.Length)
+            {
+                return -1;
+            }
+
+            else if (num == arr[i])
+            {
+                return i;
+            }
+
+            else
+            {
+                return T16(arr, num, i + 1);
+            }
+        }
+
+        public static bool T17(int[] arr, int i = 0)
+        {
+            if (i > arr.Length - 1)
+            {
+                return (arr[i] < arr[i + 1]);
+            }
+
+            return (arr[i] < arr[i + 1]) && T17(arr, i + 1);
+        }
+
+        public static bool T18(int[] arr, int i = 0)
+        {
+            if (arr[i] > arr.Length)
+            {
+                return false;
+            }
+
+            if (arr[i] < 2)
+            {
+                return true;
+            }
+
+            if (arr[i] == i)
+            {
+                return true;
+            }
+
+            if (arr[i] % 2 == 0)
+            {
+                return false;
+            }
+
+            return T18(arr, i + 1);
         }
 
         public static void UnitTest()
@@ -185,6 +282,7 @@ namespace Yakir
             Console.WriteLine(T8(29, 2));
             Console.WriteLine(T9(2468));
             Console.WriteLine(T10(5));
+            Console.WriteLine(T11(4));
         }
     }
 }
