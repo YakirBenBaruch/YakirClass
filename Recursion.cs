@@ -233,9 +233,9 @@ namespace Yakir
 
         public static bool T17(int[] arr, int i = 0)
         {
-            if (i > arr.Length - 1)
+            if (i >= arr.Length - 1)
             {
-                return (arr[i] < arr[i + 1]);
+                return true;
             }
 
             return (arr[i] < arr[i + 1]) && T17(arr, i + 1);
@@ -243,27 +243,47 @@ namespace Yakir
 
         public static bool T18(int[] arr, int i = 0)
         {
-            if (arr[i] > arr.Length)
+            if (i >= arr.Length)
             {
                 return false;
             }
 
-            if (arr[i] < 2)
+            if (T8(arr[i], 2))
             {
                 return true;
-            }
-
-            if (arr[i] == i)
-            {
-                return true;
-            }
-
-            if (arr[i] % 2 == 0)
-            {
-                return false;
             }
 
             return T18(arr, i + 1);
+        }
+
+        //public static int T19(int[,] arr, int N, int Index)
+        //{
+
+        //}
+
+        public static bool T20(int[] arr)
+        {
+            Random rnd = new Random();
+            int r = rnd.Next(0, arr.Length - 1);
+            int r2 = rnd.Next(0, arr.Length - 1);
+
+
+        }
+
+
+        public static bool Tclass(int N)
+        {
+            if (N < 10)
+            {
+                return N % 2 == 1;
+            }
+
+            if (N % 2 == 0)
+            {
+                return false;
+            }
+
+            return Tclass(N / 10);
         }
 
         public static void UnitTest()
@@ -283,6 +303,12 @@ namespace Yakir
             Console.WriteLine(T9(2468));
             Console.WriteLine(T10(5));
             Console.WriteLine(T11(4));
+
+
+
+
+
+            Console.WriteLine(T17(new int[] { 1, 2, 3, 4, 5 }));
         }
     }
 }
