@@ -180,6 +180,8 @@ namespace Yakir
             }
         }
 
+
+
         public static int T14(int[] arr, int i)
         {
             if (i == 0)
@@ -264,9 +266,12 @@ namespace Yakir
         public static bool T20(int[] arr)
         {
             Random rnd = new Random();
-            int r = rnd.Next(0, arr.Length - 1);
-            int r2 = rnd.Next(0, arr.Length - 1);
-
+            int r = rnd.Next(0, arr.Length);
+            int r2 = rnd.Next(0, arr.Length);
+            return T20(arr, Math.Max(r, r2), Math.Min(r, r2));
+        }
+        private static bool T20(int[] arr,int r,int r1)
+        {
 
         }
 
