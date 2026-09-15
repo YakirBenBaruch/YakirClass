@@ -258,21 +258,30 @@ namespace Yakir
             return T18(arr, i + 1);
         }
 
-        //public static int T19(int[,] arr, int N, int Index)
-        //{
-
-        //}
 
         public static bool T20(int[] arr)
         {
             Random rnd = new Random();
+
             int r = rnd.Next(0, arr.Length);
             int r2 = rnd.Next(0, arr.Length);
-            return T20(arr, Math.Max(r, r2), Math.Min(r, r2));
-        }
-        private static bool T20(int[] arr,int r,int r1)
-        {
 
+            return T20(arr, Math.Min(r, r2), Math.Max(r, r2));
+        }
+
+        public static bool T20(int[] arr, int Ileft, int Iright)
+        {
+            if (Ileft >= Iright)
+            {
+                return true;
+            }
+
+            if (arr[Ileft] != arr[Iright])
+            {
+                return false;
+            }
+
+            return T20(arr, Ileft + 1, Iright - 1);
         }
 
 
