@@ -300,6 +300,46 @@ namespace Yakir
             return Tclass(N / 10);
         }
 
+        public static int T21(string str, int i = 0)
+        {
+            if (i >= str.Length)
+            {
+                return 0;
+            }
+
+            if (str[i] >= 'a' && str[i] <= 'z')
+            {
+                return 1 + T21(str, i + 1);
+            }
+
+            return T21(str, i + 1);
+        }
+
+        public static string T22(string str, int i = 0)
+        {
+            if (i >= str.Length)
+            {
+                return "";
+            }
+
+            if ((i + 1) % 3 == 0)
+            {
+                return str[i] + "*" + T22(str, i + 1);
+            }
+
+            return str[i] + T22(str, i + 1);
+        }
+
+        public static string T23(string str, int i = 0)
+        {
+            if (i >= str.Length)
+            {
+                return "";
+            }
+
+            return T23(str, i + 1) + str[i];
+        }
+
         public static void UnitTest()
         {
             int number = 1717;
@@ -317,11 +357,15 @@ namespace Yakir
             Console.WriteLine(T9(2468));
             Console.WriteLine(T10(5));
             Console.WriteLine(T11(4));
-
-
-
-
-
+            Console.WriteLine(T14(new int[] { 1, 2, 3, 4, 5 }, 4));
+            Console.WriteLine(T15(new int[] { -2, 5, 3, -1, 7 }, 4));
+            Console.WriteLine(T16(new int[] { 4, 8, 2, 9, 6 }, 9));
+            Console.WriteLine(T18(new int[] { 4, 6, 8, 11, 12 }));
+            Console.WriteLine(T20(new int[] { 5, 5, 5, 5, 5 }));
+            Console.WriteLine(Tclass(13579));
+            Console.WriteLine(T21("AbCdEf"));
+            Console.WriteLine(T22("abcdefghi"));
+            Console.WriteLine(T23("abcdef"));
             Console.WriteLine(T17(new int[] { 1, 2, 3, 4, 5 }));
         }
     }
