@@ -340,6 +340,47 @@ namespace Yakir
             return T23(str, i + 1) + str[i];
         }
 
+        public static void T24(char c, char ch)
+        {
+            T24(Math.Max(c, ch), Math.Min(c, ch));
+        }
+
+        public static void T24(int big, int small)
+        {
+            if (small != big)
+            {
+                Console.WriteLine((char)small);
+                T24(big, small + 1);
+            }
+        }
+
+        public static void T25(int N , int I = 0)
+        {
+            if (I < N)
+            {
+                if (N % I == 0)
+                {
+                    Console.WriteLine(I);
+                }
+
+                T25(N, I + 1);
+            }
+        }
+
+        public static void T26(int N)
+        {
+            if ((N % 10) % 2 == 0)
+            {
+                Console.WriteLine(N);
+            }
+            if (N >= 10)
+            {
+                
+
+                T26(N / 10);
+            }
+        }
+
         public static void UnitTest()
         {
             int number = 1717;
@@ -360,13 +401,13 @@ namespace Yakir
             Console.WriteLine(T14(new int[] { 1, 2, 3, 4, 5 }, 4));
             Console.WriteLine(T15(new int[] { -2, 5, 3, -1, 7 }, 4));
             Console.WriteLine(T16(new int[] { 4, 8, 2, 9, 6 }, 9));
+            Console.WriteLine(T17(new int[] { 1, 2, 3, 4, 5 }));
             Console.WriteLine(T18(new int[] { 4, 6, 8, 11, 12 }));
             Console.WriteLine(T20(new int[] { 5, 5, 5, 5, 5 }));
             Console.WriteLine(Tclass(13579));
             Console.WriteLine(T21("AbCdEf"));
             Console.WriteLine(T22("abcdefghi"));
             Console.WriteLine(T23("abcdef"));
-            Console.WriteLine(T17(new int[] { 1, 2, 3, 4, 5 }));
         }
     }
 }
