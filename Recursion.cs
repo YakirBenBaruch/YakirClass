@@ -373,9 +373,9 @@ namespace Yakir
             {
                 Console.WriteLine(N);
             }
+
             if (N >= 10)
             {
-
                 T26(N / 10);
             }
         }
