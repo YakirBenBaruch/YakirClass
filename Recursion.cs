@@ -180,7 +180,32 @@ namespace Yakir
             }
         }
 
+        public static int T12(int N1 , int N2 , int i = 1)
+        {
 
+            if (N1 * i >= N2)
+            {
+                return 0;
+            }
+
+            return N1 * i + T12(N1 , N2, i + 1);
+
+        }
+
+        public static int T13(int N)
+        {
+            if (N == 0)
+            {
+                return 0;
+            }
+
+            if (N == 1)
+            {
+                return 1;
+            }
+
+            return T13(N - 1) * T13(N - 1) + T13(N - 2) * T13(N - 2);
+        }
 
         public static int T14(int[] arr, int i)
         {
@@ -382,6 +407,7 @@ namespace Yakir
 
         public static void UnitTest()
         {
+            /*
             int number = 1717;
             int digitCount = Count(number);
             Console.WriteLine($"The number of digits in {number} is: {digitCount}");
@@ -397,6 +423,12 @@ namespace Yakir
             Console.WriteLine(T9(2468));
             Console.WriteLine(T10(5));
             Console.WriteLine(T11(4));
+            Console.WriteLine(T12(3 , 15));
+            */
+            Console.WriteLine(T13(5));
+
+
+            /*
             Console.WriteLine(T14(new int[] { 1, 2, 3, 4, 5 }, 4));
             Console.WriteLine(T15(new int[] { -2, 5, 3, -1, 7 }, 4));
             Console.WriteLine(T16(new int[] { 4, 8, 2, 9, 6 }, 9));
@@ -407,6 +439,7 @@ namespace Yakir
             Console.WriteLine(T21("AbCdEf"));
             Console.WriteLine(T22("abcdefghi"));
             Console.WriteLine(T23("abcdef"));
+            */
         }
     }
 }
