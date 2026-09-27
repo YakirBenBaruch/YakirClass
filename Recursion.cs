@@ -405,6 +405,40 @@ namespace Yakir
             }
         }
 
+        public static void T27(int i, int j)
+        {
+            if (i > 10)
+            {
+                return;
+            }
+
+            if (j > 10)
+            {
+                Console.WriteLine();
+                T27(i + 1, 1);
+                return;
+            }
+
+            Console.Write(i * j + "\t");
+            T27(i, j + 1);
+        }
+
+        public static void T28(in int A1 , int d , int N)
+        {
+            if (N == 0)
+            {
+                return;
+            }
+
+            if (N == 1)
+            {
+                Console.WriteLine(A1);
+                return;
+            }
+
+            Console.WriteLine(A1);
+            T28(A1 + d, d, N - 1);
+        }
         public static void UnitTest()
         {
             /*
@@ -424,11 +458,7 @@ namespace Yakir
             Console.WriteLine(T10(5));
             Console.WriteLine(T11(4));
             Console.WriteLine(T12(3 , 15));
-            */
             Console.WriteLine(T13(5));
-
-
-            /*
             Console.WriteLine(T14(new int[] { 1, 2, 3, 4, 5 }, 4));
             Console.WriteLine(T15(new int[] { -2, 5, 3, -1, 7 }, 4));
             Console.WriteLine(T16(new int[] { 4, 8, 2, 9, 6 }, 9));
@@ -439,6 +469,16 @@ namespace Yakir
             Console.WriteLine(T21("AbCdEf"));
             Console.WriteLine(T22("abcdefghi"));
             Console.WriteLine(T23("abcdef"));
+            Console.WriteLine("T24 from 'a' to 'f':");
+            T24('a', 'f');
+            Console.WriteLine("T25 factors of 12:");
+            T25(12);
+            Console.WriteLine("T26 even digits of 2468:");
+            T26(2468);
+            Console.WriteLine("T27 multiplication table:");
+            T27(1, 1);
+            Console.WriteLine("T28 arithmetic progression starting from 2, with difference 3, for 5 terms:");
+            T28(2, 3, 5);
             */
         }
     }
