@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -423,7 +424,7 @@ namespace Yakir
             T27(i, j + 1);
         }
 
-        public static void T28(in int A1 , int d , int N)
+        public static void T28(in int A1, int d, int N)
         {
             if (N == 0)
             {
@@ -439,6 +440,49 @@ namespace Yakir
             Console.WriteLine(A1);
             T28(A1 + d, d, N - 1);
         }
+
+        public static void T29(int N, int num = 1, int Add = 1)
+        {
+            if (N == 0)
+            {
+                return;
+            }
+
+            Console.WriteLine(num);
+
+            T29(N - 1, num + Add, Add + 1);
+        }
+
+        public static void T30(int N, int num = 4)
+        {
+            if (N == 0)
+            {
+                return;
+            }
+
+            Console.WriteLine(num);
+
+            if (N == 1)
+            {
+                return;
+            }
+
+            Console.WriteLine(num - 1);
+            T30(N - 2, num + 1);
+        }
+
+        public static void T31(int[] arr, int N = 0)
+        {
+            if (N >= arr.Length)
+            {
+                return;
+            }
+
+            Console.WriteLine(arr[N]);
+            T31(arr, N + 2);
+        }
+
+        public static void T32
         public static void UnitTest()
         {
             /*
@@ -479,7 +523,12 @@ namespace Yakir
             T27(1, 1);
             Console.WriteLine("T28 arithmetic progression starting from 2, with difference 3, for 5 terms:");
             T28(2, 3, 5);
+            Console.WriteLine("T29");
+            T29(7);
+            Console.WriteLine("T30");
+            T30(8);
             */
+
         }
     }
 }
