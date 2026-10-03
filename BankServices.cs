@@ -167,6 +167,63 @@ namespace Yakir
             return risksAccounts;
         }
 
+        public LinkedList<SavingAccount> ZeroSavings()
+        {
+            LinkedList<SavingAccount> savings = new LinkedList<SavingAccount>();
+
+            for (int i = 0; i < Accounts.Length; i++)
+            {
+                if (Accounts[i] is SavingAccount)
+                {
+                    SavingAccount account = (SavingAccount)Accounts[i];
+
+                    if (account.GetAccountBalance() == 0)
+                    {
+                        savings.AddLast(account);
+                    }
+                }
+            }
+
+            return savings;
+        }
+
+        public LinkedList<string> LoanSuggestion()
+        {
+            LinkedList<string> suggestions = new LinkedList<string>();
+
+            for (int i = 0; i < Accounts.Length; i++)
+            {
+                if (Accounts[i] is CheckingAccount)
+                {
+                    CheckingAccount account = (CheckingAccount)Accounts[i];
+
+                    double balance = account.GetAccountBalance();
+                    double limit = account.GetOverDraftLimit();
+
+                    if (balance < 0 && -balance > limit / 2)
+                    {
+                        suggestions.AddLast(
+                            $"Type:Checking, Num:{account.GetAccountNumber()}, ID:{account.GetOwnersID()}, Balance:{balance}");
+                    }
+                }
+                else if (Accounts[i] is BusinessAccount)
+                {
+                    BusinessAccount account = (BusinessAccount)Accounts[i];
+
+                    double balance = account.GetAccountBalance();
+                    double limit = account.GetOverDraftLimit() + account.GetMortgageLimit();
+
+                    if (balance < 0 && -balance > limit / 2)
+                    {
+                        suggestions.AddLast(
+                            $"Type:Business, Num:{account.GetAccountNumber()}, ID:{account.GetOwnersID()}, Balance:{balance}, BusinessName:{account.GetBusinessName()}");
+                    }
+                }
+            }
+
+            return suggestions;
+        }
+
         public static void UnitTest()
         {
             BankServices bank = new BankServices();

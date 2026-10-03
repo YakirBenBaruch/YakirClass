@@ -46,6 +46,12 @@ namespace Yakir
             }
             return false;
         }
+
+        public double GetOverDraftLimit()
+        {
+            return OverDraftLimit;
+        }
+
         public override string ToString()
         {
             return base.ToString() +

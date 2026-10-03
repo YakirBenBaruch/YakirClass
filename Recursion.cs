@@ -482,10 +482,69 @@ namespace Yakir
             T31(arr, N + 2);
         }
 
-        public static void T32
+        public static void T32(int[] arr, int i = 0)
+        {
+            if (i >= arr.Length - 1)
+            {
+                return;
+            }
+
+            if (arr[i] < arr[i + 1])
+            {
+                Console.WriteLine(arr[i]);
+            }
+
+            T32(arr, i + 1);
+        }
+
+        public static void T33(int[,] arr, int row = 0, int col = 0)
+        {
+            if (row == arr.GetLength(0))
+            {
+                return;
+            }
+
+            if (col == arr.GetLength(1))
+            {
+                Console.WriteLine();
+                T33(arr, row + 1, 0);
+            }
+            else
+            {
+                Console.Write(arr[row, col] + "\t");
+                T33(arr, row, col + 1);
+            }
+        }
+
+        public static void T34(int[,] arr, int row = 0)
+        {
+            if (row == arr.GetLength(0))
+            {
+                return;
+            }
+
+            Console.WriteLine(MaxInRow(arr, row));
+            T34(arr, row + 1);
+        }
+
+        public static int MaxInRow(int[,] arr, int row, int col = 0)
+        {
+            if (col == arr.GetLength(1) - 1)
+            {
+                return arr[row, col];
+            }
+
+            int max = MaxInRow(arr, row, col + 1);
+
+            if (arr[row, col] > max)
+            {
+                return arr[row, col];
+            }
+
+            return max;
+        }
         public static void UnitTest()
         {
-            /*
             int number = 1717;
             int digitCount = Count(number);
             Console.WriteLine($"The number of digits in {number} is: {digitCount}");
@@ -501,7 +560,7 @@ namespace Yakir
             Console.WriteLine(T9(2468));
             Console.WriteLine(T10(5));
             Console.WriteLine(T11(4));
-            Console.WriteLine(T12(3 , 15));
+            Console.WriteLine(T12(3, 15));
             Console.WriteLine(T13(5));
             Console.WriteLine(T14(new int[] { 1, 2, 3, 4, 5 }, 4));
             Console.WriteLine(T15(new int[] { -2, 5, 3, -1, 7 }, 4));
@@ -513,22 +572,39 @@ namespace Yakir
             Console.WriteLine(T21("AbCdEf"));
             Console.WriteLine(T22("abcdefghi"));
             Console.WriteLine(T23("abcdef"));
+
             Console.WriteLine("T24 from 'a' to 'f':");
             T24('a', 'f');
+
             Console.WriteLine("T25 factors of 12:");
             T25(12);
+
             Console.WriteLine("T26 even digits of 2468:");
             T26(2468);
+
             Console.WriteLine("T27 multiplication table:");
             T27(1, 1);
+
             Console.WriteLine("T28 arithmetic progression starting from 2, with difference 3, for 5 terms:");
             T28(2, 3, 5);
+
             Console.WriteLine("T29");
             T29(7);
+
             Console.WriteLine("T30");
             T30(8);
-            */
 
+            Console.WriteLine("T31");
+            T31(new int[] { 7, 4, 9, 2, 11, 6 }); 
+
+            Console.WriteLine("T32");
+            T32(new int[] { 5, 8, 3, 7, 2 }); 
+
+            Console.WriteLine("T33");
+            T33(new int[,] { { 1, 2, 3 }, { 4, 5, 6 } });
+
+            Console.WriteLine("T34");
+            T34(new int[,] { { 3, 8, 1 }, { -6, -2, -9 }, { 10, 4, 7 } });
         }
     }
 }
