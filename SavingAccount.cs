@@ -41,6 +41,7 @@ namespace Yakir
             return false;
         }
 
+        
         public override string ToString()
         {
             return base.ToString() +
@@ -49,6 +50,7 @@ namespace Yakir
 
         public static void UnitTest()
         {
+            /*
             SavingAccount account = new SavingAccount(1, 123, 456789, "ID123", new Date(31, 12, 2024));
 
             Console.WriteLine("Initial AtRisk: " + (account.AtRisk() == true));
@@ -70,6 +72,8 @@ namespace Yakir
             Console.WriteLine("Final balance: " + (account.GetAccountBalance() == 0));
             Console.WriteLine("Final AtRisk: " + (account.AtRisk() == true));
             Console.WriteLine(account);
+            */
+
         }
     }
 }

@@ -67,7 +67,8 @@ namespace Yakir
             //Manager.UnitTest();
             //MyCompany.UnitTest();
             //פולימורפיזם
-            //BankServices.UnitTest();
+            BankServices.UnitTest();
+            //SavingAccount.UnitTest();
 
             //התחלה של רקורסיה
             //GetAmountOfDigits(123456789);

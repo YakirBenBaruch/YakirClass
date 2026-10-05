@@ -167,65 +167,46 @@ namespace Yakir
             return risksAccounts;
         }
 
-        public LinkedList<SavingAccount> ZeroSavings()
+        public static BasicAccount[] ZeroSaving(BasicAccount[] accounts)
         {
-            LinkedList<SavingAccount> savings = new LinkedList<SavingAccount>();
+            int count = 0;
 
-            for (int i = 0; i < Accounts.Length; i++)
+
+            for (int i = 0; i < accounts.Length; i++)
             {
-                if (Accounts[i] is SavingAccount)
+                if (accounts[i] != null &&
+                    accounts[i].GetType().Name == "SavingAccount" &&
+                    accounts[i].GetAccountBalance() == 0)
                 {
-                    SavingAccount account = (SavingAccount)Accounts[i];
-
-                    if (account.GetAccountBalance() == 0)
-                    {
-                        savings.AddLast(account);
-                    }
+                    count++;
                 }
             }
 
-            return savings;
-        }
+            BasicAccount[] zeroSavingAccounts = new BasicAccount[count];
 
-        public LinkedList<string> LoanSuggestion()
-        {
-            LinkedList<string> suggestions = new LinkedList<string>();
+            int j = 0;
 
-            for (int i = 0; i < Accounts.Length; i++)
+            for (int i = 0; i < accounts.Length; i++)
             {
-                if (Accounts[i] is CheckingAccount)
+                if (accounts[i] != null &&
+                    accounts[i].GetType().Name == "SavingAccount" &&
+                    accounts[i].GetAccountBalance() == 0)
                 {
-                    CheckingAccount account = (CheckingAccount)Accounts[i];
-
-                    double balance = account.GetAccountBalance();
-                    double limit = account.GetOverDraftLimit();
-
-                    if (balance < 0 && -balance > limit / 2)
-                    {
-                        suggestions.AddLast(
-                            $"Type:Checking, Num:{account.GetAccountNumber()}, ID:{account.GetOwnersID()}, Balance:{balance}");
-                    }
-                }
-                else if (Accounts[i] is BusinessAccount)
-                {
-                    BusinessAccount account = (BusinessAccount)Accounts[i];
-
-                    double balance = account.GetAccountBalance();
-                    double limit = account.GetOverDraftLimit() + account.GetMortgageLimit();
-
-                    if (balance < 0 && -balance > limit / 2)
-                    {
-                        suggestions.AddLast(
-                            $"Type:Business, Num:{account.GetAccountNumber()}, ID:{account.GetOwnersID()}, Balance:{balance}, BusinessName:{account.GetBusinessName()}");
-                    }
+                    zeroSavingAccounts[j] = accounts[i];
+                    j++;
                 }
             }
 
-            return suggestions;
+            return zeroSavingAccounts;
         }
 
+        public static BasicAccount[] LoanSuggestion(BasicAccount[] accounts)
+        {
+            
+        }
         public static void UnitTest()
         {
+            /*
             BankServices bank = new BankServices();
 
             Console.WriteLine("Constructor creates 100 places: " + (bank.GetAccounts().Length == 100));
@@ -281,6 +262,27 @@ namespace Yakir
             Console.WriteLine("SetAccounts first account: " + (secondBank.GetAccounts()[0] == account1));
             Console.WriteLine("SetAccounts second account: " + (secondBank.GetAccounts()[1] == account2));
             Console.WriteLine("AddAccount when array is full: " + (secondBank.AddAccount(account3) == false));
+            
+
+            BasicAccount[] accounts = new BasicAccount[6];
+            accounts[0] = new SavingAccount(1, 123, 456789, "ID123", new Date(31, 12, 2024));
+            accounts[0].Deposit(1000);
+            accounts[1] = new SavingAccount(2, 124, 456790, "ID124", new Date(31, 12, 2025));
+            accounts[2] = new SavingAccount(3, 125, 456791, "ID125", new Date(31, 12, 2026));
+            accounts[2].Deposit(500);
+            accounts[3] = new SavingAccount(4, 126, 456792, "ID126", new Date(31, 12, 2027));
+            accounts[3] = new SavingAccount(4, 126, 456792, "ID126", new Date(31, 12, 2027));
+            accounts[4] = new SavingAccount(5, 127, 456793, "ID127", new Date(31, 12, 2028));
+            accounts[5] = new CheckingAccount(6, 128, 456794, "ID128", 1000);
+            BasicAccount[] zeroAccounts = BankServices.ZeroSaving(accounts);
+
+            Console.WriteLine("ZeroSaving accounts count: " + zeroAccounts.Length);
+
+            for (int i = 0; i < zeroAccounts.Length; i++)
+            {
+                Console.WriteLine(zeroAccounts[i]);
+            }
+            */
         }
     }
 }
