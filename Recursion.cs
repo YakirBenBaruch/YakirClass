@@ -543,68 +543,95 @@ namespace Yakir
 
             return max;
         }
+
+        public static int BWS(bool[] arr, int i = 0, int max = 0, int I = 0)
+        {
+            if (I >= arr.Length)
+            {
+                return max;
+            }
+
+            if (arr[I] == true)
+            {
+                i++;
+            }
+
+            else
+            {
+                i = 0;
+            }
+
+            if (i > max)
+            {
+                max = i;
+            }
+
+            return BWS(arr, i, max, I + 1);
+        }
         public static void UnitTest()
         {
-            int number = 1717;
-            int digitCount = Count(number);
-            Console.WriteLine($"The number of digits in {number} is: {digitCount}");
-            Console.WriteLine(T1(5));
-            Console.WriteLine(T2(5));
-            Console.WriteLine(T3(7));
-            Console.WriteLine(T4(1717));
-            Console.WriteLine(T5(17, 5));
-            Console.WriteLine(T6(17, 5));
-            Console.WriteLine(T7(12, 3));
-            Console.WriteLine(T7(14, 3));
-            Console.WriteLine(T8(29, 2));
-            Console.WriteLine(T9(2468));
-            Console.WriteLine(T10(5));
-            Console.WriteLine(T11(4));
-            Console.WriteLine(T12(3, 15));
-            Console.WriteLine(T13(5));
-            Console.WriteLine(T14(new int[] { 1, 2, 3, 4, 5 }, 4));
-            Console.WriteLine(T15(new int[] { -2, 5, 3, -1, 7 }, 4));
-            Console.WriteLine(T16(new int[] { 4, 8, 2, 9, 6 }, 9));
-            Console.WriteLine(T17(new int[] { 1, 2, 3, 4, 5 }));
-            Console.WriteLine(T18(new int[] { 4, 6, 8, 11, 12 }));
-            Console.WriteLine(T20(new int[] { 5, 5, 5, 5, 5 }));
-            Console.WriteLine(Tclass(13579));
-            Console.WriteLine(T21("AbCdEf"));
-            Console.WriteLine(T22("abcdefghi"));
-            Console.WriteLine(T23("abcdef"));
+            //int number = 1717;
+            //int digitCount = Count(number);
+            //Console.WriteLine($"The number of digits in {number} is: {digitCount}");
+            //Console.WriteLine(T1(5));
+            //Console.WriteLine(T2(5));
+            //Console.WriteLine(T3(7));
+            //Console.WriteLine(T4(1717));
+            //Console.WriteLine(T5(17, 5));
+            //Console.WriteLine(T6(17, 5));
+            //Console.WriteLine(T7(12, 3));
+            //Console.WriteLine(T7(14, 3));
+            //Console.WriteLine(T8(29, 2));
+            //Console.WriteLine(T9(2468));
+            //Console.WriteLine(T10(5));
+            //Console.WriteLine(T11(4));
+            //Console.WriteLine(T12(3, 15));
+            //Console.WriteLine(T13(5));
+            //Console.WriteLine(T14(new int[] { 1, 2, 3, 4, 5 }, 4));
+            //Console.WriteLine(T15(new int[] { -2, 5, 3, -1, 7 }, 4));
+            //Console.WriteLine(T16(new int[] { 4, 8, 2, 9, 6 }, 9));
+            //Console.WriteLine(T17(new int[] { 1, 2, 3, 4, 5 }));
+            //Console.WriteLine(T18(new int[] { 4, 6, 8, 11, 12 }));
+            //Console.WriteLine(T20(new int[] { 5, 5, 5, 5, 5 }));
+            //Console.WriteLine(Tclass(13579));
+            //Console.WriteLine(T21("AbCdEf"));
+            //Console.WriteLine(T22("abcdefghi"));
+            //Console.WriteLine(T23("abcdef"));
 
-            Console.WriteLine("T24 from 'a' to 'f':");
-            T24('a', 'f');
+            //Console.WriteLine("T24 from 'a' to 'f':");
+            //T24('a', 'f');
 
-            Console.WriteLine("T25 factors of 12:");
-            T25(12);
+            //Console.WriteLine("T25 factors of 12:");
+            //T25(12);
 
-            Console.WriteLine("T26 even digits of 2468:");
-            T26(2468);
+            //Console.WriteLine("T26 even digits of 2468:");
+            //T26(2468);
 
-            Console.WriteLine("T27 multiplication table:");
-            T27(1, 1);
+            //Console.WriteLine("T27 multiplication table:");
+            //T27(1, 1);
 
-            Console.WriteLine("T28 arithmetic progression starting from 2, with difference 3, for 5 terms:");
-            T28(2, 3, 5);
+            //Console.WriteLine("T28 arithmetic progression starting from 2, with difference 3, for 5 terms:");
+            //T28(2, 3, 5);
 
-            Console.WriteLine("T29");
-            T29(7);
+            //Console.WriteLine("T29");
+            //T29(7);
 
-            Console.WriteLine("T30");
-            T30(8);
+            //Console.WriteLine("T30");
+            //T30(8);
 
-            Console.WriteLine("T31");
-            T31(new int[] { 7, 4, 9, 2, 11, 6 }); 
+            //Console.WriteLine("T31");
+            //T31(new int[] { 7, 4, 9, 2, 11, 6 }); 
 
-            Console.WriteLine("T32");
-            T32(new int[] { 5, 8, 3, 7, 2 }); 
+            //Console.WriteLine("T32");
+            //T32(new int[] { 5, 8, 3, 7, 2 }); 
 
-            Console.WriteLine("T33");
-            T33(new int[,] { { 1, 2, 3 }, { 4, 5, 6 } });
+            //Console.WriteLine("T33");
+            //T33(new int[,] { { 1, 2, 3 }, { 4, 5, 6 } });
 
-            Console.WriteLine("T34");
-            T34(new int[,] { { 3, 8, 1 }, { -6, -2, -9 }, { 10, 4, 7 } });
+            //Console.WriteLine("T34");
+            //T34(new int[,] { { 3, 8, 1 }, { -6, -2, -9 }, { 10, 4, 7 } });
+            bool[] arr = [true, false, false, false, true, true, false, true, true, true, true, true, false, false, true, false, false, false, false, false, true];
+            Console.WriteLine(BWS(arr));
         }
     }
 }

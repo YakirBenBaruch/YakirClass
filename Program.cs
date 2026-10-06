@@ -67,7 +67,7 @@ namespace Yakir
             //Manager.UnitTest();
             //MyCompany.UnitTest();
             //פולימורפיזם
-            BankServices.UnitTest();
+            //BankServices.UnitTest();
             //SavingAccount.UnitTest();
 
             //התחלה של רקורסיה
@@ -83,6 +83,9 @@ namespace Yakir
             //    return count;
             //}
             //Recursion.UnitTest();
+
+            //רשימה מקושרת
+            UnitTest.Run();
         }
     }
 }

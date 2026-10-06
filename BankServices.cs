@@ -167,43 +167,38 @@ namespace Yakir
             return risksAccounts;
         }
 
-        public static BasicAccount[] ZeroSaving(BasicAccount[] accounts)
+        public static SavingAccount[] ZeroSavings(BasicAccount[] accounts)
         {
             int count = 0;
 
-
             for (int i = 0; i < accounts.Length; i++)
             {
-                if (accounts[i] != null &&
-                    accounts[i].GetType().Name == "SavingAccount" &&
-                    accounts[i].GetAccountBalance() == 0)
+                if (accounts[i] is SavingAccount && accounts[i].GetAccountBalance() == 0)
                 {
                     count++;
                 }
             }
 
-            BasicAccount[] zeroSavingAccounts = new BasicAccount[count];
+            SavingAccount[] zeroAccounts = new SavingAccount[count];
 
             int j = 0;
 
             for (int i = 0; i < accounts.Length; i++)
             {
-                if (accounts[i] != null &&
-                    accounts[i].GetType().Name == "SavingAccount" &&
-                    accounts[i].GetAccountBalance() == 0)
+                if (accounts[i] is SavingAccount && accounts[i].GetAccountBalance() == 0)
                 {
-                    zeroSavingAccounts[j] = accounts[i];
+                    zeroAccounts[j] = (SavingAccount)accounts[i];
                     j++;
                 }
             }
 
-            return zeroSavingAccounts;
+            return zeroAccounts;
         }
 
-        public static BasicAccount[] LoanSuggestion(BasicAccount[] accounts)
-        {
+        //public static BasicAccount[] LoanSuggestion(BasicAccount[] accounts)
+        //{
             
-        }
+        //}
         public static void UnitTest()
         {
             /*
