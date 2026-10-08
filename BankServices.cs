@@ -173,7 +173,7 @@ namespace Yakir
 
             for (int i = 0; i < accounts.Length; i++)
             {
-                if (accounts[i] is SavingAccount && accounts[i].GetAccountBalance() == 0)
+                if (accounts[i] is SavingAccount && accounts[i].GetAccountBalance() == 0))
                 {
                     count++;
                 }
