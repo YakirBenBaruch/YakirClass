@@ -22,11 +22,11 @@ namespace Yakir
             //Console.WriteLine(Print(N));
             //Console.WriteLine(N);
             //Console.WriteLine(Count(N));
-            //Console.WriteLine(Sum(N));
-            //Console.WriteLine(Odd(N));
-            //Console.WriteLine(SumBOE(N));
-            //Console.WriteLine(PbN(N));
-            //Console.WriteLine(NiL(N , 6));
+            //Console.WriteLine(T1(N));
+            //Console.WriteLine(T2(N));
+            //Console.WriteLine(T3(N));
+            //Console.WriteLine(T4(N));
+            //Console.WriteLine(T5(N , 6));
             //Console.WriteLine(T6(N));
 
 
@@ -94,7 +94,7 @@ namespace Yakir
             return count;
         }
 
-        public static int Sum(IntNode lst)
+        public static int T1(IntNode lst)
         {
             int Sum = 0;
 
@@ -107,7 +107,7 @@ namespace Yakir
 
         }
 
-        public static int Odd(IntNode lst)
+        public static int T2(IntNode lst)
         {
             int Count = 0;
 
@@ -124,7 +124,7 @@ namespace Yakir
             return Count;
         }
 
-        public static int SumBOE(IntNode lst)
+        public static int T3(IntNode lst)
         {
             int SumEven = 0;
             int SumOdd = 0;
@@ -149,7 +149,7 @@ namespace Yakir
             return Math.Abs(SumTotal);
         }
 
-        public static bool PbN(IntNode lst)
+        public static bool T4(IntNode lst)
         {
             int CoumtP = 0;
             int CountN = 0;
@@ -180,7 +180,7 @@ namespace Yakir
             }
         }
 
-        public static bool NiL(IntNode lst, int N)
+        public static bool T5(IntNode lst, int N)
         {
             while (lst != null)
             {
