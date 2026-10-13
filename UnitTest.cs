@@ -13,11 +13,11 @@ namespace Yakir
         {
             //Test1();
 
-            IntNode N2 = new IntNode(51);
-            IntNode N1 = new IntNode(3, N2);
-            IntNode N = new IntNode(42, N1);
-            N2 = null;
-            N1 = null;
+            //IntNode N2 = new IntNode(51);
+            //IntNode N1 = new IntNode(3, N2);
+            //IntNode N = new IntNode(42, N1);
+            //N2 = null;
+            //N1 = null;
 
             //Console.WriteLine(Print(N));
             //Console.WriteLine(N);
@@ -29,6 +29,30 @@ namespace Yakir
             //Console.WriteLine(T5(N , 6));
             //Console.WriteLine(T6(N));
 
+            IntNode Num9 = new IntNode(3 , null);
+            IntNode Num8 = new IntNode(22, Num9);
+            IntNode Num7 = new IntNode(4, Num8);
+            IntNode Num6 = new IntNode(4, Num7);
+            IntNode Num5 = new IntNode(4, Num6);
+            IntNode Num4 = new IntNode(3, Num5);
+            IntNode Num3 = new IntNode(6, Num4);
+            IntNode Num2 = new IntNode(6, Num3);
+            IntNode Num1 = new IntNode(5, Num2);
+            IntNode Num = new IntNode(4, Num1);
+            Num1 = null;
+            Num2 = null;
+            Num3 = null;
+            Num4 = null;
+            Num5 = null;
+            Num6 = null;
+            Num7 = null;
+            Num8 = null;
+            Num9 = null;
+
+            //Console.WriteLine(T2(Num, 4));
+            //Console.WriteLine(T4Char(Num));
+            //T5Out(Num, 6);
+            //Console.WriteLine(Print(Num));
 
         }
         public static void Test1()
@@ -64,18 +88,12 @@ namespace Yakir
         public static string Print(IntNode lst)
         {
             string s = "->";
-            bool B = true;
             IntNode Temp = lst;
 
-            while (B)
+            while (Temp != null)
             {
-                s += lst.ToString() + "->";
+                s += Temp.GetValue() + "->";
                 Temp = Temp.GetNext();
-
-                if (Temp == null)
-                {
-                    B = false;
-                }
             }
 
             s += "null";
@@ -209,5 +227,87 @@ namespace Yakir
 
             return true;
         }
+
+        /////////////////////////////////////////
+        /////////////////////////////////////////
+
+        public static int T2(IntNode lst, int num)
+        {
+            int Count = 0;
+            int max = 0;
+
+            while (lst != null)
+            {
+                if (lst.GetValue() == num)
+                {
+                    if (Count == 0)
+                    {
+                        max++;
+                    }
+
+                    Count++;
+                }
+
+                else
+                {
+                    Count = 0;
+                }
+
+                lst = lst.GetNext();
+            }
+
+            return max;
+        }
+
+        public static char T4Char(IntNode lst)
+        {
+            int CountOdd = 0;
+            int CountEven = 0;
+
+            while (lst != null)
+            {
+                if (lst.GetValue() % 2 == 0)
+                {
+                    CountEven++;
+                }
+
+                else
+                {
+                    CountOdd++;
+                }
+
+                lst = lst.GetNext();
+            }
+
+            if (CountEven > CountOdd)
+            {
+                return 'z';
+            }
+
+            else if (CountOdd > CountEven)
+            {
+                return 'e';
+            }
+
+            return 's';
+        }
+
+
+        public static void T5Out(IntNode lst, int num)
+        {
+            while (lst.GetNext() != null)
+            {
+                if (lst.GetNext().GetValue() == num)
+                {
+                    IntNode Temp = lst.GetNext();
+                    lst.SetNext(Temp.GetNext());
+                    Temp.SetNext(null);
+                    Temp = null;
+                }
+
+                lst = lst.GetNext();
+            }
+        }
+
     }
 }
