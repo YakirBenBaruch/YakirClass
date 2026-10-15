@@ -29,7 +29,7 @@ namespace Yakir
             //Console.WriteLine(T5(N , 6));
             //Console.WriteLine(T6(N));
 
-            IntNode Num9 = new IntNode(3 , null);
+            IntNode Num9 = new IntNode(3, null);
             IntNode Num8 = new IntNode(22, Num9);
             IntNode Num7 = new IntNode(4, Num8);
             IntNode Num6 = new IntNode(4, Num7);
@@ -53,6 +53,11 @@ namespace Yakir
             //Console.WriteLine(T4Char(Num));
             //T5Out(Num, 6);
             //Console.WriteLine(Print(Num));
+            //Console.WriteLine(Print(T6NIN(Num)));
+            //Console.WriteLine(T8(Num));
+            //T9(Num);
+
+
 
         }
         public static void Test1()
@@ -309,5 +314,87 @@ namespace Yakir
             }
         }
 
+        public static bool T6Ezer(IntNode lst, IntNode num)
+        {
+            while (lst != null)
+            {
+                if (lst.GetValue() == num.GetValue())
+                {
+                    return true;
+                }
+
+                lst = lst.GetNext();
+            }
+
+            return false;
+        }
+
+        public static void T6EzerB(IntNode lst, IntNode num)
+        {
+            while (lst.GetNext() != null)
+            {
+                lst = lst.GetNext();
+            }
+
+            lst.SetNext(new IntNode(num.GetValue()));
+        }
+
+        public static IntNode T6NIN(IntNode lst)
+        {
+            IntNode NewLst = new IntNode(lst.GetValue());
+            lst = lst.GetNext();
+
+            while (lst != null)
+            {
+                if (T6Ezer(NewLst, lst) == false)
+                {
+                    T6EzerB(NewLst, lst);
+                }
+
+                lst = lst.GetNext();
+            }
+
+            return NewLst;
+        }
+
+        public static bool T8(IntNode lst)
+        {
+            while (lst.GetNext() != null)
+            {
+                if (lst.GetValue() > lst.GetNext().GetValue())
+                {
+                    return false;
+                }
+
+                lst = lst.GetNext();
+            }
+
+            return true;
+        }
+
+        public static void T9(IntNode lst)
+        {
+            while (lst.GetNext() != null)
+            {
+                if (lst.GetValue() > lst.GetNext().GetValue())
+                {
+                    Console.WriteLine(lst.GetValue());
+                }
+
+                lst = lst.GetNext();
+            }
+        }
+
+        public static IntNode T10(int beginner, int num)
+        {
+            IntNode lst = new IntNode(num);
+            lst.SetValue(beginner);
+
+            for (int i = 6; i < 5 + num; i++)
+            {
+                lst.SetNext(new IntNode(i));
+
+            }
+        }
     }
 }
