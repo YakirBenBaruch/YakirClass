@@ -56,6 +56,7 @@ namespace Yakir
             //Console.WriteLine(Print(T6NIN(Num)));
             //Console.WriteLine(T8(Num));
             //T9(Num);
+            Console.WriteLine(Print(T10(5, 4)));
 
 
 
@@ -385,16 +386,24 @@ namespace Yakir
             }
         }
 
+
         public static IntNode T10(int beginner, int num)
         {
             IntNode lst = new IntNode(num);
+
             lst.SetValue(beginner);
 
-            for (int i = 6; i < 5 + num; i++)
-            {
-                lst.SetNext(new IntNode(i));
+            IntNode temp = lst;
 
+            for (int i = beginner + 1; i < beginner + num; i++)
+            {
+                temp.SetNext(new IntNode(i));
+                temp = temp.GetNext();
             }
+
+            return lst;
         }
+
+
     }
 }
