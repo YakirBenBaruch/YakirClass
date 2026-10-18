@@ -404,6 +404,101 @@ namespace Yakir
             return lst;
         }
 
+        public static IntNode T11()
+        {
+            IntNode lst = null;
+            int Num = 0;
 
+            Console.WriteLine("Enter Num (-999) to end");
+            Num = int.Parse(Console.ReadLine());
+
+            while (Num != -999)
+            {
+                lst = new IntNode(Num, lst);
+
+                Num = int.Parse(Console.ReadLine());
+            }
+
+            return lst;
+        }
+
+        public static bool T12(IntNode lst)
+        {
+            if (lst == null)
+            {
+                return false;
+            }
+
+            IntNode temp = lst;
+            int sum = 0;
+            int count = 0;
+
+            while (temp != null)
+            {
+                sum += temp.GetValue();
+                count++;
+                temp = temp.GetNext();
+            }
+
+            double avg = (double)sum / count;
+
+            int big = 0;
+            int small = 0;
+            temp = lst;
+
+            while (temp != null)
+            {
+                if (temp.GetValue() > avg)
+                {
+                    big++;
+                }
+
+                else if (temp.GetValue() < avg)
+                {
+                    small++;
+                }
+
+                temp = temp.GetNext();
+            }
+
+            return big == small;
+        }
+
+        public static IntNode T14(IntNode lst, int n)
+        {
+            for (int i = 0; i < n; i++)
+            {
+                IntNode temp = lst;
+                int max = lst.GetValue();
+
+                while (temp != null)
+                {
+                    if (temp.GetValue() > max)
+                    {
+                        max = temp.GetValue();
+                    }
+
+                    temp = temp.GetNext();
+                }
+
+                if (lst.GetValue() == max)
+                {
+                    lst = lst.GetNext();
+                }
+                else
+                {
+                    temp = lst;
+
+                    while (temp.GetNext().GetValue() != max)
+                    {
+                        temp = temp.GetNext();
+                    }
+
+                    temp.SetNext(temp.GetNext().GetNext());
+                }
+            }
+
+            return lst;
+        }
     }
 }
