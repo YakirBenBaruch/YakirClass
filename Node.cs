@@ -17,7 +17,7 @@ namespace Yakir
             this.Next = null;
         }
 
-        public Node(T Value, Node<T> Next)
+        public Node(T Value, Node <T> Next)
         {
             this.Value = Value;
             this.Next = Next;
@@ -38,7 +38,7 @@ namespace Yakir
             this.Value = Value;
         }
 
-        public  void SetNext(Node<T> Next)
+        public  void SetNext(Node <T> Next)
         {
             this.Next = Next;
         }

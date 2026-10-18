@@ -85,7 +85,8 @@ namespace Yakir
             //Recursion.UnitTest();
 
             //רשימה מקושרת
-            UnitTest.Run();
+            //UnitTest.Run();
+            NodeUnitTest.Run();
         }
     }
 }
