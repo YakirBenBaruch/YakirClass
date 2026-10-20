@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -76,9 +77,53 @@ namespace Yakir
             }
         }
 
-        public void T16a(Node<char> ch)
+        public static int T18(Node<string> NameClass, string Name)
+        {
+            int Count = 0;
+
+            while (NameClass != null)
+            {
+                if (NameClass.GetValue().Split(' ')[0] == Name)
+                {
+                    Count++;
+                }
+
+                NameClass = NameClass.GetNext();
+            }
+
+            return Count;
+        }
+
+        public static Node<string> T20(Node<string> Str)
         {
 
+            Node<string> Reverse = null;
+
+            while (Str != null)
+            {
+                Reverse = new Node<string>(Str.GetValue(), Reverse);
+
+                Str = Str.GetNext();
+            }
+
+            return Reverse;
+        }
+
+        public static Node<string> T21(Node<string> Str)
+        {
+            Node<string> Temp = Str;
+
+            while (Temp != null && Temp.GetNext() != null)
+            {
+                if (Temp.GetValue().CompareTo(Temp.GetNext().GetValue()) > 0)
+                {
+                    return Temp;
+                }
+
+                Temp = Temp.GetNext();
+            }
+
+            return null;
         }
     }
 }
