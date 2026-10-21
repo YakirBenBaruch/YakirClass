@@ -125,5 +125,56 @@ namespace Yakir
 
             return null;
         }
+
+        //T22
+        //א) הפעולה תחזיר 1 כאשר מספר החוליות ברשימה  הוא אי זוגי , הפעולה תחזיר 2 כאשר מספר החוליות ברשימה הוא זוגי
+        //ב) הפעולה תחזיר 1 כאשר מספר החוליות ברשימה הוא אי זוגי , הפעולה תחזיר 2 כאשר מספר החוליות ברשימה הוא זוגי
+
+
+        public static Node<int> T24(Node<int> lst, int num)
+        {
+            Node<int> Temp = lst;
+
+
+            while (Temp != null)
+            {
+                if (Temp.GetValue() == num)
+                {
+                    return Temp;
+                }
+
+                Temp = Temp.GetNext();
+            }
+
+            return null;
+        }
+
+        public static bool T25(Node<int> lst, int num)
+        {
+            int count = 1;
+
+
+            while (lst.GetNext() != null)
+            {
+                if (lst.GetValue() == lst.GetNext().GetValue() + 1)
+                {
+                    count++;
+                }
+
+                if (count == num)
+                {
+                    return true;
+                }
+
+                lst = lst.GetNext();
+            }
+
+            return false;
+        }
+
+        public static void T26(Node<int> lst)
+        {
+            Node<int> Temp = lst;
+        }
     }
 }
