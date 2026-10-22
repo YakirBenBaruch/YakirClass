@@ -18,6 +18,20 @@ namespace Yakir
 
             /////////////////////////////////////////////////
 
+            Node<int> lst = new Node<int>(3);
+            lst.SetNext(new Node<int>(8));
+            lst.GetNext().SetNext(new Node<int>(7));
+            lst.GetNext().GetNext().SetNext(new Node<int>(2));
+            lst.GetNext().GetNext().GetNext().SetNext(new Node<int>(5));
+            lst.GetNext().GetNext().GetNext().GetNext().SetNext(new Node<int>(4));
+
+            Console.WriteLine("Before:");
+            Console.WriteLine(Print(lst));
+
+            T26(lst);
+
+            Console.WriteLine("After:");
+            Console.WriteLine(Print(lst));
 
         }
 
@@ -35,6 +49,23 @@ namespace Yakir
             s += "null";
             return s;
         }
+
+
+        public static string Print(Node<int> lst)
+        {
+            string s = "->";
+            Node<int> Temp = lst;
+
+            while (Temp != null)
+            {
+                s += Temp.GetValue() + "->";
+                Temp = Temp.GetNext();
+            }
+
+            s += "null";
+            return s;
+        }
+
 
         public static int T15a(Node<char> ch, char ch1)
         {
@@ -172,9 +203,71 @@ namespace Yakir
             return false;
         }
 
+        public static Node<int> T26E1(Node<int> lst)
+        {
+
+            while (lst != null)
+            {
+                if (lst.GetValue() % 2 == 0)
+                {
+                    return lst;
+                }
+
+                lst = lst.GetNext();
+            }
+
+            return null;
+        }
+
+        public static Node<int> T26E2(Node<int> lst)
+        {
+
+            while (lst != null)
+            {
+                if (lst.GetValue() % 2 == 1)
+                {
+                    return lst;
+                }
+
+                lst = lst.GetNext();
+            }
+
+            return null;
+        }
+
+
+        public static void Swap(Node<int> p1, Node<int> p2)
+        {
+            int Num = p1.GetValue();
+
+            p1.SetValue(p2.GetValue());
+
+            p2.SetValue(Num);
+        }
+
+
         public static void T26(Node<int> lst)
         {
-            Node<int> Temp = lst;
+            while (lst != null)
+            {
+                Node<int> Odd = T26E2(lst);
+
+                if (Odd == null)
+                {
+                    return;
+                }
+
+                Node<int> Even = T26E1(Odd);
+
+                if (Even == null)
+                {
+                    return;
+                }
+
+                Swap(Odd, Even);
+
+                lst = Odd.GetNext();
+            }
         }
     }
 }
