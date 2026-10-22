@@ -25,13 +25,13 @@ namespace Yakir
             lst.GetNext().GetNext().GetNext().SetNext(new Node<int>(5));
             lst.GetNext().GetNext().GetNext().GetNext().SetNext(new Node<int>(4));
 
-            Console.WriteLine("Before:");
-            Console.WriteLine(Print(lst));
+            //Console.WriteLine("Before:");
+            //Console.WriteLine(Print(lst));
 
-            T26(lst);
+            //T26(lst);
 
-            Console.WriteLine("After:");
-            Console.WriteLine(Print(lst));
+            //Console.WriteLine("After:");
+            //Console.WriteLine(Print(lst));
 
         }
 
@@ -267,6 +267,20 @@ namespace Yakir
                 Swap(Odd, Even);
 
                 lst = Odd.GetNext();
+            }
+        }
+
+        public static Node<int> T27(Node<int> lst)
+        {
+            Node<int> Temp = lst;
+
+            while (lst != null)
+            {
+                if (lst.GetValue() != lst.GetNext().GetValue() && lst.GetNext().GetValue() != lst.GetNext().GetNext().GetValue())
+                {
+
+                }
+
             }
         }
     }
