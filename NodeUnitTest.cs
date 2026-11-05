@@ -18,12 +18,13 @@ namespace Yakir
 
             /////////////////////////////////////////////////
 
-            Node<int> lst = new Node<int>(3);
-            lst.SetNext(new Node<int>(8));
-            lst.GetNext().SetNext(new Node<int>(7));
-            lst.GetNext().GetNext().SetNext(new Node<int>(2));
+            Node<int> lst = new Node<int>(1);
+            lst.SetNext(new Node<int>(3));
+            lst.GetNext().SetNext(new Node<int>(3));
+            lst.GetNext().GetNext().SetNext(new Node<int>(3));
             lst.GetNext().GetNext().GetNext().SetNext(new Node<int>(5));
             lst.GetNext().GetNext().GetNext().GetNext().SetNext(new Node<int>(4));
+            lst.GetNext().GetNext().GetNext().GetNext().GetNext().SetNext(new Node<int>(1));
 
             //Console.WriteLine("Before:");
             //Console.WriteLine(Print(lst));
@@ -32,6 +33,8 @@ namespace Yakir
 
             //Console.WriteLine("After:");
             //Console.WriteLine(Print(lst));
+
+            Console.WriteLine(T27MoveTemp(lst, ));
 
         }
 
@@ -270,18 +273,34 @@ namespace Yakir
             }
         }
 
-        public static Node<int> T27(Node<int> lst)
+        
+        public static int T27Count(Node<int> lst)
         {
             Node<int> Temp = lst;
+            int Count = 1;
 
-            while (lst != null)
+            while (Temp.GetNext() != null && Temp.GetValue() == Temp.GetNext().GetValue())
             {
-                if (lst.GetValue() != lst.GetNext().GetValue() && lst.GetNext().GetValue() != lst.GetNext().GetNext().GetValue())
-                {
-
-                }
-
+                Count++;
+                Temp = Temp.GetNext();
             }
+
+            return Count;
+        }
+
+        
+        public static Node<int> T27MoveTemp(Node<int> lst, int num)
+        {
+            Node<int> Temp = lst;
+            int move = 0;
+
+            while (move <= num && Temp != null)
+            {
+                Temp = Temp.GetNext();
+                move++;
+            }
+
+            return Temp;
         }
     }
 }
