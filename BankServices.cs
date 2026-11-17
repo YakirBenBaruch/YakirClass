@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System;
 
 namespace Yakir
 {
     public class BankServices
     {
         private BasicAccount[] Accounts;
+
+        public BankServices()
+        {
+            this.Accounts = new BasicAccount[100];
+        }
 
         public BasicAccount[] GetAccounts()
         {
@@ -18,11 +20,6 @@ namespace Yakir
         public void SetAccounts(BasicAccount[] accounts)
         {
             this.Accounts = accounts;
-        }
-
-        public BankServices()
-        {
-            this.Accounts = new BasicAccount[100];
         }
 
         public bool AddAccount(BasicAccount account)
@@ -35,6 +32,7 @@ namespace Yakir
                     return true;
                 }
             }
+
             return false;
         }
 
@@ -53,13 +51,13 @@ namespace Yakir
 
         public int AccountPerPerson(int accountNumber)
         {
-            string OwnerID = "";
+            string ownerID = "";
 
             for (int i = 0; i < Accounts.Length; i++)
             {
                 if (Accounts[i] != null && Accounts[i].GetAccountNumber() == accountNumber)
                 {
-                    OwnerID = Accounts[i].GetOwnersID();
+                    ownerID = Accounts[i].GetOwnersID();
                 }
             }
 
@@ -67,7 +65,7 @@ namespace Yakir
 
             for (int i = 0; i < Accounts.Length; i++)
             {
-                if (Accounts[i] != null && Accounts[i].GetOwnersID() == OwnerID)
+                if (Accounts[i] != null && Accounts[i].GetOwnersID() == ownerID)
                 {
                     count++;
                 }
@@ -94,6 +92,7 @@ namespace Yakir
             }
 
             BasicAccount[] ownerAccounts = new BasicAccount[count];
+
             int index = 0;
 
             for (int i = 0; i < Accounts.Length; i++)
@@ -167,117 +166,145 @@ namespace Yakir
             return risksAccounts;
         }
 
-        //public static SavingAccount[] ZeroSavings(BasicAccount[] accounts)
-        //{
-        //    int count = 0;
+        public Node<BusinessAccount> GetBusinessByWealthValue()
+        {
+            Node<BusinessAccount> head = null;
 
-        //    for (int i = 0; i < accounts.Length; i++)
-        //    {
-        //        if (accounts[i] is SavingAccount && accounts[i].GetAccountBalance() == 0))
-        //        {
-        //            count++;
-        //        }
-        //    }
+            for (int i = 0; i < Accounts.Length; i++)
+            {
+                if (Accounts[i] != null && Accounts[i] is BusinessAccount)
+                {
+                    BusinessAccount account = (BusinessAccount)Accounts[i];
+                    Node<BusinessAccount> newNode = new Node<BusinessAccount>(account);
 
-        //    SavingAccount[] zeroAccounts = new SavingAccount[count];
+                    if (head == null || account.CompareTo(head.GetValue()) > 0)
+                    {
+                        newNode.SetNext(head);
+                        head = newNode;
+                    }
+                    else
+                    {
+                        Node<BusinessAccount> temp = head;
 
-        //    int j = 0;
+                        while (temp.GetNext() != null && account.CompareTo(temp.GetNext().GetValue()) <= 0)
+                        {
+                            temp = temp.GetNext();
+                        }
 
-        //    for (int i = 0; i < accounts.Length; i++)
-        //    {
-        //        if (accounts[i] is SavingAccount && accounts[i].GetAccountBalance() == 0)
-        //        {
-        //            zeroAccounts[j] = (SavingAccount)accounts[i];
-        //            j++;
-        //        }
-        //    }
+                        newNode.SetNext(temp.GetNext());
+                        temp.SetNext(newNode);
+                    }
+                }
+            }
 
-        //    return zeroAccounts;
-        //}
+            return head;
+        }
 
-        //public static BasicAccount[] LoanSuggestion(BasicAccount[] accounts)
-        //{
-            
-        //}
+        public Node<SavingAccount> GetSavingByDueDate()
+        {
+            Node<SavingAccount> head = null;
+
+            for (int i = 0; i < Accounts.Length; i++)
+            {
+                if (Accounts[i] != null && Accounts[i] is SavingAccount)
+                {
+                    SavingAccount account = (SavingAccount)Accounts[i];
+                    Node<SavingAccount> newNode = new Node<SavingAccount>(account);
+
+                    if (head == null || account.CompareTo(head.GetValue()) < 0)
+                    {
+                        newNode.SetNext(head);
+                        head = newNode;
+                    }
+                    else
+                    {
+                        Node<SavingAccount> temp = head;
+
+                        while (temp.GetNext() != null && account.CompareTo(temp.GetNext().GetValue()) >= 0)
+                        {
+                            temp = temp.GetNext();
+                        }
+
+                        newNode.SetNext(temp.GetNext());
+                        temp.SetNext(newNode);
+                    }
+                }
+            }
+
+            return head;
+        }
+
         public static void UnitTest()
         {
-            /*
             BankServices bank = new BankServices();
 
-            Console.WriteLine("Constructor creates 100 places: " + (bank.GetAccounts().Length == 100));
-            Console.WriteLine("First place is empty: " + (bank.GetAccounts()[0] == null));
-            Console.WriteLine("RiskAccounts in empty bank: " + (bank.RiskAccounts().Length == 0));
-            Console.WriteLine("GetOwnerWithMostMoney in empty bank: " + (bank.GetOwnerWithMostMoney() == ""));
-            Console.WriteLine("GetAccountDetails for missing account: " + (bank.GetAccountDetails(999) == " "));
-            Console.WriteLine("AccountPerPerson for missing account: " + (bank.AccountPerPerson(999) == 0));
-            Console.WriteLine("GetAccountsByOwner for missing owner: " + (bank.GetAccountsByOwner("ID999") == null));
+            Console.WriteLine("Constructor size: " + (bank.GetAccounts().Length == 100));
+            Console.WriteLine("First account is null: " + (bank.GetAccounts()[0] == null));
+            Console.WriteLine("Empty RiskAccounts: " + (bank.RiskAccounts().Length == 0));
+            Console.WriteLine("Empty business list: " + (bank.GetBusinessByWealthValue() == null));
+            Console.WriteLine("Empty saving list: " + (bank.GetSavingByDueDate() == null));
 
-            BasicAccount account1 = new BasicAccount(1, 100, 101, "ID1");
-            CheckingAccount account2 = new CheckingAccount(1, 100, 102, "ID1", 500);
-            BasicAccount account3 = new BasicAccount(1, 100, 103, "ID2");
-            SavingAccount account4 = new SavingAccount(1, 100, 104, "ID3", new Date(31, 12, 2026));
-            CheckingAccount account5 = new CheckingAccount(1, 100, 105, "ID4", 500);
+            BusinessAccount business1 = new BusinessAccount(1, 100, 101, "ID1", "Business1", 1000, 0);
+            BusinessAccount business2 = new BusinessAccount(1, 100, 102, "ID1", "Business2", 2000, 0);
+            SavingAccount saving1 = new SavingAccount(1, 100, 103, "ID2", new Date(1, 1, 2027));
+            SavingAccount saving2 = new SavingAccount(1, 100, 104, "ID3", new Date(1, 1, 2025));
+            CheckingAccount checking = new CheckingAccount(1, 100, 105, "ID4", 500);
 
-            Console.WriteLine("Deposit to account1: " + (account1.Deposit(1000) == true));
-            Console.WriteLine("Deposit to account2: " + (account2.Deposit(500) == true));
-            Console.WriteLine("Deposit to account3: " + (account3.Deposit(2000) == true));
-            Console.WriteLine("Withdraw from account5: " + (account5.Withdraw(100) == true));
-            Console.WriteLine("Add account1: " + (bank.AddAccount(account1) == true));
-            Console.WriteLine("Add account2: " + (bank.AddAccount(account2) == true));
-            Console.WriteLine("Add account3: " + (bank.AddAccount(account3) == true));
-            Console.WriteLine("Add account4: " + (bank.AddAccount(account4) == true));
-            Console.WriteLine("Add account5: " + (bank.AddAccount(account5) == true));
-            Console.WriteLine("Account1 saved in first place: " + (bank.GetAccounts()[0] == account1));
-            Console.WriteLine("GetAccountDetails existing account: " + bank.GetAccountDetails(101).Contains("Account number: 101"));
-            Console.WriteLine("GetAccountDetails missing account: " + (bank.GetAccountDetails(999) == " "));
+            business1.Deposit(300);
+            business2.Deposit(500);
+            saving1.Deposit(100);
+            checking.Withdrawal(100.0);
+
+            Console.WriteLine("Add business1: " + (bank.AddAccount(business1) == true));
+            Console.WriteLine("Add business2: " + (bank.AddAccount(business2) == true));
+            Console.WriteLine("Add saving1: " + (bank.AddAccount(saving1) == true));
+            Console.WriteLine("Add saving2: " + (bank.AddAccount(saving2) == true));
+            Console.WriteLine("Add checking: " + (bank.AddAccount(checking) == true));
+
+            Console.WriteLine("GetAccounts: " + (bank.GetAccounts()[0] == business1));
+
+            Console.WriteLine("GetAccountDetails: " + bank.GetAccountDetails(101).Contains("Account number: 101"));
+            Console.WriteLine("Missing account details: " + (bank.GetAccountDetails(999) == " "));
+
             Console.WriteLine("AccountPerPerson: " + (bank.AccountPerPerson(101) == 2));
-            Console.WriteLine("AccountPerPerson missing account: " + (bank.AccountPerPerson(999) == 0));
+            Console.WriteLine("Missing AccountPerPerson: " + (bank.AccountPerPerson(999) == 0));
 
             BasicAccount[] ownerAccounts = bank.GetAccountsByOwner("ID1");
 
-            Console.WriteLine("GetAccountsByOwner is not null: " + (ownerAccounts != null));
             Console.WriteLine("GetAccountsByOwner length: " + (ownerAccounts.Length == 2));
-            Console.WriteLine("First owner account: " + (ownerAccounts[0] == account1));
-            Console.WriteLine("Second owner account: " + (ownerAccounts[1] == account2));
-            Console.WriteLine("GetAccountsByOwner missing owner: " + (bank.GetAccountsByOwner("ID999") == null));
-            Console.WriteLine("GetOwnerWithMostMoney: " + (bank.GetOwnerWithMostMoney() == "ID2"));
+            Console.WriteLine("First owner account: " + (ownerAccounts[0] == business1));
+            Console.WriteLine("Second owner account: " + (ownerAccounts[1] == business2));
+            Console.WriteLine("Missing owner: " + (bank.GetAccountsByOwner("UNKNOWN") == null));
 
-            BasicAccount[] riskAccounts = bank.RiskAccounts();
+            Console.WriteLine("GetOwnerWithMostMoney: " + (bank.GetOwnerWithMostMoney() == "ID1"));
 
-            Console.WriteLine("RiskAccounts length: " + (riskAccounts.Length == 2));
-            Console.WriteLine("First risk account: " + (riskAccounts[0] == account4));
-            Console.WriteLine("Second risk account: " + (riskAccounts[1] == account5));
+            BasicAccount[] risks = bank.RiskAccounts();
+
+            Console.WriteLine("RiskAccounts count: " + (risks.Length == 2));
+            Console.WriteLine("First risk account: " + (risks[0] == saving2));
+            Console.WriteLine("Second risk account: " + (risks[1] == checking));
+
+            Node<BusinessAccount> businesses = bank.GetBusinessByWealthValue();
+
+            Console.WriteLine("Richest business first: " + (businesses.GetValue() == business2));
+            Console.WriteLine("Second business: " + (businesses.GetNext().GetValue() == business1));
+            Console.WriteLine("End of business list: " + (businesses.GetNext().GetNext() == null));
+
+            Node<SavingAccount> savings = bank.GetSavingByDueDate();
+
+            Console.WriteLine("Earliest saving first: " + (savings.GetValue() == saving2));
+            Console.WriteLine("Second saving: " + (savings.GetNext().GetValue() == saving1));
+            Console.WriteLine("End of saving list: " + (savings.GetNext().GetNext() == null));
 
             BankServices secondBank = new BankServices();
-            BasicAccount[] newAccounts = new BasicAccount[] { account1, account2 };
+            BasicAccount[] newAccounts = { business1, business2 };
 
             secondBank.SetAccounts(newAccounts);
 
             Console.WriteLine("SetAccounts length: " + (secondBank.GetAccounts().Length == 2));
-            Console.WriteLine("SetAccounts first account: " + (secondBank.GetAccounts()[0] == account1));
-            Console.WriteLine("SetAccounts second account: " + (secondBank.GetAccounts()[1] == account2));
-            Console.WriteLine("AddAccount when array is full: " + (secondBank.AddAccount(account3) == false));
-            
-
-            BasicAccount[] accounts = new BasicAccount[6];
-            accounts[0] = new SavingAccount(1, 123, 456789, "ID123", new Date(31, 12, 2024));
-            accounts[0].Deposit(1000);
-            accounts[1] = new SavingAccount(2, 124, 456790, "ID124", new Date(31, 12, 2025));
-            accounts[2] = new SavingAccount(3, 125, 456791, "ID125", new Date(31, 12, 2026));
-            accounts[2].Deposit(500);
-            accounts[3] = new SavingAccount(4, 126, 456792, "ID126", new Date(31, 12, 2027));
-            accounts[3] = new SavingAccount(4, 126, 456792, "ID126", new Date(31, 12, 2027));
-            accounts[4] = new SavingAccount(5, 127, 456793, "ID127", new Date(31, 12, 2028));
-            accounts[5] = new CheckingAccount(6, 128, 456794, "ID128", 1000);
-            BasicAccount[] zeroAccounts = BankServices.ZeroSaving(accounts);
-
-            Console.WriteLine("ZeroSaving accounts count: " + zeroAccounts.Length);
-
-            for (int i = 0; i < zeroAccounts.Length; i++)
-            {
-                Console.WriteLine(zeroAccounts[i]);
-            }
-            */
+            Console.WriteLine("SetAccounts first: " + (secondBank.GetAccounts()[0] == business1));
+            Console.WriteLine("SetAccounts second: " + (secondBank.GetAccounts()[1] == business2));
+            Console.WriteLine("AddAccount when full: " + (secondBank.AddAccount(saving1) == false));
         }
     }
 }
