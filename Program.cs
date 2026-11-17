@@ -86,7 +86,10 @@ namespace Yakir
 
             //רשימה מקושרת
             //UnitTest.Run();
-            NodeUnitTest.Run();
+            //NodeUnitTest.Run();
+
+            //מחסנית
+
         }
     }
 }
