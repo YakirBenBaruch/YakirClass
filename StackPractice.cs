@@ -16,10 +16,18 @@ namespace Yakir
             stk.Push(3);
             stk.Push(1);
             stk.Push(-9);
+
+            Console.WriteLine("Starter Stck : ");
+            Console.WriteLine(stk);
+            Console.WriteLine();
+
+            Console.WriteLine("After : ");
             //Console.WriteLine(stk);
             //Console.WriteLine(Search(stk, 17));
             //Console.WriteLine(stk);
-            Console.WriteLine(StackIsSorted(stk));
+            //Console.WriteLine(StackIsSorted(stk));
+            //Circularmovement(stk);
+            //Console.WriteLine(stk);
         }
 
         public static bool Search(Stack<int> stk, int x)
@@ -55,20 +63,54 @@ namespace Yakir
             return copyStack;
         }
 
-        public static bool StackIsSorted(Stack<int> s)
+        public static bool StackIsSorted(Stack<int> stk)
         {
             Stack<int> temp;
-            temp = CopyStack(s);
+            temp = CopyStack(stk);
 
             while (!temp.IsEmpty())
             {
-               if (temp.Top() < temp.Pop())
-               {
+                int val = temp.Pop();
+
+                if (!temp.IsEmpty() && temp.Top() < val)
+                {
                     return false;
-               }
+                }
             }
 
             return true;
+        }
+
+        public static void Circularmovement(Stack<int> stk)
+        {
+            int val = stk.Pop();
+            Stack<int> temp = new Stack<int>();
+
+            while (!stk.IsEmpty())
+            {
+                temp.Push(stk.Pop());
+            }
+
+            stk.Push(val);
+
+            while (!temp.IsEmpty())
+            {
+                stk.Push(temp.Pop());
+            }
+        }
+
+        public static Stack<string> BackBack(Stack<string> stk , string s)
+        {
+            if (s == )
+            {
+                return
+            }
+
+            int x;
+            Console.WriteLine("Enter number to back");
+            x = int.Parse(Console.ReadLine());
+
+            
         }
     }
 }
