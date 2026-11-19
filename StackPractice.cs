@@ -17,6 +17,13 @@ namespace Yakir
             stk.Push(1);
             stk.Push(-9);
 
+            Stack<int> stk2 = new Stack<int>();
+            stk2.Push(17);
+            stk2.Push(12);
+            stk2.Push(-9);
+            stk2.Push(3);
+            stk2.Push(1);
+
             Console.WriteLine("Starter Stck : ");
             Console.WriteLine(stk);
             Console.WriteLine();
@@ -28,6 +35,7 @@ namespace Yakir
             //Console.WriteLine(StackIsSorted(stk));
             //Circularmovement(stk);
             //Console.WriteLine(stk);
+            Console.WriteLine(StucksIsEqual(stk, stk2));
         }
 
         public static bool Search(Stack<int> stk, int x)
@@ -99,18 +107,56 @@ namespace Yakir
             }
         }
 
-        public static Stack<string> BackBack(Stack<string> stk , string s)
+        public static string BackBack(Stack<string> stk , string str)
         {
-            if (s == )
+            if (str == "Back")
             {
-                return;
+                return stk.Top();
             }
 
-            int x;
-            Console.WriteLine("Enter number to back");
-            x = int.Parse(Console.ReadLine());
+            else
+            {
+                int x;
+                Console.WriteLine("Enter a number ");
+                x = int.Parse(Console.ReadLine());
 
-            
+                for (int i = 0; !stk.IsEmpty() && i < x; i++)
+                {
+                    stk.Pop();
+                }
+
+                return stk.Top();
+            }
+        }
+
+        public static bool StucksIsEqual(Stack<int> stk1, Stack<int> stk2)
+        {
+            Stack<int> temp = stk2;
+
+            for (int i = 0; !stk1.IsEmpty(); i++)
+            {
+                for (int j = 0; !temp.IsEmpty(); j++)
+                {
+                   if (stk1.Top() != temp.Top())
+                    {
+                        temp.Pop();
+                    }
+
+                    stk1.Pop();
+
+                    temp = stk2;
+                }
+            }
+
+            if (stk1.IsEmpty())
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
         }
     }
 }
