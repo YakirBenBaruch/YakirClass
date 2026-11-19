@@ -89,7 +89,7 @@ namespace Yakir
             //NodeUnitTest.Run();
 
             //מחסנית
-
+            StackPractice.Run();
         }
     }
 }
