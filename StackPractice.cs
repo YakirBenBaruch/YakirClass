@@ -35,17 +35,23 @@ namespace Yakir
             //Console.WriteLine(StackIsSorted(stk));
             //Circularmovement(stk);
             //Console.WriteLine(stk);
-            Console.WriteLine(StucksIsEqual(stk, stk2));
+            //Console.WriteLine(StucksIsEqual(stk, stk2));
         }
 
-        public static bool Search(Stack<int> stk, int x)
+
+
+        public static bool Search(Stack<int> stk, int num)
         {
-            // the problem - it deletes the stack!
-            while (!stk.IsEmpty())
+            Stack<int> temp = CopyStack(stk);
+
+            while (!temp.IsEmpty())
             {
-                if (stk.Pop() == x)
+                if (temp.Pop() == num)
+                {
                     return true;
+                }
             }
+
             return false;
         }
 
@@ -107,7 +113,7 @@ namespace Yakir
             }
         }
 
-        public static string BackBack(Stack<string> stk , string str)
+        public static string BackBack(Stack<string> stk, string str)
         {
             if (str == "Back")
             {
@@ -129,34 +135,61 @@ namespace Yakir
             }
         }
 
+
+
         public static bool StucksIsEqual(Stack<int> stk1, Stack<int> stk2)
         {
-            Stack<int> temp = stk2;
+            Stack<int> temp1 = CopyStack(stk1);
+            Stack<int> temp2 = CopyStack(stk2);
 
-            for (int i = 0; !stk1.IsEmpty(); i++)
+            while (!temp1.IsEmpty() && !temp2.IsEmpty())
             {
-                for (int j = 0; !temp.IsEmpty(); j++)
+                if (!Search(stk2, temp1.Pop()))
                 {
-                   if (stk1.Top() != temp.Top())
-                    {
-                        temp.Pop();
-                    }
-
-                    stk1.Pop();
-
-                    temp = stk2;
+                    return false;
                 }
+
+                temp2.Pop();
             }
 
-            if (stk1.IsEmpty())
+            if (!temp1.IsEmpty() || !temp2.IsEmpty())
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public static bool SearchInStuck(Stack<int> stk, int num)
+        {
+            Stack<int> temp = CopyStack(stk);
+            while (!temp.IsEmpty())
+            {
+                if (temp.Pop() == num)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        //סיבוכיות O(n^2)
+
+        public static bool SearchInStuckRecursion(Stack<int> stk, int num)
+        {
+            if (stk.IsEmpty())
+            {
+                return false;
+            }
+
+            int val = stk.Pop();
+
+            if (val == num)
             {
                 return true;
             }
 
-            else
-            {
-                return false;
-            }
+            return SearchInStuckRecursion(stk, num);
         }
+        //סיבוכיות O(n)
     }
 }
