@@ -16,16 +16,36 @@ namespace Yakir
             stk.Push(3);
             stk.Push(1);
             stk.Push(-9);
+            //stk.Push(-10);
+            //stk.Push(-11);
+            //stk.Push(-12);
+            //stk.Push(11);
+            //stk.Push(10);
+            //stk.Push(9);
+            //stk.Push(6);
+            //stk.Push(7);
+            //stk.Push(8);
 
             Stack<int> stk2 = new Stack<int>();
             stk2.Push(17);
-            stk2.Push(12);
-            stk2.Push(-9);
+            stk2.Push(5);
             stk2.Push(3);
             stk2.Push(1);
+            stk2.Push(-9);
+
+            Stack<string> stkString = new Stack<string>();
+            stkString.Push("a");
+            stkString.Push("b");
+            stkString.Push("c");
+            stkString.Push("d");
+            stkString.Push("e");
+            stkString.Push("f");
+            stkString.Push("g");
+            //string s = "Back";
 
             Console.WriteLine("Starter Stck : ");
             Console.WriteLine(stk);
+            //Console.WriteLine(stkString);
             Console.WriteLine();
 
             Console.WriteLine("After : ");
@@ -35,7 +55,11 @@ namespace Yakir
             //Console.WriteLine(StackIsSorted(stk));
             //Circularmovement(stk);
             //Console.WriteLine(stk);
+            //Console.WriteLine(BackBack(stkString, s));
+            //Console.WriteLine(stkString);
             //Console.WriteLine(StucksIsEqual(stk, stk2));
+            //Console.WriteLine(StucksIsEqualRecursion(stk, stk2));
+            //SortedstackUpandDown(stk);
         }
 
 
@@ -191,5 +215,57 @@ namespace Yakir
             return SearchInStuckRecursion(stk, num);
         }
         //סיבוכיות O(n)
+
+        public static bool StucksIsEqualRecursion(Stack<int> stk, Stack<int> stk2)
+        {
+            if (stk.Top() != stk2.Top())
+            {
+                return false;
+            }
+
+            int val = stk.Pop();
+            int val2 = stk2.Pop();
+
+            if (stk.IsEmpty() && stk2.IsEmpty())
+            {
+                return true;
+            }
+
+            return StucksIsEqualRecursion(stk, stk2);
+        }
+
+        public static void SortedstackUpandDown(Stack<int> stk)
+        {
+            Stack<int> temp = stk;
+
+            int countUp = 0;
+            int countDown = 0;
+            int val = temp.Pop();
+            while (!stk.IsEmpty())
+            {
+                if (val < temp.Top())
+                {
+                    countDown++;
+                    val = temp.Pop();
+                }
+
+                else if (val > temp.Top())
+                {
+                    countUp++;
+                    val = temp.Pop();
+                }
+            }
+
+            if (countUp < countDown)
+            {
+                Console.WriteLine("The longest srike is countDown");
+            }
+
+            if (countUp > countDown)
+            {
+                Console.WriteLine("The longest srike is countUp");
+            }
+            
+        }
     }
 }
