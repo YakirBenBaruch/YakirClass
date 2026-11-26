@@ -11,11 +11,11 @@ namespace Yakir
         public static void Run()
         {
             Stack<int> stk = new Stack<int>();
-            stk.Push(17);
+            stk.Push(1);
             stk.Push(5);
             stk.Push(3);
             stk.Push(1);
-            stk.Push(-9);
+            stk.Push(1);
             //stk.Push(-10);
             //stk.Push(-11);
             //stk.Push(-12);
@@ -60,6 +60,7 @@ namespace Yakir
             //Console.WriteLine(StucksIsEqual(stk, stk2));
             //Console.WriteLine(StucksIsEqualRecursion(stk, stk2));
             //SortedstackUpandDown(stk);
+            Console.WriteLine(NumInStack(15311, stk));
         }
 
 
@@ -99,6 +100,18 @@ namespace Yakir
             }
 
             return copyStack;
+        }
+
+        public static Stack<int> Reverse(Stack<int> stk)
+        {
+            Stack<int> temp = new Stack<int>();
+
+            while (!stk.IsEmpty())
+            {
+                temp.Push(stk.Pop());
+            }
+
+            return temp;
         }
 
         public static bool StackIsSorted(Stack<int> stk)
@@ -218,20 +231,30 @@ namespace Yakir
 
         public static bool StucksIsEqualRecursion(Stack<int> stk, Stack<int> stk2)
         {
-            if (stk.Top() != stk2.Top())
-            {
-                return false;
-            }
-
-            int val = stk.Pop();
-            int val2 = stk2.Pop();
-
             if (stk.IsEmpty() && stk2.IsEmpty())
             {
                 return true;
             }
+                
+            if (stk.IsEmpty() || stk2.IsEmpty())
+            {
+                return false;
+            }
+                
+            if (stk.Top() != stk2.Top())
+            {
+                return false;
+            }
+                
+            int val = stk.Pop();
+            int val2 = stk2.Pop();
 
-            return StucksIsEqualRecursion(stk, stk2);
+            bool result = StucksIsEqualRecursion(stk, stk2);
+
+            stk.Push(val);
+            stk2.Push(val2);
+
+            return result;
         }
 
         public static void SortedstackUpandDown(Stack<int> stk)
@@ -265,7 +288,14 @@ namespace Yakir
             {
                 Console.WriteLine("The longest srike is countUp");
             }
-            
+        }
+
+        public static bool NumInStack(int num, Stack<int> stk)
+        {
+            Stack<int> temp = stk;
+            Stack<int> reverse = Reverse(stk);
+
+
         }
     }
 }
