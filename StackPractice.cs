@@ -11,11 +11,11 @@ namespace Yakir
         public static void Run()
         {
             Stack<int> stk = new Stack<int>();
-            stk.Push(1);
+            stk.Push(17);
             stk.Push(5);
             stk.Push(3);
             stk.Push(1);
-            stk.Push(1);
+            stk.Push(-9);
             //stk.Push(-10);
             //stk.Push(-11);
             //stk.Push(-12);
@@ -60,7 +60,9 @@ namespace Yakir
             //Console.WriteLine(StucksIsEqual(stk, stk2));
             //Console.WriteLine(StucksIsEqualRecursion(stk, stk2));
             //SortedstackUpandDown(stk);
-            Console.WriteLine(NumInStack(15311, stk));
+            //Console.WriteLine(NumInStack(15311, stk));
+            Console.WriteLine(MinNInStack(stk));
+            Console.WriteLine(stk);
         }
 
 
@@ -235,17 +237,17 @@ namespace Yakir
             {
                 return true;
             }
-                
+
             if (stk.IsEmpty() || stk2.IsEmpty())
             {
                 return false;
             }
-                
+
             if (stk.Top() != stk2.Top())
             {
                 return false;
             }
-                
+
             int val = stk.Pop();
             int val2 = stk2.Pop();
 
@@ -290,12 +292,65 @@ namespace Yakir
             }
         }
 
+        public static bool CheckDigits(int num, Stack<int> stk)
+        {
+            Stack<int> temp = CopyStack(stk);
+
+            while (!temp.IsEmpty())
+            {
+                Stack<int> check = CopyStack(temp);
+                int n = num;
+
+                while (!check.IsEmpty() && check.Top() == n % 10)
+                {
+                    check.Pop();
+                    n = n / 10;
+
+                    if (n == 0)
+                    {
+                        return true;
+                    }
+                }
+
+                temp.Pop();
+            }
+
+            return false;
+        }
         public static bool NumInStack(int num, Stack<int> stk)
         {
-            Stack<int> temp = stk;
+            Stack<int> temp = CopyStack(stk);
             Stack<int> reverse = Reverse(stk);
 
+            return CheckDigits(num, temp) || CheckDigits(num, reverse);
+        }
 
+        public static int MinNInStack(Stack<int> stk)
+        {
+            Stack<int> temp = CopyStack(stk);
+
+            int min = temp.Top();
+            temp.Pop();
+
+            while (!temp.IsEmpty())
+            {
+                if (min > temp.Top())
+                {
+                    min = temp.Top();
+                }
+
+                temp.Pop();
+            }
+
+            while (!stk.IsEmpty())
+            {
+                if (stk.Top() != min)
+                {
+                    stk.Pop();
+                }
+
+            }
+            return min;
         }
     }
 }
